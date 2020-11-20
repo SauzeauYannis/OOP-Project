@@ -1,2 +1,2 @@
 # OOP-Project
-later
+How to install and how to use our project
