@@ -7,11 +7,12 @@ import java.util.*;
 
 public class Gameplay {
 
-	private Collection<Place> places;
+	private List<Place> places;
 	private Player player;
 
 	public static void main(String[] args) {
-		System.out.println("Hello world");
+	    Player player = new Player("Benjapied Tablenuit");
+        System.out.println("Your name is : " + player.getName());
 	}
 
 }
