@@ -89,4 +89,8 @@ public class Player extends Character {
 	public Item getItemPos(int i){
 		return this.items.get(i);
 	}
+
+	public boolean getIsLose(){
+		return this.isLose;
+	}
 }
