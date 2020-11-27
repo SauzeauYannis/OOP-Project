@@ -13,7 +13,7 @@ public class Gameplay {
 	private Player player;
 
 	public static void main(String[] args) {
-        Hub hub = new Hub(new NPC("GHES'UIN GUIDE", null));
+        Hub hub = new Hub(new NPC("GHES'UIN GUIDE"));
 
         System.out.println(hub.getName());
 
