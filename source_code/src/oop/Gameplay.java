@@ -9,18 +9,18 @@ import java.util.*;
 
 public class Gameplay {
 
-	private List<Place> places;
+    private List<Place> places;
 	private Player player;
 
 	public static void main(String[] args) {
-	    Player player = new Player("Benjapied Tablenuit");
-        System.out.println("Your name is : " + player.getName());
-
-        Hub hub = new Hub(new NPC("GHES'UIN GUIDE"));
+        Hub hub = new Hub(new NPC("GHES'UIN GUIDE", null));
 
         System.out.println(hub.getName());
 
         System.out.println(hub.getNpc().getName());
+
+        Player player = new Player("Benjapied Tablenuit", hub);
+        System.out.println("Your name is : " + player.getName());
 	}
 
 }
