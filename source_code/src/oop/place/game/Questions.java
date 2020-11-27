@@ -9,6 +9,25 @@ public class Questions extends Game {
         super(npc, name);
     }
 
+    public Questions(NPC npc) {
+        super(npc, "Questions");
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Game launched");
+    }
+
+    @Override
+    public void win() {
+        System.out.println("You win!");
+    }
+
+    @Override
+    public void lose() {
+        System.out.println("You lose!");
+    }
+
     @Override
     public void readDescription() {
 

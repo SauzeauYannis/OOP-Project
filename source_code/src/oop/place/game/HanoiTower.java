@@ -8,6 +8,25 @@ public class HanoiTower extends Game {
         super(npc, name);
     }
 
+    public HanoiTower(NPC npc) {
+        super(npc, "Hanoi Tower");
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Game launched");
+    }
+
+    @Override
+    public void win() {
+        System.out.println("You win!");
+    }
+
+    @Override
+    public void lose() {
+        System.out.println("You lose!");
+    }
+
     @Override
     public void readDescription() {
 

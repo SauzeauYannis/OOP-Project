@@ -9,6 +9,25 @@ public class RockPaperScissors extends Game {
         super(npc, name);
     }
 
+    public RockPaperScissors(NPC npc) {
+        super(npc, "Rock paper and scissord");
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Game launched");
+    }
+
+    @Override
+    public void win() {
+        System.out.println("You win!");
+    }
+
+    @Override
+    public void lose() {
+        System.out.println("You lose!");
+    }
+
     @Override
     public void readDescription() {
 

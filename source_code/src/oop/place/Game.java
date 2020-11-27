@@ -12,19 +12,10 @@ public abstract class Game extends Place {
 		super(npc, name);
 	}
 
-	public void play() {
-		// TODO - implement oop.place.Game.play
-		throw new UnsupportedOperationException();
-	}
+	public abstract void play();
 
-	public void win() {
-		// TODO - implement oop.place.Game.win
-		throw new UnsupportedOperationException();
-	}
+	public abstract void win();
 
-	public void lose() {
-		// TODO - implement oop.place.Game.lose
-		throw new UnsupportedOperationException();
-	}
+	public abstract void lose();
 
 }

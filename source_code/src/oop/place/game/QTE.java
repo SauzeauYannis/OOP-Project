@@ -9,6 +9,25 @@ public class QTE extends Game {
         super(npc, name);
     }
 
+    public QTE(NPC npc) {
+        super(npc, "QTE");
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Game launched");
+    }
+
+    @Override
+    public void win() {
+        System.out.println("You win!");
+    }
+
+    @Override
+    public void lose() {
+        System.out.println("You lose!");
+    }
+
     @Override
     public void readDescription() {
 
