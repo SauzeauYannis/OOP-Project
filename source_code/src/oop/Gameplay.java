@@ -38,6 +38,16 @@ public class Gameplay {
         Riddle riddle = new Riddle(npc);
         RockPaperScissors rockPaperScissors = new RockPaperScissors(npc);
         TicTacToe ticTacToe = new TicTacToe(npc);
+
+        System.out.println(findNumber.getName());
+        System.out.println(hangman.getName());
+        System.out.println(hanoiTower.getName());
+        System.out.println(karaoke.getName());
+        System.out.println(qte.getName());
+        System.out.println(questions.getName());
+        System.out.println(riddle.getName());
+        System.out.println(rockPaperScissors.getName());
+        System.out.println(ticTacToe.getName());
 	}
 
 }
