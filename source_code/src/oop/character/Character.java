@@ -7,25 +7,19 @@ public abstract class Character{
 	/// Attributes ///
 
 	private final String name;
-	private Place place;
 
 
 	/// Methods ///
 
-	public Character(String name, Place p){
+	public Character(String name){
 		this.name = name;
-		this.place = p;
 	}
 
 
 	/// Accessors ///
 
-	public String getName(){
+	public String getName() {
 		return this.name;
-	}
 
-	public Place getPlace(){
-		return this.place;
 	}
-
 }

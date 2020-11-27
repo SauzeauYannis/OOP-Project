@@ -6,13 +6,13 @@ public class NPC extends Character {
 
 	/// Methods ///
 
-	public NPC(String name, Place p) {
-		super(name, p);
+	public NPC(String name) {
+		super(name);
 	}
 
 	public void talk() throws InterruptedException {
 
-		// TODO - À modifier bien évidement
+		// TODO - À modifier bien évidemment
 
 		for(int i=0; i<5; i++){
 			System.out.print("Loading, please wait .");
