@@ -13,13 +13,7 @@ public class Shop extends Place {
 		super(npc, name);
 	}
 
-	@Override
-	public void readDescription() {
-
-	}
-
-	@Override
-	public void setDescription(String description) {
-
+	public Shop(NPC npc) {
+		super(npc, "Shop");
 	}
 }
