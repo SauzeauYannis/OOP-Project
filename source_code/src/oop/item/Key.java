@@ -16,4 +16,14 @@ public class Key extends Item implements Buyable {
 	public void buy() {
 
 	}
+
+	@Override
+	public void readDescription() {
+
+	}
+
+	@Override
+	public void setDescription(String description) {
+
+	}
 }

@@ -10,9 +10,8 @@ public class Gameplay {
 	private Collection<Place> places;
 	private Player player;
 
-	public void main() {
-		// TODO - implement oop.Gameplay.main
-		throw new UnsupportedOperationException();
+	public static void main(String[] args) {
+		System.out.println("Hello world!");
 	}
 
 }
