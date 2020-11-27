@@ -3,8 +3,6 @@ package oop.place;
 import oop.Describable;
 import oop.character.NPC;
 import oop.exit.Exit;
-import oop.exit.ExitLocked;
-import oop.exit.ExitOpened;
 
 import java.util.*;
 
