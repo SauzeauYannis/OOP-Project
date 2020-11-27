@@ -1,16 +1,31 @@
 package oop.character;
 
-public abstract class Character {
+import oop.place.Place;
 
-	private String name;
+public abstract class Character{
+
+	/// Attributes ///
+
+	private final String name;
+	private Place place;
 
 
-	public Character(String name) {
+	/// Methods ///
+
+	public Character(String name, Place p){
 		this.name = name;
+		this.place = p;
 	}
 
-	public String getName() {
+
+	/// Accessors ///
+
+	public String getName(){
 		return this.name;
+	}
+
+	public Place getPlace(){
+		return this.place;
 	}
 
 }
