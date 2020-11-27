@@ -1,3 +1,4 @@
+/*
 package oop.exit;
 
 import oop.place.Place;
@@ -17,3 +18,4 @@ public class ExitLocked extends Exit {
 	}
 
 }
+ */
