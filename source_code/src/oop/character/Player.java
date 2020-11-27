@@ -34,6 +34,10 @@ public class Player extends Character {
 		this.isLose = false;
 	}
 
+	private void lose(){
+		this.isLose = true;
+	}
+
 	public void increaseHealth(int health) {
 		if(this.health + health >= MAX_HEALTH){
 			this.health = MAX_HEALTH;
@@ -63,10 +67,6 @@ public class Player extends Character {
 		}
 	}
 
-	public void lose(){
-		this.isLose = true;
-	}
-
 	public void changePlace(Exit e){
 
 	}
@@ -78,5 +78,19 @@ public class Player extends Character {
 		return this.cur_place;
 	}
 
+	public int getHealth(){
+		return this.health;
+	}
 
+	public int getMoney(){
+		return this.money;
+	}
+
+	public Item getItemPos(int i){
+		return this.items.get(i);
+	}
+
+	public boolean getIsLose(){
+		return this.isLose;
+	}
 }
