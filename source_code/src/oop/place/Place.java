@@ -19,16 +19,14 @@ public abstract class Place implements Describable {
 		this.npc = npc;
 		this.name = name;
 		this.exits = new ArrayList<>();
-		this.addExits(new ExitOpened());
-		this.addExits(new ExitLocked());
 	}
 
 	public String getName() {
-		return this.name;
+		return "Place : " + this.name;
 	}
 
-	public void talkToNPC() {
-		npc.talk();
+	public NPC getNpc() {
+		return this.npc;
 	}
 
 	private void addExits(Exit e) {
@@ -38,7 +36,7 @@ public abstract class Place implements Describable {
 	private void printExitsPlace() {
 		for (Exit e:
 			 this.exits) {
-			System.out.println(e); //place
+			System.out.println(e.getPlace().name); //place
 		}
 	}
 

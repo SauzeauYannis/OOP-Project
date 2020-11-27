@@ -4,7 +4,7 @@ import oop.place.Place;
 
 public abstract class Exit {
 
-	private Place place;
+	private final Place place;
 	private boolean isOpen;
 
 	public Exit(Place place) {
@@ -24,7 +24,7 @@ public abstract class Exit {
 
 	public void go() {
 		// TODO - implement oop.exit.Exit.go
-		this.
+		// this.
 	}
 
 

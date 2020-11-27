@@ -4,13 +4,9 @@ public abstract class Character {
 
 	private String name;
 
-	/**
-	 * 
-	 * @param name
-	 */
+
 	public Character(String name) {
-		// TODO - implement oop.character.Character.oop.character.Character
-		throw new UnsupportedOperationException();
+		this.name = name;
 	}
 
 	public String getName() {
