@@ -1,4 +1,4 @@
-package oop.exit;
+/*package oop.exit;
 
 import oop.place.Place;
 
@@ -7,3 +7,5 @@ public class ExitOpened extends Exit {
         super(place);
     }
 }
+
+ */
