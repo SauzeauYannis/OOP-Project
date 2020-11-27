@@ -1,20 +1,31 @@
 package oop.character;
 
-public abstract class Character {
+import oop.place.Place;
 
-	private String name;
+public abstract class Character{
 
-	/**
-	 * 
-	 * @param name
-	 */
-	public Character(String name) {
-		// TODO - implement oop.character.Character.oop.character.Character
-		throw new UnsupportedOperationException();
+	/// Attributes ///
+
+	private final String name;
+	private Place place;
+
+
+	/// Methods ///
+
+	public Character(String name, Place p){
+		this.name = name;
+		this.place = p;
 	}
 
-	public String getName() {
+
+	/// Accessors ///
+
+	public String getName(){
 		return this.name;
+	}
+
+	public Place getPlace(){
+		return this.place;
 	}
 
 }

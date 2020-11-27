@@ -1,56 +1,58 @@
 package oop.character;
 
 import oop.item.Item;
+import oop.place.Place;
 
 import java.util.*;
 
 public class Player extends Character {
 
-	private Collection<Item> items;
+	static final int MAX_HEALTH = 100;
+	static final int DEFAULT_MONEY = 10;
+
+	private List<Item> items;
 	private int health;
 	private int money;
+	private boolean isLose;
 
-	/**
-	 * @param name
-	 */
-	public Player(String name) {
-		super(name);
+	public Player(String name, Place p) {
+		super(name, p);
+		this.health = MAX_HEALTH;
+		this.money = DEFAULT_MONEY;
+		this.items = new ArrayList<>();
+		this.isLose = false;
 	}
 
-	/**
-	 * 
-	 * @param health
-	 */
 	public void increaseHealth(int health) {
-		// TODO - implement oop.character.Player.increaseHealth
-		throw new UnsupportedOperationException();
+		if(this.health + health >= MAX_HEALTH){
+			this.health = MAX_HEALTH;
+		}
+		else{
+			this.health += health;
+		}
 	}
 
-	/**
-	 * 
-	 * @param health
-	 */
 	public void decreaseHealth(int health) {
-		// TODO - implement oop.character.Player.decreaseHealth
-		throw new UnsupportedOperationException();
+		this.health -= health;
+		if(this.health <= 0){
+			this.lose();
+		}
 	}
 
-	/**
-	 * 
-	 * @param money
-	 */
 	public void earnMoney(int money) {
-		// TODO - implement oop.character.Player.earnMoney
-		throw new UnsupportedOperationException();
+		this.money += money;
 	}
 
-	/**
-	 * 
-	 * @param money
-	 */
 	public void loseMoney(int money) {
-		// TODO - implement oop.character.Player.loseMoney
-		throw new UnsupportedOperationException();
+		if(this.money - money <= 0){
+			this.money = 0;
+		}
+		else{
+			this.money -= money;
+		}
 	}
 
+	public void lose(){
+		this.isLose = true;
+	}
 }
