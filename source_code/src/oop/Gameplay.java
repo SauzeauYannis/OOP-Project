@@ -21,7 +21,7 @@ public class Gameplay {
 
         System.out.println(hub.getNpc().getName());
 
-        Shop shop = new Shop(new NPC("Gésui’Hun Von Dheur", null))
+        Shop shop = new Shop(new NPC("Gésui’Hun Von Dheur", null));
 
         Player player = new Player("Benjapied Tablenuit", hub);
         System.out.println("Your name is : " + player.getName());
