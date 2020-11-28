@@ -84,6 +84,8 @@ public class Player extends Character {
 					Command.helpCommand(
 							Command.stringToCommand(s[1])
 					);
+				} else if (s.length == 3){
+					System.out.println("Please enter valid command !");
 				} else {
 					Command.printCommands();
 				}
