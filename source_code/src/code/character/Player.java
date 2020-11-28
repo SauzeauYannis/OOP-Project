@@ -97,7 +97,7 @@ public class Player extends Character {
 		game.play();
 	}
 
-	public void execCommand(Command command, Scanner scanner) {
+	public void execCommand(Command command, Scanner scanner, EnumMap<PlaceKey, Game> gameEnumMap) {
 		String[] s = scanner.nextLine().split(" ");
 		switch (command) {
 			case GO:
@@ -135,8 +135,12 @@ public class Player extends Character {
 				System.out.println("TODO : use command");
 				break;
 			case PLAY:
-				if(s.length == 1){
-					
+				if (s.length == 1){
+					for (Game game: gameEnumMap.values()) {
+						if (this.cur_place.getName().equals(game.getName())) {
+							playGame(game);
+						}
+					}
 				}
 				break;
 			default:

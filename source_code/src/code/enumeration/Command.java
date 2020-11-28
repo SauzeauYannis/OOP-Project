@@ -71,7 +71,7 @@ public enum Command {
                 System.out.println("use [object] : To use the object selected");
                 break;
             case PLAY:
-                System.out.println("play [object] : To play the game if your in good place");
+                System.out.println("play : To play the game if your in good place");
                 break;
             default:
                 System.out.println(command + " : Not a command");

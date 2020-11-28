@@ -51,7 +51,7 @@ public class Exit {
 		exitEnumMap.put(ExitKey.EXIT_SHOP,
 				new Exit(placeEnumMap.get(PlaceKey.SHOP), false));
 		exitEnumMap.put(ExitKey.EXIT_FIND_NUMBER,
-				new Exit(placeEnumMap.get(PlaceKey.FIND_NUMBER), true));
+				new Exit(placeEnumMap.get(PlaceKey.FIND_NUMBER), false));
 		exitEnumMap.put(ExitKey.EXIT_HANGMAN,
 				new Exit(placeEnumMap.get(PlaceKey.HANGMAN), true));
 		exitEnumMap.put(ExitKey.EXIT_HANOI_TOWER,
