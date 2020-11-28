@@ -67,8 +67,9 @@ public class Player extends Character {
 		}
 	}
 
-	public void changePlace(Exit e){
-
+	public void changePlace(Place place){
+		this.cur_place = place;
+		System.out.println("You go to : " + place.getName());
 	}
 
 

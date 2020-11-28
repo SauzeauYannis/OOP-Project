@@ -2,6 +2,7 @@ package code.place;
 
 import code.Interface.Describable;
 import code.character.NPC;
+import code.enumeration.ExitKey;
 import code.enumeration.PlaceKey;
 import code.exit.Exit;
 import code.place.game.*;
@@ -23,7 +24,7 @@ public class Place implements Describable {
 	}
 
 	public String getName() {
-		return "Place : " + this.name;
+		return this.name;
 	}
 
 	public void setNpc(NPC npc) {
@@ -38,10 +39,9 @@ public class Place implements Describable {
 		this.exitList.add(e);
 	}
 	
-	private void printExitsPlace() {
-		for (Exit e:
-			 this.exitList) {
-			System.out.println(e.getPlace().name); //place
+	public void printExitsPlace() {
+		for (Exit exit: this.exitList) {
+			exit.printExit();
 		}
 	}
 
@@ -86,6 +86,42 @@ public class Place implements Describable {
 				new RockPaperScissors());
 		placeEnumMap.put(PlaceKey.TIC_TAC_TOE,
 				new TicTacToe());
+
+		EnumMap<ExitKey, Exit> exitEnumMap = Exit.generateAllExits(placeEnumMap);
+
+		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_SHOP));
+
+		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_ROCK_PAPER_SCISSORS));
+		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_FIND_NUMBER));
+		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_QTE));
+		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+
+		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_TIC_TAC_TOE));
+		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_RIDDLE));
+		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_HANOI_TOWER));
+		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+
+		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_QUESTIONS));
+		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_KARAOKE));
+		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_HANGMAN));
+		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+
+		placeEnumMap.get(PlaceKey.SHOP).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+
+		placeEnumMap.get(PlaceKey.ROCK_PAPER_SCISSORS).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		placeEnumMap.get(PlaceKey.FIND_NUMBER).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		placeEnumMap.get(PlaceKey.QTE).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+
+		placeEnumMap.get(PlaceKey.TIC_TAC_TOE).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		placeEnumMap.get(PlaceKey.RIDDLE).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		placeEnumMap.get(PlaceKey.HANOI_TOWER).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+
+		placeEnumMap.get(PlaceKey.QUESTIONS).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		placeEnumMap.get(PlaceKey.KARAOKE).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		placeEnumMap.get(PlaceKey.HANGMAN).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
 
 		return placeEnumMap;
 	}
