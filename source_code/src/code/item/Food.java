@@ -4,28 +4,25 @@ public class Food extends Item {
 
 	private int calorie;
 
-	public Food(String name, String description, int price) {
-		super(name, description, price);
+	// CONSTRUCTOR
+
+	public Food(String name, int price, int calorie) {
+		super(name, price);
+		this.calorie = calorie;
+		this.setDescription("TYPE: Food - " + this.getName() + "\t| INTAKE: +" + this.calorie + " to HP");
 	}
 
+	// GETTER
 
 	public int getCalorie() {
 		return this.calorie;
 	}
 
-	@Override
-	public void readDescription() {
 
-	}
-
-	@Override
-	public void setDescription(String description) {
-
-	}
+	// METHODS
 
 	@Override
 	public void printItem() {
-		super.printItem();
-
+		System.out.print("OBJECT: " + this.getName() + "\t| PRICE: " + this.getPrice() + " coins \t| INTAKE: +" + this.getCalorie() + " to HP");
 	}
 }

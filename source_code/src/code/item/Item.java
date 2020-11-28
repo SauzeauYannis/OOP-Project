@@ -9,13 +9,12 @@ public abstract class Item implements Describable {
 	private String description;
 	private int price;
 
-	public Item(String name, String description, int price) {
+	public Item(String name, int price) {
 		this.name = name;
-		this.description = description;
 		this.price = price;
 	}
 
-	// GETTER
+	// GETTERS
 	public String getName() {
 		return this.name;
 	}
@@ -24,13 +23,28 @@ public abstract class Item implements Describable {
 		return this.price;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	// SETTERS
+
+	@Override
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	// METHODS
+
+	@Override
+	public void readDescription() {
+		System.out.println(this.getDescription());
+	}
+
 	public void use() {
 
 	}
-
 	public void printItem(){
-		System.out.print(this.getName() + "\t| Price: " + this.price + " coins");
 	}
 
 	public void buy(Player player) {
