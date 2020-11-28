@@ -18,9 +18,10 @@ public class Place implements Describable {
 	private final String name;
 	private String description;
 
-	public Place(String name) {
+	public Place(String name, String description) {
 		this.name = name;
 		this.exitList = new ArrayList<>();
+		this.description = description;
 	}
 
 	public String getName() {

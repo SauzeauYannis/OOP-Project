@@ -27,7 +27,7 @@ public class Shop extends Place {
 	}
 
 	public Shop() {
-		super("Shop");
+		super("Shop", "This is the place where you can buy some food, like ChocoPipe");
 	}
 
 	public void addItem(Item item) {
