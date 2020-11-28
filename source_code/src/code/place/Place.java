@@ -45,13 +45,14 @@ public class Place implements Describable {
 	}
 	
 	public void printExitsPlace() {
-/*		for(int i=0; i<this.exitList.size(); i++) {
-			System.out.print("| " + i + " : ");
-			this.exitList.get(i).printExit();
-		}*/
 		System.out.println("You can go to :");
 		for (Exit exit : this.exitList) {
-			System.out.println("- " + exit.getPlace().getName());
+			System.out.print("- " + exit.getPlace().getName());
+			if (exit.isLock()) {
+				System.out.println(" [lock]");
+			} else {
+				System.out.println(" [unlock]");
+			}
 		}
 		System.out.println("Try to typing \"go " + this.exitList.get(0).getPlace().getName().split(" ")[0].toLowerCase() + "\" to go to " + this.exitList.get(0).getPlace().getName());
 	}
