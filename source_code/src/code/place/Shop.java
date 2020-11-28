@@ -21,8 +21,8 @@ public class Shop extends Place {
 	private static final int CAL_CT = 20;
 
 
-	public Shop(String name) {
-		super(name);
+	public Shop(String name, String description) {
+		super(name, description);
 		this.items = new ArrayList<>();
 	}
 
