@@ -22,7 +22,7 @@ public class Gameplay {
 
 		while (!player.getIsLose()) {
 			System.out.println("Type something :");
-			command = Command.stringToCommand(scanner.next());
+			command = Command.stringToCommand(scanner.next().toLowerCase());
 			player.execCommand(command, scanner);
 		}
 
