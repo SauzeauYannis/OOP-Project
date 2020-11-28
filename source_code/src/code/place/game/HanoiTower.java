@@ -4,6 +4,7 @@ import code.character.NPC;
 import code.place.Game;
 
 public class HanoiTower extends Game {
+
     public HanoiTower(NPC npc, String name) {
         super(npc, name);
     }

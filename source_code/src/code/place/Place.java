@@ -6,7 +6,7 @@ import code.exit.Exit;
 
 import java.util.*;
 
-public abstract class Place implements Describable {
+public class Place implements Describable {
 
 	private final List<Exit> exits;
 	private final NPC npc;

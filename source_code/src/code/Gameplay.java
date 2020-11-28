@@ -2,7 +2,6 @@ package code;
 
 import code.character.NPC;
 import code.character.Player;
-import code.place.Hub;
 import code.place.Place;
 import code.place.Shop;
 import code.place.game.*;
@@ -11,14 +10,11 @@ import java.util.*;
 
 public class Gameplay {
 
-    private List<Place> places;
-	private Player player;
-
 	public static void main(String[] args) {
 
 	    NPC npc = new NPC("test NPC");
 
-        Hub hub = new Hub(new NPC("GHES'UIN GUIDE"));
+        Place hub = new Place(new NPC("GHES'UIN GUIDE"), "Hub");
         System.out.println(hub.getName());
         System.out.println(hub.getNpc().getName());
 

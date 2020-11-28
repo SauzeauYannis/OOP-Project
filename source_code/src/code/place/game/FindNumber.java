@@ -4,6 +4,7 @@ import code.character.NPC;
 import code.place.Game;
 
 public class FindNumber extends Game {
+
     public FindNumber(NPC npc, String name) {
         super(npc, name);
     }

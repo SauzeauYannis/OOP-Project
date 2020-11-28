@@ -4,6 +4,7 @@ import code.character.NPC;
 import code.place.Game;
 
 public class Hangman extends Game {
+
     public Hangman(NPC npc, String name) {
         super(npc, name);
     }

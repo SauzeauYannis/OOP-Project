@@ -4,6 +4,7 @@ import code.character.NPC;
 import code.place.Game;
 
 public class Karaoke extends Game {
+
     public Karaoke(NPC npc, String name) {
         super(npc, name);
     }
