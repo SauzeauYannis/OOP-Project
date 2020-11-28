@@ -24,6 +24,10 @@ public class Place implements Describable {
 		this.description = description;
 	}
 
+	public List<Exit> getExitList() {
+		return this.exitList;
+	}
+
 	public String getName() {
 		return this.name;
 	}
@@ -41,10 +45,15 @@ public class Place implements Describable {
 	}
 	
 	public void printExitsPlace() {
-		for(int i=0; i<this.exitList.size(); i++) {
+/*		for(int i=0; i<this.exitList.size(); i++) {
 			System.out.print("| " + i + " : ");
 			this.exitList.get(i).printExit();
+		}*/
+		System.out.println("You can go to :");
+		for (Exit exit : this.exitList) {
+			System.out.println("- " + exit.getPlace().getName());
 		}
+		System.out.println("Try to typing \"go " + this.exitList.get(0).getPlace().getName().split(" ")[0].toLowerCase() + "\" to go to " + this.exitList.get(0).getPlace().getName());
 	}
 
 	public Exit getExit(int i){
@@ -69,13 +78,13 @@ public class Place implements Describable {
 		EnumMap<PlaceKey, Place> placeEnumMap = new EnumMap<>(PlaceKey.class);
 
 		placeEnumMap.put(PlaceKey.CARNIVAL,
-				new Place("Carnival", "This is the principal place of the carnival"));
+				new Place("Carnival", PlaceKey.getPlaceDescription(PlaceKey.CARNIVAL)));
 		placeEnumMap.put(PlaceKey.COPPER_HUB,
-				new Place("Copper Hub", "This is the place where you can choose to go to a copper Game"));
+				new Place("Copper Hub", PlaceKey.getPlaceDescription(PlaceKey.COPPER_HUB)));
 		placeEnumMap.put(PlaceKey.GOLD_HUB,
-				new Place("Gold Hub", "This is the place where you can choose to go to a gold Game"));
+				new Place("Gold Hub", PlaceKey.getPlaceDescription(PlaceKey.GOLD_HUB)));
 		placeEnumMap.put(PlaceKey.PLATINUM_HUB,
-				new Place("Platinum Hub", "This is the place where you can choose to go to a platinum Game"));
+				new Place("Platinum Hub", PlaceKey.getPlaceDescription(PlaceKey.PLATINUM_HUB)));
 		placeEnumMap.put(PlaceKey.SHOP,
 				new Shop());
 		placeEnumMap.put(PlaceKey.FIND_NUMBER,

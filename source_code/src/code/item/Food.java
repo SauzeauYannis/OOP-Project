@@ -4,6 +4,9 @@ public class Food extends Item {
 
 	private int calorie;
 
+	public Food(String name, String description, int price) {
+		super(name, description, price);
+	}
 
 
 	public int getCalorie() {

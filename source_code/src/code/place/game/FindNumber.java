@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class FindNumber extends Game {
@@ -10,7 +10,7 @@ public class FindNumber extends Game {
     }
 
     public FindNumber() {
-        super("Find number", "TODO - faire the description");
+        super("Find number", PlaceKey.getPlaceDescription(PlaceKey.FIND_NUMBER));
     }
 
     @Override

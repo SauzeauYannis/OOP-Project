@@ -21,16 +21,16 @@ public enum PlaceKey {
         String description;
         switch (placeKey) {
             case CARNIVAL:
-                description = "TODO : description";
+                description = "This is the principal place of the carnival";
                 break;
             case COPPER_HUB:
-                description = "TODO : description";
+                description = "This is the place where you can choose to go to a copper Game";
                 break;
             case GOLD_HUB:
-                description = "TODO : description";
+                description = "This is the place where you can choose to go to a gold Game";
                 break;
             case PLATINUM_HUB:
-                description = "TODO : description";
+                description = "This is the place where you can choose to go to a platinum Game";
                 break;
             case SHOP:
                 description = "TODO : description";

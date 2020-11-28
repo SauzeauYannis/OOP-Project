@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class TicTacToe extends Game {
@@ -10,7 +10,7 @@ public class TicTacToe extends Game {
     }
 
     public TicTacToe() {
-        super("Tic Tac Toe", "TODO - faire the description");
+        super("Tic Tac Toe", PlaceKey.getPlaceDescription(PlaceKey.TIC_TAC_TOE));
     }
 
     @Override

@@ -1,6 +1,5 @@
 package code;
 
-import code.character.NPC;
 import code.character.Player;
 import code.enumeration.Command;
 import code.enumeration.PlaceKey;

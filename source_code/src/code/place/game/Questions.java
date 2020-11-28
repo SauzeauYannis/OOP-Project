@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class Questions extends Game {
@@ -10,7 +10,7 @@ public class Questions extends Game {
     }
 
     public Questions() {
-        super("Questions", "TODO - faire the description");
+        super("Questions", PlaceKey.getPlaceDescription(PlaceKey.QUESTIONS));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class Hangman extends Game {
@@ -10,7 +10,7 @@ public class Hangman extends Game {
     }
 
     public Hangman() {
-        super("Hangman", "TODO - faire the description");
+        super("Hangman", PlaceKey.getPlaceDescription(PlaceKey.HANGMAN));
     }
 
     @Override

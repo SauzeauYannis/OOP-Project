@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class Riddle extends Game {
@@ -10,7 +10,7 @@ public class Riddle extends Game {
     }
 
     public Riddle() {
-        super("Riddle", "TODO - faire the description");
+        super("Riddle", PlaceKey.getPlaceDescription(PlaceKey.QUESTIONS));
     }
 
     @Override

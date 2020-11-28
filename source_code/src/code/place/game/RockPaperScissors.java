@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class RockPaperScissors extends Game {
@@ -10,7 +10,7 @@ public class RockPaperScissors extends Game {
     }
 
     public RockPaperScissors() {
-        super("Rock paper and scissors", "TODO - faire the description");
+        super("Rock paper and scissors", PlaceKey.getPlaceDescription(PlaceKey.ROCK_PAPER_SCISSORS));
     }
 
     @Override

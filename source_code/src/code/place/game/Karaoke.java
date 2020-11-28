@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class Karaoke extends Game {
@@ -10,7 +10,7 @@ public class Karaoke extends Game {
     }
 
     public Karaoke() {
-        super("Karaoke", "TODO - faire the description");
+        super("Karaoke", PlaceKey.getPlaceDescription(PlaceKey.HANOI_TOWER));
     }
 
     @Override

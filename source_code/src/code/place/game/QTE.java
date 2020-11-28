@@ -1,6 +1,7 @@
 package code.place.game;
 
 import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class QTE extends Game {
@@ -10,7 +11,7 @@ public class QTE extends Game {
     }
 
     public QTE() {
-        super("QTE", "TODO - faire the description");
+        super("QTE", PlaceKey.getPlaceDescription(PlaceKey.QTE));
     }
 
     @Override

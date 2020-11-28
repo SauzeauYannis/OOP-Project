@@ -16,7 +16,7 @@ public class Shop extends Place {
 	private static final int PRICE_AC = 5;
 	private static final int PRICE_CC = 10;
 	private static final int PRICE_CT = 15;
-	private static final int CAL_CT = 5;
+	private static final int CAL_AC = 5;
 	private static final int CAL_CC = 15;
 	private static final int CAL_CT = 20;
 

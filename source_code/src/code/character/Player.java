@@ -70,7 +70,15 @@ public class Player extends Character {
 		}
 	}
 
-	public void changePlace(Place place){
+	private void goToPlace(String location) {
+		for (Exit exit: this.cur_place.getExitList()) {
+			if (location.equals(exit.getPlace().getName().split(" ")[0].toLowerCase())) {
+				changePlace(exit.getPlace());
+			}
+		}
+	}
+
+	private void changePlace(Place place){
 		this.cur_place = place;
 		System.out.println("You go to : " + place.getName());
 	}
@@ -80,7 +88,8 @@ public class Player extends Character {
 		switch (command) {
 			case GO:
 				if (s.length == 2) {
-					int pos = Integer.parseInt(s[1]);
+					goToPlace(s[1]);
+/*					int pos = Integer.parseInt(s[1]);
 					if(this.cur_place.lengthExitList() > pos){
 						Exit e = this.cur_place.getExit(pos);
 						if(e.isLock()) {
@@ -92,7 +101,7 @@ public class Player extends Character {
 					}
 					else{
 						System.out.println("Please enter valid place !");
-					}
+					}*/
 				} else if (s.length > 2){
 					System.out.println("Please enter just one place !");
 				} else {

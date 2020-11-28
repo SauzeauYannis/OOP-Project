@@ -1,6 +1,6 @@
 package code.place.game;
 
-import code.character.NPC;
+import code.enumeration.PlaceKey;
 import code.place.Game;
 
 public class HanoiTower extends Game {
@@ -10,7 +10,7 @@ public class HanoiTower extends Game {
     }
 
     public HanoiTower() {
-        super("Hanoi Tower", "TODO - faire the description");
+        super("Hanoi Tower", PlaceKey.getPlaceDescription(PlaceKey.HANOI_TOWER));
     }
 
     @Override
