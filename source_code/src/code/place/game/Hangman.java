@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class Hangman extends Game {
 
-    public Hangman(String name) {
-        super(name);
+    public Hangman(String name, String description) {
+        super(name, description);
     }
 
     public Hangman() {
-        super("Hangman");
+        super("Hangman", "TODO - faire the description");
     }
 
     @Override

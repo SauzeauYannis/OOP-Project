@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class Karaoke extends Game {
 
-    public Karaoke(String name) {
-        super(name);
+    public Karaoke(String name, String description) {
+        super(name, description);
     }
 
     public Karaoke() {
-        super("Karaoke");
+        super("Karaoke", "TODO - faire the description");
     }
 
     @Override

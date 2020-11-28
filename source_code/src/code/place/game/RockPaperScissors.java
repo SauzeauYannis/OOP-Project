@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class RockPaperScissors extends Game {
 
-    public RockPaperScissors(String name) {
-        super(name);
+    public RockPaperScissors(String name, String description) {
+        super(name, description);
     }
 
     public RockPaperScissors() {
-        super("Rock paper and scissors");
+        super("Rock paper and scissors", "TODO - faire the description");
     }
 
     @Override

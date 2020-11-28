@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class FindNumber extends Game {
 
-    public FindNumber(String name) {
-        super(name);
+    public FindNumber(String name, String description) {
+        super(name, description);
     }
 
     public FindNumber() {
-        super("Find number");
+        super("Find number", "TODO - faire the description");
     }
 
     @Override
