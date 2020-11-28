@@ -83,10 +83,10 @@ public class Player extends Character {
 					int pos = Integer.parseInt(s[1]);
 					if(this.cur_place.lengthExitList() > pos){
 						Exit e = this.cur_place.getExit(pos);
-						if(e.isLock()){
+						if(e.isLock()) {
 							System.out.println("You can't go there, this place is closed !");
 						}
-						else{
+						else {
 							this.cur_place = e.getPlace();
 						}
 					}
