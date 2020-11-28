@@ -2,6 +2,7 @@ package code.character;
 
 import code.enumeration.Command;
 import code.item.Item;
+import code.place.Game;
 import code.place.Place;
 import code.exit.Exit;
 
@@ -125,6 +126,11 @@ public class Player extends Character {
 				break;
 			case USE:
 				System.out.println("TODO : use command");
+				break;
+			case PLAY:
+				if(s.length == 1){
+					
+				}
 				break;
 			default:
 				System.out.println("Unknown command\n" +
