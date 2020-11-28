@@ -1,10 +1,12 @@
 package code.character;
 
-import code.exit.Exit;
+import code.enumeration.Command;
 import code.item.Item;
 import code.place.Place;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Player extends Character {
 
@@ -72,6 +74,38 @@ public class Player extends Character {
 		System.out.println("You go to : " + place.getName());
 	}
 
+	public void execCommand(Command command, Scanner scanner) {
+		switch (command) {
+			case GO:
+				break;
+			case HELP:
+				if (scanner.hasNext()) {
+					Command.helpCommand(
+							Command.stringToCommand(
+									scanner.next()
+							)
+					);
+				} else {
+					Command.printCommands();
+				}
+				break;
+			case LOOK:
+				System.out.println("TODO : look command");
+				break;
+			case TAKE:
+				System.out.println("TODO : take command");
+				break;
+			case QUIT:
+				System.exit(0);
+				break;
+			case USE:
+				System.out.println("TODO : use command");
+				break;
+			default:
+				System.out.println("Unknown command\n" +
+						"Type help for have the command list");
+		}
+	}
 
 	/// Accessors ///
 
