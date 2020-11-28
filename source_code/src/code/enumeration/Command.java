@@ -67,7 +67,7 @@ public enum Command {
                 System.out.println("use [object] : To use the object selected");
                 break;
             default:
-                System.out.println("unknow command");
+                System.out.println(command + " : Not a command");
         }
     }
 }
