@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class FindNumber extends Game {
 
-    public FindNumber(NPC npc, String name) {
-        super(npc, name);
+    public FindNumber(String name) {
+        super(name);
     }
 
-    public FindNumber(NPC npc) {
-        super(npc, "Find number");
+    public FindNumber() {
+        super("Find number");
     }
 
     @Override

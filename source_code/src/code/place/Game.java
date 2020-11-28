@@ -8,8 +8,8 @@ public abstract class Game extends Place {
 	private Level level;
 	private int difficulty;
 
-	public Game(NPC npc, String name) {
-		super(npc, name);
+	public Game(String name) {
+		super(name);
 	}
 
 	public abstract void play();

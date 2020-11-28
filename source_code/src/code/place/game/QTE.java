@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class QTE extends Game {
 
-    public QTE(NPC npc, String name) {
-        super(npc, name);
+    public QTE(String name) {
+        super(name);
     }
 
-    public QTE(NPC npc) {
-        super(npc, "QTE");
+    public QTE() {
+        super("QTE");
     }
 
     @Override

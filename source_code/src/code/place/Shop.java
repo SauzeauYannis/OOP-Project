@@ -1,6 +1,5 @@
 package code.place;
 
-import code.character.NPC;
 import code.item.Item;
 
 import java.util.ArrayList;
@@ -10,13 +9,13 @@ public class Shop extends Place {
 
 	private List<Item> items;
 
-	public Shop(NPC npc, String name) {
-		super(npc, name);
+	public Shop(String name) {
+		super(name);
 		this.items = new ArrayList<>();
 	}
 
-	public Shop(NPC npc) {
-		super(npc, "Shop");
+	public Shop() {
+		super("Shop");
 	}
 
 	public void addItem(Item item) {

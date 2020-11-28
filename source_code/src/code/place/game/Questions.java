@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class Questions extends Game {
 
-    public Questions(NPC npc, String name) {
-        super(npc, name);
+    public Questions(String name) {
+        super(name);
     }
 
-    public Questions(NPC npc) {
-        super(npc, "Questions");
+    public Questions() {
+        super("Questions");
     }
 
     @Override
