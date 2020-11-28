@@ -69,13 +69,13 @@ public class Place implements Describable {
 		EnumMap<PlaceKey, Place> placeEnumMap = new EnumMap<>(PlaceKey.class);
 
 		placeEnumMap.put(PlaceKey.CARNIVAL,
-				new Place("Carnival"));
+				new Place("Carnival", "This is the principal place of the carnival"));
 		placeEnumMap.put(PlaceKey.COPPER_HUB,
-				new Place("Copper Hub"));
+				new Place("Copper Hub", "This is the place where you can choose to go to a copper Game"));
 		placeEnumMap.put(PlaceKey.GOLD_HUB,
-				new Place("Gold Hub"));
+				new Place("Gold Hub", "This is the place where you can choose to go to a gold Game"));
 		placeEnumMap.put(PlaceKey.PLATINUM_HUB,
-				new Place("Platinum Hub"));
+				new Place("Platinum Hub", "This is the place where you can choose to go to a platinum Game"));
 		placeEnumMap.put(PlaceKey.SHOP,
 				new Shop());
 		placeEnumMap.put(PlaceKey.FIND_NUMBER,

@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class QTE extends Game {
 
-    public QTE(String name) {
-        super(name);
+    public QTE(String name, String description) {
+        super(name, description);
     }
 
     public QTE() {
-        super("QTE");
+        super("QTE", "TODO - faire the description");
     }
 
     @Override

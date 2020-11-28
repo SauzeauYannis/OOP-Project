@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class HanoiTower extends Game {
 
-    public HanoiTower(String name) {
-        super(name);
+    public HanoiTower(String name, String description) {
+        super(name, description);
     }
 
     public HanoiTower() {
-        super("Hanoi Tower");
+        super("Hanoi Tower", "TODO - faire the description");
     }
 
     @Override

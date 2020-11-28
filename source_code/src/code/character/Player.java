@@ -111,7 +111,7 @@ public class Player extends Character {
 				}
 				break;
 			case LOOK:
-				System.out.println("TODO : look command");
+				this.cur_place.readDescription();
 				break;
 			case TAKE:
 				System.out.println("TODO : take command");

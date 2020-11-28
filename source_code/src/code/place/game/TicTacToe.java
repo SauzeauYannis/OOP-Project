@@ -5,12 +5,12 @@ import code.place.Game;
 
 public class TicTacToe extends Game {
 
-    public TicTacToe(String name) {
-        super(name);
+    public TicTacToe(String name, String description) {
+        super(name, description);
     }
 
     public TicTacToe() {
-        super("Tic Tac Toe");
+        super("Tic Tac Toe", "TODO - faire the description");
     }
 
     @Override
