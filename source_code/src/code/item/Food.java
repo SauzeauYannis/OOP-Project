@@ -5,6 +5,7 @@ public class Food extends Item {
 	private int calorie;
 
 
+
 	public int getCalorie() {
 		return this.calorie;
 	}
@@ -16,6 +17,12 @@ public class Food extends Item {
 
 	@Override
 	public void setDescription(String description) {
+
+	}
+
+	@Override
+	public void printItem() {
+		super.printItem();
 
 	}
 }

@@ -9,6 +9,18 @@ public class Shop extends Place {
 
 	private List<Item> items;
 
+	// ABOUT FOOD ITEMS:
+	private static final String APPLE_CANDY = "Apple candy";
+	private static final String COTTON_CANDY = "Cotton candy";
+	private static final String CHOC_TUBE = "Chocolate eclair";
+	private static final int PRICE_AC = 5;
+	private static final int PRICE_CC = 10;
+	private static final int PRICE_CT = 15;
+	private static final int CAL_CT = 5;
+	private static final int CAL_CC = 15;
+	private static final int CAL_CT = 20;
+
+
 	public Shop(String name) {
 		super(name);
 		this.items = new ArrayList<>();
