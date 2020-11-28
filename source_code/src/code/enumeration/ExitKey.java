@@ -1,5 +1,7 @@
 package code.enumeration;
 
+import code.exit.Exit;
+
 public enum ExitKey {
     EXIT_CARNIVAL,
     EXIT_COPPER_HUB,
