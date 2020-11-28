@@ -54,14 +54,19 @@ public class Place implements Describable {
 				System.out.println(" [unlock]");
 			}
 		}
-		System.out.println("Try to typing \"go " + this.exitList.get(0).getPlace().getName().split(" ")[0].toLowerCase() + "\" to go to " + this.exitList.get(0).getPlace().getName());
+		String hintPlace = this.exitList.get(0).getPlace().getName();
+		System.out.println("Try to typing \"go " +
+				hintPlace.split(" ")[0].toLowerCase() +
+				"\" to go to " +
+				hintPlace
+		);
 	}
 
 	public Exit getExit(int i){
 		return this.exitList.get(i);
 	}
 
-	public int lengthExitList(){
+	public int lengthExitList() {
 		return this.exitList.size();
 	}
 
@@ -75,7 +80,32 @@ public class Place implements Describable {
 		this.description = description;
 	}
 
-	public static EnumMap<PlaceKey, Place> generateAllPlaces() {
+	public static EnumMap<PlaceKey, Game> generateAllGames() {
+		EnumMap<PlaceKey, Game> gameEnumMap = new EnumMap<>(PlaceKey.class);
+
+		gameEnumMap.put(PlaceKey.FIND_NUMBER,
+				new FindNumber());
+		gameEnumMap.put(PlaceKey.HANGMAN,
+				new Hangman());
+		gameEnumMap.put(PlaceKey.HANOI_TOWER,
+				new HanoiTower());
+		gameEnumMap.put(PlaceKey.KARAOKE,
+				new Karaoke());
+		gameEnumMap.put(PlaceKey.QTE,
+				new QTE());
+		gameEnumMap.put(PlaceKey.QUESTIONS,
+				new Questions());
+		gameEnumMap.put(PlaceKey.RIDDLE,
+				new Riddle());
+		gameEnumMap.put(PlaceKey.ROCK_PAPER_SCISSORS,
+				new RockPaperScissors());
+		gameEnumMap.put(PlaceKey.TIC_TAC_TOE,
+				new TicTacToe());
+
+		return gameEnumMap;
+	}
+
+	public static EnumMap<PlaceKey, Place> generateAllPlaces(EnumMap<PlaceKey, Game> gameEnumMap) {
 		EnumMap<PlaceKey, Place> placeEnumMap = new EnumMap<>(PlaceKey.class);
 
 		placeEnumMap.put(PlaceKey.CARNIVAL,
@@ -89,23 +119,23 @@ public class Place implements Describable {
 		placeEnumMap.put(PlaceKey.SHOP,
 				new Shop());
 		placeEnumMap.put(PlaceKey.FIND_NUMBER,
-				new FindNumber());
+				gameEnumMap.get(PlaceKey.FIND_NUMBER));
 		placeEnumMap.put(PlaceKey.HANGMAN,
-				new Hangman());
+				gameEnumMap.get(PlaceKey.HANGMAN));
 		placeEnumMap.put(PlaceKey.HANOI_TOWER,
-				new HanoiTower());
+				gameEnumMap.get(PlaceKey.HANOI_TOWER));
 		placeEnumMap.put(PlaceKey.KARAOKE,
-				new Karaoke());
+				gameEnumMap.get(PlaceKey.KARAOKE));
 		placeEnumMap.put(PlaceKey.QTE,
-				new QTE());
+				gameEnumMap.get(PlaceKey.QTE));
 		placeEnumMap.put(PlaceKey.QUESTIONS,
-				new Questions());
+				gameEnumMap.get(PlaceKey.QUESTIONS));
 		placeEnumMap.put(PlaceKey.RIDDLE,
-				new Riddle());
+				gameEnumMap.get(PlaceKey.RIDDLE));
 		placeEnumMap.put(PlaceKey.ROCK_PAPER_SCISSORS,
-				new RockPaperScissors());
+				gameEnumMap.get(PlaceKey.ROCK_PAPER_SCISSORS));
 		placeEnumMap.put(PlaceKey.TIC_TAC_TOE,
-				new TicTacToe());
+				gameEnumMap.get(PlaceKey.TIC_TAC_TOE));
 
 		EnumMap<ExitKey, Exit> exitEnumMap = Exit.generateAllExits(placeEnumMap);
 

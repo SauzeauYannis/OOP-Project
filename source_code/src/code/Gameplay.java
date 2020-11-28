@@ -3,6 +3,7 @@ package code;
 import code.character.Player;
 import code.enumeration.Command;
 import code.enumeration.PlaceKey;
+import code.place.Game;
 import code.place.Place;
 
 import java.util.EnumMap;
@@ -14,7 +15,9 @@ public class Gameplay {
 
 		Scanner scanner = new Scanner(System.in);
 
-		EnumMap<PlaceKey, Place> placeMap = Place.generateAllPlaces();
+		EnumMap<PlaceKey, Game> placeKeyGameEnumMap = Place.generateAllGames();
+
+		EnumMap<PlaceKey, Place> placeMap = Place.generateAllPlaces(placeKeyGameEnumMap);
 
 		Player player = new Player("Benjapied Tablenuit", placeMap.get(PlaceKey.CARNIVAL));
 

@@ -1,11 +1,15 @@
 package code.character;
 
 import code.enumeration.Command;
+import code.enumeration.PlaceKey;
 import code.item.Item;
+import code.place.Game;
 import code.place.Place;
 import code.exit.Exit;
+import code.place.game.FindNumber;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -87,6 +91,10 @@ public class Player extends Character {
 	private void changePlace(Place place){
 		this.cur_place = place;
 		System.out.println("You go to : " + place.getName());
+	}
+
+	public void playGame(Game game) {
+		game.play();
 	}
 
 	public void execCommand(Command command, Scanner scanner) {
