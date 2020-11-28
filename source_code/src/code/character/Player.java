@@ -94,7 +94,7 @@ public class Player extends Character {
 	}
 
 	public void playGame(Game game) {
-		game.play();
+		game.play(this);
 	}
 
 	public void execCommand(Command command, Scanner scanner, EnumMap<PlaceKey, Game> gameEnumMap) {

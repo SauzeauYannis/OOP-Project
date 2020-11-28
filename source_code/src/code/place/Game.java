@@ -1,5 +1,6 @@
 package code.place;
 
+import code.character.Player;
 import code.enumeration.Level;
 
 public abstract class Game extends Place {
@@ -11,9 +12,9 @@ public abstract class Game extends Place {
 		super(name, description);
 	}
 
-	public abstract void play();
+	public abstract void play(Player p);
 
-	public abstract void win();
+	public abstract void win(Player p);
 
-	public abstract void lose();
+	public abstract void lose(Player p);
 }
