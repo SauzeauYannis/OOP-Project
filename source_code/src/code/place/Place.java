@@ -40,9 +40,18 @@ public class Place implements Describable {
 	}
 	
 	public void printExitsPlace() {
-		for (Exit exit: this.exitList) {
-			exit.printExit();
+		for(int i=0; i<this.exitList.size(); i++) {
+			System.out.print("| " + i + " : ");
+			this.exitList.get(i).printExit();
 		}
+	}
+
+	public Exit getExit(int i){
+		return this.exitList.get(i);
+	}
+
+	public int lengthExitList(){
+		return this.exitList.size();
 	}
 
 	@Override
