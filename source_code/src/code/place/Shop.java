@@ -3,6 +3,8 @@ package code.place;
 import code.enumeration.Level;
 import code.item.Food;
 import code.item.Item;
+import code.item.Key;
+import code.place.game.Karaoke;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,19 +34,21 @@ public class Shop extends Place {
 	protected static final int PRICE_AU = 50;
 	protected static final int PRICE_PT = 100;
 
+	// CONSTRUCTOR
+
 	public Shop(String name, String description) {
 		super(name, description);
 		this.items = new ArrayList<>();
 
-		this.items.add(new Food(APPLE_CANDY, PRICE_AC,CAL_AC));
-		this.items.add(new Food(COTTON_CANDY, PRICE_CC,CAL_CC));
-		this.items.add(new Food(CHOC_TUBE, PRICE_CT,CAL_CT));
-
+		this.items.add(new Food(APPLE_CANDY, PRICE_AC, CAL_AC));
+		this.items.add(new Food(COTTON_CANDY, PRICE_CC, CAL_CC));
+		this.items.add(new Food(CHOC_TUBE, PRICE_CT, CAL_CT));
+		this.items.add(new Key(KEY, PRICE_CU, CU));
+		this.items.add(new Key(KEY, PRICE_AC, AU));
+		this.items.add(new Key(KEY, PRICE_PT, PT));
 	}
 
-	public Shop() {
-		super("Shop", "This is the place where you can buy some food, like ChocoPipe");
-	}
+	// SETTERS
 
 	public void addItem(Item item) {
 		this.items.add(item);
@@ -53,7 +57,13 @@ public class Shop extends Place {
 	public void printItemsList() {
 		System.out.println("Items available :");
 		for (Item item: this.items) {
-			System.out.println(item.getName());
+			item.printItem();
 		}
+	}
+
+	// TESTS
+
+	public Shop() {
+		super("Shop", "This is the place where you can buy some food, like ChocoPipe");
 	}
 }

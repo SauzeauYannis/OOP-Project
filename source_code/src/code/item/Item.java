@@ -5,9 +5,9 @@ import code.character.Player;
 
 public abstract class Item implements Describable {
 
-	private String name;
+	private final String name;
 	private String description;
-	private int price;
+	private final int price;
 
 	public Item(String name, int price) {
 		this.name = name;
@@ -15,6 +15,7 @@ public abstract class Item implements Describable {
 	}
 
 	// GETTERS
+
 	public String getName() {
 		return this.name;
 	}
@@ -34,7 +35,7 @@ public abstract class Item implements Describable {
 		this.description = description;
 	}
 
-	// METHODS
+	// OTHER METHODS
 
 	@Override
 	public void readDescription() {
@@ -42,7 +43,6 @@ public abstract class Item implements Describable {
 	}
 
 	public void use() {
-
 	}
 	public void printItem(){
 	}

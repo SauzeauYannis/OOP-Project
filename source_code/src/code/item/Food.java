@@ -2,7 +2,7 @@ package code.item;
 
 public class Food extends Item {
 
-	private int calorie;
+	private final int calorie;
 
 	// CONSTRUCTOR
 
@@ -19,10 +19,10 @@ public class Food extends Item {
 	}
 
 
-	// METHODS
+	// OTHER METHODS
 
 	@Override
 	public void printItem() {
-		System.out.print("OBJECT: " + this.getName() + "\t| PRICE: " + this.getPrice() + " coins \t| INTAKE: +" + this.getCalorie() + " to HP");
+		System.out.println("TYPE: FOOD\t| OBJECT: " + this.getName() + "\t| PRICE: " + this.getPrice() + " coins \t| INTAKE: +" + this.getCalorie() + " to HP");
 	}
 }
