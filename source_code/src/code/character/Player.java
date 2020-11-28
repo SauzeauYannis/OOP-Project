@@ -134,6 +134,11 @@ public class Player extends Character {
 			case USE:
 				System.out.println("TODO : use command");
 				break;
+			case PLAY:
+				if(s.length == 1){
+					
+				}
+				break;
 			default:
 				System.out.println("Unknown command\n" +
 						"Type help for have the command list");
