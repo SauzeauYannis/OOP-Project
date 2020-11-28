@@ -88,7 +88,7 @@ public class Player extends Character {
 		switch (command) {
 			case GO:
 				if (s.length == 2) {
-					goToPlace(s[1]);
+					goToPlace(s[1].toLowerCase());
 /*					int pos = Integer.parseInt(s[1]);
 					if(this.cur_place.lengthExitList() > pos){
 						Exit e = this.cur_place.getExit(pos);
