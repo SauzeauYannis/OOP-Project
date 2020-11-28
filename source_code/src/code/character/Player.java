@@ -79,11 +79,10 @@ public class Player extends Character {
 			case GO:
 				break;
 			case HELP:
-				if (scanner.hasNext()) {
+				String[] s = scanner.nextLine().split(" ");
+				if (s.length == 2) {
 					Command.helpCommand(
-							Command.stringToCommand(
-									scanner.next()
-							)
+							Command.stringToCommand(s[1])
 					);
 				} else {
 					Command.printCommands();
