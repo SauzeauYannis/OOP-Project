@@ -3,6 +3,8 @@ package code.place;
 import code.character.Player;
 import code.enumeration.Level;
 
+import java.util.Scanner;
+
 public abstract class Game extends Place {
 
 	private Level level;
@@ -12,7 +14,7 @@ public abstract class Game extends Place {
 		super(name, description);
 	}
 
-	public abstract void play(Player p);
+	public abstract void play(Player p, Scanner scanner);
 
 	public abstract void win(Player p);
 

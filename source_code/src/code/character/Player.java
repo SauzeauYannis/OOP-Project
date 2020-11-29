@@ -93,8 +93,8 @@ public class Player extends Character {
 		System.out.println("You go to : " + place.getName());
 	}
 
-	public void playGame(Game game) {
-		game.play(this);
+	public void playGame(Game game, Scanner scanner) {
+		game.play(this, scanner);
 	}
 
 	public void execCommand(Command command, Scanner scanner, EnumMap<PlaceKey, Game> gameEnumMap) {
@@ -138,7 +138,7 @@ public class Player extends Character {
 				if (s.length == 1){
 					for (Game game: gameEnumMap.values()) {
 						if (this.cur_place.getName().equals(game.getName())) {
-							playGame(game);
+							playGame(game, scanner);
 						}
 					}
 				}

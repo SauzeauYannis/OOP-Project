@@ -8,46 +8,59 @@ import java.util.Scanner;
 
 public class FindNumber extends Game {
 
-    final static int MAX_INT = 9999;
+    final static int MAX_INT = 999;
+    final static int STOP = -1;
+    final static int DEFAULT_ATTEMPT = 10;
 
-    public FindNumber(String name, String description) {
+    private int attempt;
+
+    public FindNumber(String name, String description, int attempt) {
         super(name, description);
+        this.attempt = attempt;
     }
 
     public FindNumber() {
-        super("Find number", PlaceKey.getPlaceDescription(PlaceKey.FIND_NUMBER));
+        this("Find number", PlaceKey.getPlaceDescription(PlaceKey.FIND_NUMBER), DEFAULT_ATTEMPT);
     }
 
     @Override
-    public void play(Player p) {
-        Scanner scan = new Scanner( System.in );
-        boolean stop = true;
+    public void play(Player p, Scanner scanner) {
         int choose;
-        int rand = (int)(Math.random() * (MAX_INT));
+        int rand = (int)(Math.random()*(MAX_INT));
 
         System.out.println("--- Game launched ---");
-        System.out.println("-> You need to find a number between 0 and 9999");
+        System.out.println("-> You need to find a number between 0 and " +
+                MAX_INT +
+                " in " +
+                DEFAULT_ATTEMPT +
+                " attempts");
 
-        while(stop) {
-            System.out.print("-> Choose a number :");
+        for (int i = this.attempt; i > 0; i--) {
+            System.out.print("-> Choose a number : ");
 
-            choose = scan.nextInt();
+            choose = scanner.nextInt();
 
-            if (choose == -1) {
-                this.lose(p);
-                System.out.println("The number was " + rand + "\n");
-                stop = false;
-            }
-            else if(choose > 9999 && choose < -1){
+            if(choose > MAX_INT || choose < STOP) {
                 System.out.println("Please entry a valid number, or '-1' if you want to give up");
-            }
-            else if (rand > choose) {
-                System.out.println("It's more !");
-            } else if (rand < choose) {
-                System.out.println("It's less !");
             } else {
-                this.win(p);
-                stop = false;
+                this.attempt--;
+                if (choose == STOP || this.attempt == 0) {
+                    this.lose(p);
+                    System.out.println("The number was " + rand + "\n");
+                    break;
+                } else {
+                    if (rand > choose) {
+                        System.out.println("It's more !");
+                    } else if (rand < choose) {
+                        System.out.println("It's less !");
+                    } else {
+                        this.win(p);
+                        break;
+                    }
+                    System.out.println("You only have " +
+                            this.attempt +
+                            " attempts left");
+                }
             }
         }
     }
@@ -60,7 +73,7 @@ public class FindNumber extends Game {
 
     @Override
     public void lose(Player p) {
-        System.out.println("You have given up !");
+        System.out.println("You have lose!");
         p.loseMoney(1);
     }
 

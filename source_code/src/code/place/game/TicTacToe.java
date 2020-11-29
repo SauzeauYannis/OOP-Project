@@ -4,6 +4,8 @@ import code.character.Player;
 import code.enumeration.PlaceKey;
 import code.place.Game;
 
+import java.util.Scanner;
+
 public class TicTacToe extends Game {
 
     public TicTacToe(String name, String description) {
@@ -15,7 +17,7 @@ public class TicTacToe extends Game {
     }
 
     @Override
-    public void play(Player p) {
+    public void play(Player p, Scanner scanner) {
         System.out.println("Game launched");
     }
 
