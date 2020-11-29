@@ -44,7 +44,7 @@ public class FindNumber extends Game {
                 System.out.println("Please entry a valid number, or '-1' if you want to give up");
             } else {
                 this.attempt--;
-                if (choose == STOP || this.attempt == 0) {
+                if (choose == STOP) {
                     System.out.println("The number was " + rand + "\n");
                     this.lose(player);
                     break;
