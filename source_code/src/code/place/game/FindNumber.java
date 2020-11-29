@@ -33,7 +33,7 @@ public class FindNumber extends Game {
         System.out.println("-> You need to find a number between 0 and " +
                 MAX_INT +
                 " in " +
-                DEFAULT_ATTEMPT +
+                this.attempt +
                 " attempts");
 
         for (int i = this.attempt; i > 0; i--) {
