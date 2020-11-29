@@ -16,7 +16,7 @@ public class Place implements Describable {
 	private final List<Exit> exitList;
 	private NPC npc;
 	private final String name;
-	private String description;
+	private final String description;
 
 	public Place(String name, String description) {
 		this.name = name;
@@ -73,11 +73,6 @@ public class Place implements Describable {
 	@Override
 	public void readDescription() {
 		System.out.println(this.description);
-	}
-
-	@Override
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public static EnumMap<PlaceKey, Place> generateAllPlaces(EnumMap<PlaceKey, Game> gameEnumMap) {

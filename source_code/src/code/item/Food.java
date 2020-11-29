@@ -7,9 +7,10 @@ public class Food extends Item {
 	// CONSTRUCTOR
 
 	public Food(String name, int price, int calorie) {
-		super(name, price);
+		super(name,
+				price,
+				"TYPE: Food - " + name + "\t| INTAKE: +" + calorie + " to HP");
 		this.calorie = calorie;
-		this.setDescription("TYPE: Food - " + this.getName() + "\t| INTAKE: +" + this.calorie + " to HP");
 	}
 
 	// GETTER

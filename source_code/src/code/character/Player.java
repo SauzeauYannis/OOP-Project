@@ -45,6 +45,18 @@ public class Player extends Character {
 		this.isLose = true;
 	}
 
+	private void printHealth() {
+		System.out.println("You have now " +
+				this.health +
+				" calories");
+	}
+
+	private void printMoney() {
+		System.out.println("You have now " +
+				this.money +
+				" coins");
+	}
+
 	public void increaseHealth(int health) {
 		if(this.health + health >= MAX_HEALTH){
 			this.health = MAX_HEALTH;
@@ -52,6 +64,7 @@ public class Player extends Character {
 		else{
 			this.health += health;
 		}
+		printHealth();
 	}
 
 	public void decreaseHealth(int health) {
@@ -59,10 +72,12 @@ public class Player extends Character {
 		if(this.health <= 0){
 			this.lose();
 		}
+		printHealth();
 	}
 
 	public void earnMoney(int money) {
 		this.money += money;
+		printMoney();
 	}
 
 	public void loseMoney(int money) {
@@ -72,6 +87,7 @@ public class Player extends Character {
 		else{
 			this.money -= money;
 		}
+		printMoney();
 	}
 
 	public boolean goToPlace(String location) {

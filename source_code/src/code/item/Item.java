@@ -9,9 +9,10 @@ public abstract class Item implements Describable {
 	private String description;
 	private final int price;
 
-	public Item(String name, int price) {
+	public Item(String name, int price, String description) {
 		this.name = name;
 		this.price = price;
+		this.description = description;
 	}
 
 	// GETTERS
@@ -28,13 +29,6 @@ public abstract class Item implements Describable {
 		return description;
 	}
 
-	// SETTERS
-
-	@Override
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	// OTHER METHODS
 
 	@Override
@@ -48,7 +42,6 @@ public abstract class Item implements Describable {
 	}
 
 	public void buy(Player player) {
-
 	}
 
 }

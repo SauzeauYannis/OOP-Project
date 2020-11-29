@@ -17,11 +17,21 @@ public abstract class Game extends Place {
 		super(name, description);
 	}
 
-	public abstract void play(Player p, Scanner scanner);
+	public abstract void play(Player player, Scanner scanner);
 
-	public abstract void win(Player p);
+	public void win(Player player, int money) {
+		System.out.println("You win the game");
+		System.out.println("Here are " +
+				money +
+				" to reward you");
+		player.earnMoney(money);
+	}
 
-	public abstract void lose(Player p);
+	public void lose(Player player) {
+		System.out.println("You lose the game");
+		System.out.println("You lose 10 calorie");
+		player.decreaseHealth(10);
+	}
 
 	public static EnumMap<PlaceKey, Game> generateAllGames() {
 		EnumMap<PlaceKey, Game> gameEnumMap = new EnumMap<>(PlaceKey.class);

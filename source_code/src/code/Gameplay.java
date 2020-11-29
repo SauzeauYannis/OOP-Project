@@ -60,13 +60,16 @@ public class Gameplay {
 					System.out.println("TODO : use command");
 					break;
 				case PLAY:
+					boolean isGame = false;
 					for (Game game: placeKeyGameEnumMap.values()) {
 						if (player.getPlace().getName().equals(game.getName())) {
+							isGame = true;
 							player.playGame(game, scanner);
-							break;
 						}
 					}
-					System.out.println("This place is not a game");
+					if (!isGame) {
+						System.out.println("This place is not a game");
+					}
 					break;
 				default:
 					System.out.println("Unknown command\n" +

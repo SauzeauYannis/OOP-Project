@@ -17,27 +17,7 @@ public class RockPaperScissors extends Game {
     }
 
     @Override
-    public void play(Player p, Scanner scanner) {
+    public void play(Player player, Scanner scanner) {
         System.out.println("Game launched");
-    }
-
-    @Override
-    public void win(Player p) {
-        System.out.println("You win!");
-    }
-
-    @Override
-    public void lose(Player p) {
-        System.out.println("You lose!");
-    }
-
-    @Override
-    public void readDescription() {
-
-    }
-
-    @Override
-    public void setDescription(String description) {
-
     }
 }

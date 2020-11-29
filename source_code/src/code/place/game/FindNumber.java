@@ -24,7 +24,7 @@ public class FindNumber extends Game {
     }
 
     @Override
-    public void play(Player p, Scanner scanner) {
+    public void play(Player player, Scanner scanner) {
         int choose;
         int rand = (int)(Math.random()*(MAX_INT));
 
@@ -45,8 +45,8 @@ public class FindNumber extends Game {
             } else {
                 this.attempt--;
                 if (choose == STOP || this.attempt == 0) {
-                    this.lose(p);
                     System.out.println("The number was " + rand + "\n");
+                    this.lose(player);
                     break;
                 } else {
                     if (rand > choose) {
@@ -54,7 +54,7 @@ public class FindNumber extends Game {
                     } else if (rand < choose) {
                         System.out.println("It's less !");
                     } else {
-                        this.win(p);
+                        this.win(player, 10);
                         break;
                     }
                     System.out.println("You only have " +
@@ -63,27 +63,5 @@ public class FindNumber extends Game {
                 }
             }
         }
-    }
-
-    @Override
-    public void win(Player p) {
-        System.out.println("You win!");
-        p.earnMoney(10);
-    }
-
-    @Override
-    public void lose(Player p) {
-        System.out.println("You have lose!");
-        p.loseMoney(1);
-    }
-
-    @Override
-    public void readDescription() {
-        super.readDescription();
-    }
-
-    @Override
-    public void setDescription(String description) {
-
     }
 }
