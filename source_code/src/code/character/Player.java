@@ -74,7 +74,7 @@ public class Player extends Character {
 		}
 	}
 
-	private boolean goToPlace(String location) {
+	public boolean goToPlace(String location) {
 		for (Exit exit: this.cur_place.getExitList()) {
 			if (location.equals(exit.getPlace().getName().split(" ")[0].toLowerCase())) {
 				if (exit.isLock()) {
@@ -95,58 +95,7 @@ public class Player extends Character {
 
 	public void playGame(Game game, Scanner scanner) {
 		game.play(this, scanner);
-	}
-
-	public void execCommand(Command command, Scanner scanner, EnumMap<PlaceKey, Game> gameEnumMap) {
-		String[] s = scanner.nextLine().split(" ");
-		switch (command) {
-			case GO:
-				if (s.length == 2) {
-					if (!goToPlace(s[1].toLowerCase())) {
-						System.out.println("Please enter valid place !");
-					}
-				} else if (s.length > 2){
-					System.out.println("Please enter just one place !");
-				} else {
-					this.cur_place.printExitsPlace();
-				}
-				break;
-			case HELP:
-				if (s.length == 2) {
-					Command.helpCommand(
-							Command.stringToCommand(s[1])
-					);
-				} else if (s.length > 2){
-					System.out.println("Please enter valid command !");
-				} else {
-					Command.printCommands();
-				}
-				break;
-			case LOOK:
-				this.cur_place.readDescription();
-				break;
-			case TAKE:
-				System.out.println("TODO : take command");
-				break;
-			case QUIT:
-				System.exit(0);
-				break;
-			case USE:
-				System.out.println("TODO : use command");
-				break;
-			case PLAY:
-				if (s.length == 1){
-					for (Game game: gameEnumMap.values()) {
-						if (this.cur_place.getName().equals(game.getName())) {
-							playGame(game, scanner);
-						}
-					}
-				}
-				break;
-			default:
-				System.out.println("Unknown command\n" +
-						"Type help for have the command list");
-		}
+		scanner.nextLine();
 	}
 
 	/// Accessors ///

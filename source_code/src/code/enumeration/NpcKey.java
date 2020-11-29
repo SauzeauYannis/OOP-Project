@@ -1,6 +1,7 @@
 package code.enumeration;
 
 public enum NpcKey {
+
     GESUI_HUN_VON_DEUR,
     GESUI_HUN_GUYDE,
     PIERRE_DUPUIS,
@@ -11,7 +12,6 @@ public enum NpcKey {
     SAMUEL_OUTIENNE,
     MARINA_LEPENDU,
     GEOFFREY_KOFRED,
-    DONTE_TOUCHME;
-
+    DONTE_TOUCHME
 
 }

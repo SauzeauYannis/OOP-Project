@@ -80,31 +80,6 @@ public class Place implements Describable {
 		this.description = description;
 	}
 
-	public static EnumMap<PlaceKey, Game> generateAllGames() {
-		EnumMap<PlaceKey, Game> gameEnumMap = new EnumMap<>(PlaceKey.class);
-
-		gameEnumMap.put(PlaceKey.FIND_NUMBER,
-				new FindNumber());
-		gameEnumMap.put(PlaceKey.HANGMAN,
-				new Hangman());
-		gameEnumMap.put(PlaceKey.HANOI_TOWER,
-				new HanoiTower());
-		gameEnumMap.put(PlaceKey.KARAOKE,
-				new Karaoke());
-		gameEnumMap.put(PlaceKey.QTE,
-				new QTE());
-		gameEnumMap.put(PlaceKey.QUESTIONS,
-				new Questions());
-		gameEnumMap.put(PlaceKey.RIDDLE,
-				new Riddle());
-		gameEnumMap.put(PlaceKey.ROCK_PAPER_SCISSORS,
-				new RockPaperScissors());
-		gameEnumMap.put(PlaceKey.TIC_TAC_TOE,
-				new TicTacToe());
-
-		return gameEnumMap;
-	}
-
 	public static EnumMap<PlaceKey, Place> generateAllPlaces(EnumMap<PlaceKey, Game> gameEnumMap) {
 		EnumMap<PlaceKey, Place> placeEnumMap = new EnumMap<>(PlaceKey.class);
 
