@@ -114,6 +114,9 @@ public class Player extends Character {
 		scanner.nextLine();
 	}
 
+	public void addItems(String name) {
+	}
+
 	/// Accessors ///
 
 	public Place getPlace(){
@@ -135,4 +138,5 @@ public class Player extends Character {
 	public boolean getIsLose(){
 		return this.isLose;
 	}
+
 }

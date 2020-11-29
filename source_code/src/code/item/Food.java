@@ -6,9 +6,10 @@ public class Food extends Item {
 
 	// CONSTRUCTOR
 
-	public Food(String name, int price, int calorie) {
+	public Food(String name, int price, int occurrence, int calorie) {
 		super(name,
 				price,
+				occurrence,
 				"TYPE: Food - " + name + "\t| INTAKE: +" + calorie + " to HP");
 		this.calorie = calorie;
 	}

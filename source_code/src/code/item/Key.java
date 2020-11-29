@@ -8,9 +8,10 @@ public class Key extends Item {
 
 	// CONSTRUCTOR
 
-	public Key(String name, int price, Level level) {
+	public Key(String name, int price, int occurrence, Level level) {
 		super(name,
 				price,
+				occurrence,
 				"TYPE: Key - " + level.toString() + " " + name + "\t| USE: This key allows you to unlock a " + level.toString().toLowerCase() + " game.");
 		this.level = level;
 	}
