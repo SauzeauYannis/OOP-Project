@@ -11,16 +11,27 @@ import java.util.Scanner;
 public abstract class Game extends Place {
 
 	private Level level;
-	private int difficulty;
+	// private int difficulty;
 
 	public Game(String name, String description) {
 		super(name, description);
 	}
 
+	public Game(String name, String description, Level level) {
+		this(name, description);
+		this.level = level;
+	}
+
+	public Level getLevel() {
+		return this.level;
+	}
+
 	public abstract void play(Player player, Scanner scanner);
 
 	public void win(Player player, int money) {
-		System.out.println("You win the game");
+		System.out.println("You win a " +
+				this.level.toString().toLowerCase() +
+				" game");
 		System.out.println("Here are " +
 				money +
 				" to reward you");
@@ -28,7 +39,9 @@ public abstract class Game extends Place {
 	}
 
 	public void lose(Player player) {
-		System.out.println("You lose the game");
+		System.out.println("You lose a " +
+				this.level.toString().toLowerCase() +
+				" game");
 		System.out.println("You lose 10 calorie");
 		player.decreaseHealth(10);
 	}

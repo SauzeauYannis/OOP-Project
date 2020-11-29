@@ -1,6 +1,7 @@
 package code.place.game;
 
 import code.character.Player;
+import code.enumeration.Level;
 import code.enumeration.PlaceKey;
 import code.place.Game;
 
@@ -14,13 +15,13 @@ public class FindNumber extends Game {
 
     private int attempt;
 
-    public FindNumber(String name, String description, int attempt) {
-        super(name, description);
+    public FindNumber(String name, String description, int attempt, Level level) {
+        super(name, description, level);
         this.attempt = attempt;
     }
 
     public FindNumber() {
-        this("Find number", PlaceKey.getPlaceDescription(PlaceKey.FIND_NUMBER), DEFAULT_ATTEMPT);
+        this("Find number", PlaceKey.getPlaceDescription(PlaceKey.FIND_NUMBER), DEFAULT_ATTEMPT, Level.COPPER);
     }
 
     @Override
