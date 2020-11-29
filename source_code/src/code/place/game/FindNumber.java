@@ -22,7 +22,7 @@ public class FindNumber extends Game {
     public void play(Player p) {
         Scanner scan = new Scanner( System.in );
         boolean stop = true;
-        String choose;
+        int choose;
         int rand = (int)(Math.random() * (MAX_INT));
 
         System.out.println("--- Game launched ---");
@@ -31,19 +31,19 @@ public class FindNumber extends Game {
         while(stop) {
             System.out.print("-> Choose a number :");
 
-            choose = scan.next();
+            choose = scan.nextInt();
 
-            if (choose.toLowerCase().equals("stop")) {
+            if (choose == -1) {
                 this.lose(p);
                 System.out.println("The number was " + rand + "\n");
                 stop = false;
             }
-            else if(!choose.toLowerCase().equals("stop")){
-                System.out.println("Please entry a valid number, or 'STOP' if you want to give up");
+            else if(choose > 9999 && choose < -1){
+                System.out.println("Please entry a valid number, or '-1' if you want to give up");
             }
-            else if (rand > Integer.parseInt(choose)) {
+            else if (rand > choose) {
                 System.out.println("It's more !");
-            } else if (rand < Integer.parseInt(choose)) {
+            } else if (rand < choose) {
                 System.out.println("It's less !");
             } else {
                 this.win(p);
