@@ -24,6 +24,7 @@ public class Gameplay {
 		String[] commandTab;
 
 		while (!player.getIsLose()) {
+			System.out.print("[" + player.getName() + "] ");
 			System.out.print("Type something : ");
 
 			commandTab = scanner.nextLine().split(" ");
