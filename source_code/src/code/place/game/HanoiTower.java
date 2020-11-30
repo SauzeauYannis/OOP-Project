@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class HanoiTower extends Game {
 
-    public HanoiTower(String name, String description, Level level) {
-        super(name, description, level);
+    public HanoiTower(String[] placeAttribute, Level level) {
+        super(placeAttribute, level);
     }
 
     public HanoiTower() {
-        super("Hanoi Tower", PlaceKey.getPlaceDescription(PlaceKey.HANOI_TOWER), Level.GOLD);
+        super(PlaceKey.getPlaceAttribute(PlaceKey.HANOI_TOWER), Level.GOLD);
     }
 
     @Override

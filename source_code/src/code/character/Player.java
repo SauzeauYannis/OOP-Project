@@ -1,15 +1,11 @@
 package code.character;
 
-import code.enumeration.Command;
-import code.enumeration.PlaceKey;
 import code.item.Item;
 import code.place.Game;
 import code.place.Place;
 import code.exit.Exit;
-import code.place.game.FindNumber;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Scanner;
 

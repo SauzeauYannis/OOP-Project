@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class Questions extends Game {
 
-    public Questions(String name, String description, Level level) {
-        super(name, description, level);
+    public Questions(String[] placeAttribute, Level level) {
+        super(placeAttribute, level);
     }
 
     public Questions() {
-        super("Questions", PlaceKey.getPlaceDescription(PlaceKey.QUESTIONS), Level.PLATINUM);
+        super(PlaceKey.getPlaceAttribute(PlaceKey.QUESTIONS), Level.PLATINUM);
     }
 
     @Override

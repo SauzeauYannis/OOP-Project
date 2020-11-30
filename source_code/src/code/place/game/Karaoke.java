@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class Karaoke extends Game {
 
-    public Karaoke(String name, String description, Level level) {
-        super(name, description, level);
+    public Karaoke(String[] placeAttribute, Level level) {
+        super(placeAttribute, level);
     }
 
     public Karaoke() {
-        super("Karaoke", PlaceKey.getPlaceDescription(PlaceKey.HANOI_TOWER), Level.PLATINUM);
+        super(PlaceKey.getPlaceAttribute(PlaceKey.HANOI_TOWER), Level.PLATINUM);
     }
 
     @Override

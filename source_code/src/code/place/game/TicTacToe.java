@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class TicTacToe extends Game {
 
-    public TicTacToe(String name, String description, Level level) {
-        super(name, description, level);
+    public TicTacToe(String[] placeAttribute, Level level) {
+        super(placeAttribute, level);
     }
 
     public TicTacToe() {
-        super("Tic Tac Toe", PlaceKey.getPlaceDescription(PlaceKey.TIC_TAC_TOE), Level.GOLD);
+        super(PlaceKey.getPlaceAttribute(PlaceKey.TIC_TAC_TOE), Level.GOLD);
     }
 
     @Override

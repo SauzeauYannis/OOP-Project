@@ -17,51 +17,65 @@ public enum PlaceKey {
     ROCK_PAPER_SCISSORS,
     TIC_TAC_TOE;
 
-    public static String getPlaceDescription(PlaceKey placeKey) {
-        String description;
+    public static String[] getPlaceAttribute(PlaceKey placeKey) {
+        String[] attribute = new String[2];
         switch (placeKey) {
             case CARNIVAL:
-                description = "This is the principal place of the carnival";
+                attribute[0] = "Carnival";
+                attribute[1] = "This is the principal place of the carnival";
                 break;
             case COPPER_HUB:
-                description = "This is the place where you can choose to go to a copper Game";
+                attribute[0] = "Copper hub";
+                attribute[1] = "This is the place where you can choose to go to a copper Game";
                 break;
             case GOLD_HUB:
-                description = "This is the place where you can choose to go to a gold Game";
+                attribute[0] = "Gold hub";
+                attribute[1] = "This is the place where you can choose to go to a gold Game";
                 break;
             case PLATINUM_HUB:
-                description = "This is the place where you can choose to go to a platinum Game";
+                attribute[0] = "Platinum hub";
+                attribute[1] = "This is the place where you can choose to go to a platinum Game";
                 break;
             case SHOP:
-                description = "TODO : description";
+                attribute[0] = "Shop";
+                attribute[1] = "This is the place where you can buy some food, like ChocoPipe";
                 break;
             case FIND_NUMBER:
-                description = "TODO : description";
+                attribute[0] = "Find Number";
+                attribute[1] = "TODO : description";
                 break;
             case HANGMAN:
-                description = "TODO : description";
+                attribute[0] = "Hangman";
+                attribute[1] = "TODO : description";
                 break;
             case HANOI_TOWER:
-                description = "TODO : description";
+                attribute[0] = "Hanoi tower";
+                attribute[1] = "TODO : description";
                 break;
             case KARAOKE:
-                description = "TODO : description";
+                attribute[0] = "Karaoke";
+                attribute[1] = "TODO : description";
                 break;
             case QTE:
-                description = "TODO : description";
+                attribute[0] = "QTE";
+                attribute[1] = "TODO : description";
                 break;
             case QUESTIONS:
-                description = "TODO : description";
+                attribute[0] = "Questions";
+                attribute[1] = "TODO : description";
                 break;
             case RIDDLE:
-                description = "TODO : description";
+                attribute[0] = "Riddle";
+                attribute[1] = "TODO : description";
                 break;
             case ROCK_PAPER_SCISSORS:
-                description = "TODO : description";
+                attribute[0] = "Rock paper scissors";
+                attribute[1] = "TODO : description";
                 break;
             default:
-                description = "TODO : description";
+                attribute[0] = "Tic Tac Toe";
+                attribute[1] = "TODO : description";
         }
-        return description;
+        return attribute;
     }
 }

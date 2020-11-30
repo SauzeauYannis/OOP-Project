@@ -36,16 +36,16 @@ public class Shop extends Place {
 
 	// CONSTRUCTOR
 
-	public Shop(String name, String description) {
-		super(name, description);
+	public Shop(String[] placeAttribute) {
+		super(placeAttribute);
 		this.items = new ArrayList<>();
 
-		this.items.add(new Food(APPLE_CANDY, PRICE_AC, CAL_AC));
-		this.items.add(new Food(COTTON_CANDY, PRICE_CC, CAL_CC));
-		this.items.add(new Food(CHOC_TUBE, PRICE_CT, CAL_CT));
-		this.items.add(new Key(KEY, PRICE_CU, CU));
-		this.items.add(new Key(KEY, PRICE_AC, AU));
-		this.items.add(new Key(KEY, PRICE_PT, PT));
+		this.items.add(new Food(APPLE_CANDY, 1, PRICE_AC, CAL_AC));
+		this.items.add(new Food(COTTON_CANDY, 1,PRICE_CC, CAL_CC));
+		this.items.add(new Food(CHOC_TUBE, 1,PRICE_CT, CAL_CT));
+		this.items.add(new Key(KEY, 1,PRICE_CU, CU));
+		this.items.add(new Key(KEY, 1,PRICE_AC, AU));
+		this.items.add(new Key(KEY, 1,PRICE_PT, PT));
 	}
 
 	// SETTERS
@@ -59,11 +59,5 @@ public class Shop extends Place {
 		for (Item item: this.items) {
 			item.printItem();
 		}
-	}
-
-	// TESTS
-
-	public Shop() {
-		super("Shop", "This is the place where you can buy some food, like ChocoPipe");
 	}
 }

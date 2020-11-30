@@ -13,12 +13,12 @@ public abstract class Game extends Place {
 	private Level level;
 	// private int difficulty;
 
-	public Game(String name, String description) {
-		super(name, description);
+	public Game(String[] placeAttribute) {
+		super(placeAttribute);
 	}
 
-	public Game(String name, String description, Level level) {
-		this(name, description);
+	public Game(String[] placeAttribute, Level level) {
+		this(placeAttribute);
 		this.level = level;
 	}
 

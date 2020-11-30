@@ -10,12 +10,12 @@ import java.util.Scanner;
 
 public class QTE extends Game {
 
-    public QTE(String name, String description, Level level) {
-        super(name, description, level);
+    public QTE(String[] placeAttribute, Level level) {
+        super(placeAttribute, level);
     }
 
     public QTE() {
-        super("QTE", PlaceKey.getPlaceDescription(PlaceKey.QTE), Level.COPPER);
+        super(PlaceKey.getPlaceAttribute(PlaceKey.QTE), Level.COPPER);
     }
 
     @Override

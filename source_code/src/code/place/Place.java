@@ -18,10 +18,10 @@ public class Place implements Describable {
 	private final String name;
 	private final String description;
 
-	public Place(String name, String description) {
-		this.name = name;
+	public Place(String[] placeAttribute) {
+		this.name = placeAttribute[0];
 		this.exitList = new ArrayList<>();
-		this.description = description;
+		this.description = placeAttribute[1];
 	}
 
 	public List<Exit> getExitList() {
@@ -79,15 +79,15 @@ public class Place implements Describable {
 		EnumMap<PlaceKey, Place> placeEnumMap = new EnumMap<>(PlaceKey.class);
 
 		placeEnumMap.put(PlaceKey.CARNIVAL,
-				new Place("Carnival", PlaceKey.getPlaceDescription(PlaceKey.CARNIVAL)));
+				new Place(PlaceKey.getPlaceAttribute(PlaceKey.CARNIVAL)));
 		placeEnumMap.put(PlaceKey.COPPER_HUB,
-				new Place("Copper Hub", PlaceKey.getPlaceDescription(PlaceKey.COPPER_HUB)));
+				new Place(PlaceKey.getPlaceAttribute(PlaceKey.COPPER_HUB)));
 		placeEnumMap.put(PlaceKey.GOLD_HUB,
-				new Place("Gold Hub", PlaceKey.getPlaceDescription(PlaceKey.GOLD_HUB)));
+				new Place(PlaceKey.getPlaceAttribute(PlaceKey.GOLD_HUB)));
 		placeEnumMap.put(PlaceKey.PLATINUM_HUB,
-				new Place("Platinum Hub", PlaceKey.getPlaceDescription(PlaceKey.PLATINUM_HUB)));
+				new Place(PlaceKey.getPlaceAttribute(PlaceKey.PLATINUM_HUB)));
 		placeEnumMap.put(PlaceKey.SHOP,
-				new Shop());
+				new Shop(PlaceKey.getPlaceAttribute(PlaceKey.SHOP)));
 		placeEnumMap.put(PlaceKey.FIND_NUMBER,
 				gameEnumMap.get(PlaceKey.FIND_NUMBER));
 		placeEnumMap.put(PlaceKey.HANGMAN,

@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class Hangman extends Game {
 
-    public Hangman(String name, String description, Level level) {
-        super(name, description, level);
+    public Hangman(String[] placeAttribute, Level level) {
+        super(placeAttribute, level);
     }
 
     public Hangman() {
-        super("Hangman", PlaceKey.getPlaceDescription(PlaceKey.HANGMAN), Level.PLATINUM);
+        super(PlaceKey.getPlaceAttribute(PlaceKey.HANGMAN), Level.PLATINUM);
     }
 
     @Override
