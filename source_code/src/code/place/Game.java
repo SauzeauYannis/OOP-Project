@@ -35,7 +35,7 @@ public abstract class Game extends Place {
 				" game");
 		System.out.println("Here are " +
 				money +
-				" to reward you");
+				" coins to reward you");
 		player.earnMoney(money);
 	}
 
