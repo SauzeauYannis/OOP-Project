@@ -5,7 +5,6 @@ import code.character.NPC;
 import code.enumeration.ExitKey;
 import code.enumeration.PlaceKey;
 import code.exit.Exit;
-import code.place.game.*;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -18,10 +17,11 @@ public class Place implements Describable {
 	private final String name;
 	private final String description;
 
-	public Place(String[] placeAttribute) {
-		this.name = placeAttribute[0];
+	public Place(String name, String description, NPC npc) {
+		this.name = name;
 		this.exitList = new ArrayList<>();
-		this.description = placeAttribute[1];
+		this.description = description;
+		this.npc = npc;
 	}
 
 	public List<Exit> getExitList() {
@@ -78,16 +78,26 @@ public class Place implements Describable {
 	public static EnumMap<PlaceKey, Place> generateAllPlaces(EnumMap<PlaceKey, Game> gameEnumMap) {
 		EnumMap<PlaceKey, Place> placeEnumMap = new EnumMap<>(PlaceKey.class);
 
+		NPC npc_main = new NPC("Gesui'hun Guyde");
+
 		placeEnumMap.put(PlaceKey.CARNIVAL,
-				new Place(PlaceKey.getPlaceAttribute(PlaceKey.CARNIVAL)));
+				new Place("Carnival",
+						"This is the principal place of the carnival",
+						npc_main));
+
 		placeEnumMap.put(PlaceKey.COPPER_HUB,
-				new Place(PlaceKey.getPlaceAttribute(PlaceKey.COPPER_HUB)));
+				new Place("Copper hub",
+						"This is the place where you can choose to go to a copper Game",
+						npc_main));
 		placeEnumMap.put(PlaceKey.GOLD_HUB,
-				new Place(PlaceKey.getPlaceAttribute(PlaceKey.GOLD_HUB)));
+				new Place("Gold hub",
+						"This is the place where you can choose to go to a gold Game",
+						npc_main));
 		placeEnumMap.put(PlaceKey.PLATINUM_HUB,
-				new Place(PlaceKey.getPlaceAttribute(PlaceKey.PLATINUM_HUB)));
-		placeEnumMap.put(PlaceKey.SHOP,
-				new Shop(PlaceKey.getPlaceAttribute(PlaceKey.SHOP)));
+				new Place("Platinum hub",
+						"This is the place where you can choose to go to a platinum Game",
+						npc_main));		placeEnumMap.put(PlaceKey.SHOP,
+				new Shop());
 		placeEnumMap.put(PlaceKey.FIND_NUMBER,
 				gameEnumMap.get(PlaceKey.FIND_NUMBER));
 		placeEnumMap.put(PlaceKey.HANGMAN,

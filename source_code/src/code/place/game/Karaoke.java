@@ -1,20 +1,23 @@
 package code.place.game;
 
+import code.character.NPC;
 import code.character.Player;
 import code.enumeration.Level;
-import code.enumeration.PlaceKey;
 import code.place.Game;
 
 import java.util.Scanner;
 
 public class Karaoke extends Game {
 
-    public Karaoke(String[] placeAttribute, Level level) {
-        super(placeAttribute, level);
+    public Karaoke(String name, String description, NPC npc, Level level) {
+        super(name, description, npc, level);
     }
 
     public Karaoke() {
-        super(PlaceKey.getPlaceAttribute(PlaceKey.HANOI_TOWER), Level.PLATINUM);
+        this("Karaoke",
+                "TODO : description",
+                new NPC("Kharra Okey"),
+                Level.PLATINUM);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package code.place.game;
 
+import code.character.NPC;
 import code.character.Player;
 import code.enumeration.Level;
-import code.enumeration.PlaceKey;
 import code.place.Game;
 
 import java.util.Scanner;
@@ -16,13 +16,17 @@ public class FindNumber extends Game {
 
     private int attempt;
 
-    public FindNumber(String[] placeAttribute, int attempt, Level level) {
-        super(placeAttribute, level);
+    public FindNumber(String name, String description, NPC npc, int attempt, Level level) {
+        super(name, description, npc, level);
         this.attempt = attempt;
     }
 
     public FindNumber() {
-        this(PlaceKey.getPlaceAttribute(PlaceKey.FIND_NUMBER), DEFAULT_ATTEMPT, Level.COPPER);
+        this("Find Number",
+                "TODO : description",
+                new NPC("Vincent Faygaf"),
+                DEFAULT_ATTEMPT,
+                Level.COPPER);
     }
 
     @Override

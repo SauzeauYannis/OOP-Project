@@ -1,5 +1,6 @@
 package code.place;
 
+import code.character.NPC;
 import code.enumeration.Level;
 import code.item.Food;
 import code.item.Item;
@@ -36,8 +37,10 @@ public class Shop extends Place {
 
 	// CONSTRUCTOR
 
-	public Shop(String[] placeAttribute) {
-		super(placeAttribute);
+	public Shop() {
+		super("Shop",
+				"This is the place where you can buy some food, like ChocoPipe",
+				new NPC("Gesui'hun Von Deur"));
 		this.items = new ArrayList<>();
 
 		this.items.add(new Food(APPLE_CANDY, 1, PRICE_AC, CAL_AC));

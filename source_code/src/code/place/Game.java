@@ -1,5 +1,6 @@
 package code.place;
 
+import code.character.NPC;
 import code.character.Player;
 import code.enumeration.Level;
 import code.enumeration.PlaceKey;
@@ -13,12 +14,12 @@ public abstract class Game extends Place {
 	private Level level;
 	// private int difficulty;
 
-	public Game(String[] placeAttribute) {
-		super(placeAttribute);
+	public Game(String name, String description, NPC npc) {
+		super(name, description, npc);
 	}
 
-	public Game(String[] placeAttribute, Level level) {
-		this(placeAttribute);
+	public Game(String name, String description, NPC npc, Level level) {
+		this(name, description, npc);
 		this.level = level;
 	}
 

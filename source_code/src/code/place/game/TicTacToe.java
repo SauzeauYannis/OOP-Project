@@ -1,5 +1,6 @@
 package code.place.game;
 
+import code.character.NPC;
 import code.character.Player;
 import code.enumeration.Level;
 import code.enumeration.PlaceKey;
@@ -9,12 +10,15 @@ import java.util.Scanner;
 
 public class TicTacToe extends Game {
 
-    public TicTacToe(String[] placeAttribute, Level level) {
-        super(placeAttribute, level);
+    public TicTacToe(String name, String description, NPC npc, Level level) {
+        super(name, description, npc, level);
     }
 
     public TicTacToe() {
-        super(PlaceKey.getPlaceAttribute(PlaceKey.TIC_TAC_TOE), Level.GOLD);
+        this("Tic Tac Toe",
+                "TODO : description",
+                new NPC("Sagrat opubice"),
+                Level.GOLD);
     }
 
     @Override

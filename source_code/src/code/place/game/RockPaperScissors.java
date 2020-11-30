@@ -1,20 +1,23 @@
 package code.place.game;
 
+import code.character.NPC;
 import code.character.Player;
 import code.enumeration.Level;
-import code.enumeration.PlaceKey;
 import code.place.Game;
 
 import java.util.Scanner;
 
 public class RockPaperScissors extends Game {
 
-    public RockPaperScissors(String[] placeAttribute, Level level) {
-        super(placeAttribute, level);
+    public RockPaperScissors(String name, String description, NPC npc, Level level) {
+        super(name, description, npc, level);
     }
 
     public RockPaperScissors() {
-        super(PlaceKey.getPlaceAttribute(PlaceKey.ROCK_PAPER_SCISSORS), Level.COPPER);
+        this("Rock paper scissors",
+                "TODO : description",
+                new NPC("Pierre Dupuis"),
+                Level.COPPER);
     }
 
     @Override
