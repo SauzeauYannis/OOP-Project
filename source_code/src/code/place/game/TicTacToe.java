@@ -19,6 +19,6 @@ public class TicTacToe extends Game {
 
     @Override
     public void play(Player player, Scanner scanner) {
-        System.out.println("Game launched");
+        System.out.println("--- Game launched ---");
     }
 }

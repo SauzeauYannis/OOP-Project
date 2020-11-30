@@ -12,6 +12,7 @@ public class FindNumber extends Game {
     final static int MAX_INT = 999;
     final static int STOP = -1;
     final static int DEFAULT_ATTEMPT = 10;
+    final static int DEFAULT_REWARD = 10;
 
     private int attempt;
 
@@ -33,7 +34,7 @@ public class FindNumber extends Game {
         System.out.println("-> You need to find a number between 0 and " +
                 MAX_INT +
                 " in " +
-                this.attempt +
+                DEFAULT_ATTEMPT +
                 " attempts");
 
         for (int i = this.attempt; i > 0; i--) {
@@ -48,6 +49,7 @@ public class FindNumber extends Game {
                 if (choose == STOP || this.attempt == 0) {
                     System.out.println("The number was " + rand);
                     this.lose(player);
+                    this.attempt = DEFAULT_ATTEMPT;
                     break;
                 } else {
                     if (rand > choose) {
@@ -55,7 +57,8 @@ public class FindNumber extends Game {
                     } else if (rand < choose) {
                         System.out.println("It's less !");
                     } else {
-                        this.win(player, 10);
+                        this.win(player, DEFAULT_REWARD);
+                        this.attempt = DEFAULT_ATTEMPT;
                         break;
                     }
                     System.out.println("You only have " +
