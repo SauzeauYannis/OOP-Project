@@ -1,5 +1,6 @@
 package code.place.game;
 
+import code.Gameplay;
 import code.character.NPC;
 import code.character.Player;
 import code.enumeration.Level;
@@ -26,7 +27,9 @@ public class FindNumber extends Game {
     }
 
     @Override
-    public void play(Player player, Scanner scanner) {
+    public void play(Player player) {
+        Scanner scanner = Gameplay.scanner;
+
         int attempt = DEFAULT_ATTEMPT;
 
         int choose;
@@ -74,5 +77,7 @@ public class FindNumber extends Game {
                 }
             }
         }
+
+        scanner.nextLine();
     }
 }

@@ -7,7 +7,6 @@ import code.enumeration.PlaceKey;
 import code.place.game.*;
 
 import java.util.EnumMap;
-import java.util.Scanner;
 
 public abstract class Game extends Place {
 
@@ -27,7 +26,7 @@ public abstract class Game extends Place {
 		return this.level;
 	}
 
-	public abstract void play(Player player, Scanner scanner);
+	public abstract void play(Player player);
 
 	public void win(Player player, int money) {
 		System.out.println("You win a " +

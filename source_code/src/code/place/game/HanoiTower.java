@@ -5,8 +5,6 @@ import code.character.Player;
 import code.enumeration.Level;
 import code.place.Game;
 
-import java.util.Scanner;
-
 public class HanoiTower extends Game {
 
     public HanoiTower(String name, String description, NPC npc, Level level) {
@@ -21,7 +19,7 @@ public class HanoiTower extends Game {
     }
 
     @Override
-    public void play(Player player, Scanner scanner) {
+    public void play(Player player) {
         System.out.println("Game launched");
     }
 }

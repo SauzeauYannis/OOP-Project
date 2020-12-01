@@ -105,9 +105,13 @@ public class Player extends Character {
 		System.out.println("You go to : " + place.getName());
 	}
 
-	public void playGame(Game game, Scanner scanner) {
-		game.play(this, scanner);
-		scanner.nextLine();
+	public void playGame() {
+		if (this.cur_place instanceof Game) {
+			Game game = (Game) this.cur_place;
+			game.play(this);
+		} else {
+			System.out.println("You are not in a game");
+		}
 	}
 
 	public void addItems(String name) {
