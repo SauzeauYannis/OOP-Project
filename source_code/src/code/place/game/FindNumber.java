@@ -14,59 +14,62 @@ public class FindNumber extends Game {
     final static int DEFAULT_ATTEMPT = 10;
     final static int DEFAULT_REWARD = 10;
 
-    private int attempt;
-
-    public FindNumber(String name, String description, NPC npc, int attempt, Level level) {
+    public FindNumber(String name, String description, NPC npc, Level level) {
         super(name, description, npc, level);
-        this.attempt = attempt;
     }
 
     public FindNumber() {
         this("Find Number",
                 "TODO : description",
                 new NPC("Vincent Faygaf"),
-                DEFAULT_ATTEMPT,
                 Level.COPPER);
     }
 
     @Override
     public void play(Player player, Scanner scanner) {
+        int attempt = DEFAULT_ATTEMPT;
+
         int choose;
         int rand = (int)(Math.random()*(MAX_INT));
 
         System.out.println("--- Game launched ---");
-        System.out.println("-> You need to find a number between 0 and " +
+
+        this.getNpc().talk("You need to find my number between 0 and " +
                 MAX_INT +
                 " in " +
                 DEFAULT_ATTEMPT +
                 " attempts");
 
-        while (this.attempt > 0) {
+        while (attempt > 0) {
             System.out.print("-> Choose a number : ");
 
-            choose = scanner.nextInt();
+            try {
+                choose = scanner.nextInt();
+            } catch (Exception exception) {
+                scanner.nextLine();
+                choose = MAX_INT + 1;
+                this.getNpc().talk("You need to write a number!");
+            }
 
             if(choose > MAX_INT || choose < STOP) {
                 System.out.println("Please entry a valid number, or '-1' if you want to give up");
             } else {
-                this.attempt--;
-                if (choose == STOP || this.attempt == 0) {
-                    System.out.println("The number was " + rand);
+                attempt--;
+                if (choose == STOP || attempt == 0) {
+                    this.getNpc().talk("The number was " + rand);
                     this.lose(player);
-                    this.attempt = DEFAULT_ATTEMPT;
                     break;
                 } else {
                     if (rand > choose) {
-                        System.out.println("It's more !");
+                        this.getNpc().talk("It's more!");
                     } else if (rand < choose) {
-                        System.out.println("It's less !");
+                        this.getNpc().talk("It's less!");
                     } else {
                         this.win(player, DEFAULT_REWARD);
-                        this.attempt = DEFAULT_ATTEMPT;
                         break;
                     }
-                    System.out.println("You only have " +
-                            this.attempt +
+                    this.getNpc().talk("You only have " +
+                            attempt +
                             " attempts left");
                 }
             }

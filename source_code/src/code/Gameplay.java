@@ -15,17 +15,19 @@ public class Gameplay {
 
 		Scanner scanner = new Scanner(System.in);
 
-		EnumMap<PlaceKey, Game> placeKeyGameEnumMap = Game.generateAllGames();
+		EnumMap<PlaceKey, Game> gameMap = Game.generateAllGames();
 
-		EnumMap<PlaceKey, Place> placeMap = Place.generateAllPlaces(placeKeyGameEnumMap);
+		EnumMap<PlaceKey, Place> placeMap = Place.generateAllPlaces(gameMap);
 
 		Player player = new Player("Benjapied Tablenuit", placeMap.get(PlaceKey.CARNIVAL));
 
 		String[] commandTab;
 
+		player.getPlace().getNpc().talk("Welcome to Gypsy's Carnival!\n" +
+				"Type help to have the commands list");
+
 		while (!player.getIsLose()) {
-			System.out.print("[" + player.getName() + "] ");
-			System.out.print("Type something : ");
+			System.out.print("[" + player.getName() + "] : ");
 
 			commandTab = scanner.nextLine().split(" ");
 
@@ -62,7 +64,7 @@ public class Gameplay {
 					break;
 				case PLAY:
 					boolean isGame = false;
-					for (Game game: placeKeyGameEnumMap.values()) {
+					for (Game game: gameMap.values()) {
 						if (player.getPlace().getName().equals(game.getName())) {
 							isGame = true;
 							player.playGame(game, scanner);
