@@ -6,11 +6,16 @@ public class Food extends Item {
 
 	// CONSTRUCTOR
 
-	public Food(String name, int price, int occurrence, int calorie) {
+	public Food(String name, int price, int calorie) {
 		super(name,
 				price,
-				occurrence,
-				"TYPE: Food - " + name + "\t| INTAKE: +" + calorie + " to HP");
+				"TYPE: FOOD\t| OBJECT: " +
+						name +
+						"\t| PRICE: " +
+						price +
+						" coins \t| USE: +" +
+						calorie +
+						" to calorie");
 		this.calorie = calorie;
 	}
 
@@ -25,6 +30,10 @@ public class Food extends Item {
 
 	@Override
 	public void printItem() {
-		System.out.println("TYPE: FOOD\t| OBJECT: " + this.getName() + "\t| PRICE: " + this.getPrice() + " coins \t| INTAKE: +" + this.getCalorie() + " to HP");
+		System.out.println("-" +
+				this.getName() +
+				" " +
+				this.getPrice() +
+				" coins.");
 	}
 }

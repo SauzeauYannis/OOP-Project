@@ -24,6 +24,9 @@ public class Gameplay {
 		player.getPlace().getNpc().talk("Welcome to Gypsy's Carnival!\n" +
 				"Type help to have the commands list");
 
+		player.printHealth();
+		player.printMoney();
+
 		while (!player.getIsLose()) {
 			System.out.print("[" + player.getName() + "] : ");
 
