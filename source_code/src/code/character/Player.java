@@ -58,10 +58,15 @@ public class Player extends Character {
 	}
 
 	public void printInventory() {
-		this.items.sort(Comparator.comparing(Item::getName));
-		System.out.println("In you inventory you have :");
-		for (Item item: this.items) {
-			System.out.println("-" + item.getName());
+		if (this.items.isEmpty()) {
+			System.out.println("You haven't anything in your inventory!\n" +
+					"Go to the shop to buy items.");
+		} else {
+			this.items.sort(Comparator.comparing(Item::getName));
+			System.out.println("In you inventory you have :");
+			for (Item item: this.items) {
+				System.out.println("-" + item.getName());
+			}
 		}
 	}
 
