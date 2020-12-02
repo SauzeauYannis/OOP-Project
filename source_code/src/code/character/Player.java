@@ -4,17 +4,17 @@ import code.item.Item;
 import code.place.Game;
 import code.place.Place;
 import code.exit.Exit;
+import code.place.Shop;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Player extends Character {
 
 	/// Constants ///
 
 	static final int MAX_HEALTH = 100;
-	static final int DEFAULT_MONEY = 10;
+	static final int DEFAULT_MONEY = 25;
 
 
 	/// Attributes ///
@@ -22,6 +22,7 @@ public class Player extends Character {
 	private Place cur_place;
 	private List<Item> items;
 	private int health;
+
 	private int money;
 	private boolean isLose;
 
@@ -41,16 +42,16 @@ public class Player extends Character {
 		this.isLose = true;
 	}
 
-	private void printHealth() {
+	public void printHealth() {
 		System.out.println("You have now " +
 				this.health +
-				" calories");
+				" calories.");
 	}
 
-	private void printMoney() {
+	public void printMoney() {
 		System.out.println("You have now " +
 				this.money +
-				" coins");
+				" coins.");
 	}
 
 	public void increaseHealth(int health) {
@@ -103,6 +104,10 @@ public class Player extends Character {
 	private void changePlace(Place place){
 		this.cur_place = place;
 		System.out.println("You go to : " + place.getName());
+		if (place instanceof Shop) {
+			Shop shop = (Shop) place;
+			shop.printItemsList();
+		}
 	}
 
 	public void playGame() {
@@ -114,7 +119,16 @@ public class Player extends Character {
 		}
 	}
 
-	public void addItems(String name) {
+	public void addItems(Item item) {
+		int price = item.getPrice();
+		if (price > this.money) {
+			System.out.println("You haven't any money to buy this item");
+		} else {
+			this.items.add(item);
+			System.out.println(item.getName() + "" +
+					" is now in your inventory.");
+			this.loseMoney(price);
+		}
 	}
 
 	/// Accessors ///
@@ -123,20 +137,11 @@ public class Player extends Character {
 		return this.cur_place;
 	}
 
-	public int getHealth(){
-		return this.health;
-	}
-
-	public int getMoney(){
-		return this.money;
-	}
-
-	public Item getItemPos(int i){
-		return this.items.get(i);
-	}
-
 	public boolean getIsLose(){
 		return this.isLose;
 	}
 
+	public List<Item> getItems() {
+		return this.items;
+	}
 }

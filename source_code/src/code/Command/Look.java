@@ -1,16 +1,42 @@
 package code.Command;
 
 import code.character.Player;
+import code.item.Item;
+import code.place.Place;
+import code.place.Shop;
 
 public class Look extends Command {
 
     public Look() {
         super("look",
-                "look [object] : To Read the description of the object or the place description if you have not specified an object");
+                "look [item] : To Read the description of the object or the place description if you have not specified an object");
     }
 
     @Override
     public void executeCommand(Player player, String[] args) {
-        player.getPlace().readDescription();
+        Place playerPlace = player.getPlace();
+        if (args.length == 1) {
+            playerPlace.readDescription();
+        } else {
+            String item = args[1].toLowerCase();
+            if (playerPlace instanceof Shop) {
+                Shop shop = (Shop) playerPlace;
+                for (Item shopItem: shop.getItems()) {
+                    if (shopItem.getName().split(" ")[0].toLowerCase().equals(item)) {
+                        shopItem.readDescription();
+                        return;
+                    }
+                }
+                System.out.println("This item is not in the shop");
+            } else {
+                for (Item playerItem: player.getItems()) {
+                    if (playerItem.getName().split(" ")[0].toLowerCase().equals(item)) {
+                        playerItem.readDescription();
+                        return;
+                    }
+                }
+                System.out.println("This item is not in your inventory");
+            }
+        }
     }
 }

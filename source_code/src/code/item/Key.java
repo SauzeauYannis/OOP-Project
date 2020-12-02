@@ -8,11 +8,16 @@ public class Key extends Item {
 
 	// CONSTRUCTOR
 
-	public Key(String name, int price, int occurrence, Level level) {
+	public Key(String name, int price, Level level) {
 		super(name,
 				price,
-				occurrence,
-				"TYPE: Key - " + level.toString() + " " + name + "\t| USE: This key allows you to unlock a " + level.toString().toLowerCase() + " game.");
+				"TYPE: KEY\t| OBJECT: " +
+						name +
+						"\t| PRICE: " +
+						price +
+						" coins \t| USE: Unlock a " +
+						level.toString() +
+						" game.");
 		this.level = level;
 	}
 
@@ -26,6 +31,10 @@ public class Key extends Item {
 
 	@Override
 	public void printItem() {
-		System.out.println("TYPE: KEY\t| OBJECT: " + this.getLevel().toString() + " "  + this.getName() + "\t| PRICE: " + this.getPrice() + " coins \t| USE: This key allows you to unlock a " + this.getLevel().toString() + " game.");
+		System.out.println("-" +
+				this.getName() +
+				" " +
+				this.getPrice() +
+				" coins.");
 	}
 }

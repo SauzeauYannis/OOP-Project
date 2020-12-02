@@ -5,15 +5,12 @@ import code.enumeration.Level;
 import code.item.Food;
 import code.item.Item;
 import code.item.Key;
-import code.place.game.Karaoke;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Shop extends Place {
-
-	private List<Item> items;
 
 	// ABOUT FOOD ITEMS:
 	protected static final String APPLE_CANDY = "Apple candy";
@@ -27,7 +24,9 @@ public class Shop extends Place {
 	protected static final int CAL_CT = 20;
 
 	// ABOUT KEY ITEMS:
-	protected static final String KEY = "key";
+	protected static final String CU_Key = "Copper key";
+	protected static final String AU_Key = "Gold key";
+	protected static final String PT_Key = "Platinum key";
 	protected static final Level CU = Level.COPPER;
 	protected static final Level AU = Level.GOLD;
 	protected static final Level PT = Level.PLATINUM;
@@ -35,32 +34,35 @@ public class Shop extends Place {
 	protected static final int PRICE_AU = 50;
 	protected static final int PRICE_PT = 100;
 
+	private final List<Item> items;
+
+	public List<Item> getItems() {
+		return this.items;
+	}
+
 	// CONSTRUCTOR
 
 	public Shop() {
 		super("Shop",
-				"This is the place where you can buy some food, like ChocoPipe",
+				"This is the place where you can buy some food, like ChocoPipe.\n" +
+				"To have more information about one item, type \"look <item>\" (Example: look apple for information about apple candy).\n" +
+				"To buy an item, type \"take <item>\" (Example: take copper to buy a copper key).",
 				new NPC("Gesui'hun Von Deur"));
 		this.items = new ArrayList<>();
 
-		this.items.add(new Food(APPLE_CANDY, 1, PRICE_AC, CAL_AC));
-		this.items.add(new Food(COTTON_CANDY, 1,PRICE_CC, CAL_CC));
-		this.items.add(new Food(CHOC_TUBE, 1,PRICE_CT, CAL_CT));
-		this.items.add(new Key(KEY, 1,PRICE_CU, CU));
-		this.items.add(new Key(KEY, 1,PRICE_AC, AU));
-		this.items.add(new Key(KEY, 1,PRICE_PT, PT));
-	}
-
-	// SETTERS
-
-	public void addItem(Item item) {
-		this.items.add(item);
+		this.items.add(new Food(APPLE_CANDY, PRICE_AC, CAL_AC));
+		this.items.add(new Food(COTTON_CANDY, PRICE_CC, CAL_CC));
+		this.items.add(new Food(CHOC_TUBE, PRICE_CT, CAL_CT));
+		this.items.add(new Key(CU_Key, PRICE_CU, CU));
+		this.items.add(new Key(AU_Key, PRICE_AU, AU));
+		this.items.add(new Key(PT_Key, PRICE_PT, PT));
 	}
 
 	public void printItemsList() {
-		System.out.println("Items available :");
+		this.getNpc().talk("Here are items available in my shop:");
 		for (Item item: this.items) {
 			item.printItem();
 		}
+		this.getNpc().talk("Type \"look\" for more information");
 	}
 }

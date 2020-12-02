@@ -3,8 +3,8 @@ package code.place;
 import code.Interface.Describable;
 import code.character.NPC;
 import code.enumeration.ExitKey;
-import code.enumeration.PlaceKey;
 import code.exit.Exit;
+import code.place.game.*;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -75,84 +75,85 @@ public class Place implements Describable {
 		System.out.println(this.description);
 	}
 
-	public static EnumMap<PlaceKey, Place> generateAllPlaces(EnumMap<PlaceKey, Game> gameEnumMap) {
-		EnumMap<PlaceKey, Place> placeEnumMap = new EnumMap<>(PlaceKey.class);
+	public static List<Place> generateAllPlaces() {
+		List<Place> placeList = new ArrayList<>();
 
 		NPC npc_main = new NPC("Gesui'hun Guyde");
 
-		placeEnumMap.put(PlaceKey.CARNIVAL,
-				new Place("Carnival",
+		placeList.add(new Place("Carnival",
 						"This is the principal place of the carnival",
 						npc_main));
 
-		placeEnumMap.put(PlaceKey.COPPER_HUB,
-				new Place("Copper hub",
+		placeList.add(new Place("Copper hub",
 						"This is the place where you can choose to go to a copper Game",
 						npc_main));
-		placeEnumMap.put(PlaceKey.GOLD_HUB,
-				new Place("Gold hub",
+		placeList.add(new Place("Gold hub",
 						"This is the place where you can choose to go to a gold Game",
 						npc_main));
-		placeEnumMap.put(PlaceKey.PLATINUM_HUB,
-				new Place("Platinum hub",
+		placeList.add(new Place("Platinum hub",
 						"This is the place where you can choose to go to a platinum Game",
-						npc_main));		placeEnumMap.put(PlaceKey.SHOP,
-				new Shop());
-		placeEnumMap.put(PlaceKey.FIND_NUMBER,
-				gameEnumMap.get(PlaceKey.FIND_NUMBER));
-		placeEnumMap.put(PlaceKey.HANGMAN,
-				gameEnumMap.get(PlaceKey.HANGMAN));
-		placeEnumMap.put(PlaceKey.HANOI_TOWER,
-				gameEnumMap.get(PlaceKey.HANOI_TOWER));
-		placeEnumMap.put(PlaceKey.KARAOKE,
-				gameEnumMap.get(PlaceKey.KARAOKE));
-		placeEnumMap.put(PlaceKey.QTE,
-				gameEnumMap.get(PlaceKey.QTE));
-		placeEnumMap.put(PlaceKey.QUESTIONS,
-				gameEnumMap.get(PlaceKey.QUESTIONS));
-		placeEnumMap.put(PlaceKey.RIDDLE,
-				gameEnumMap.get(PlaceKey.RIDDLE));
-		placeEnumMap.put(PlaceKey.ROCK_PAPER_SCISSORS,
-				gameEnumMap.get(PlaceKey.ROCK_PAPER_SCISSORS));
-		placeEnumMap.put(PlaceKey.TIC_TAC_TOE,
-				gameEnumMap.get(PlaceKey.TIC_TAC_TOE));
+						npc_main));
+		placeList.add(new Shop());
+		placeList.add(new FindNumber());
+		placeList.add(new Hangman());
+		placeList.add(new HanoiTower());
+		placeList.add(new Karaoke());
+		placeList.add(new QTE());
+		placeList.add(new Questions());
+		placeList.add(new Riddle());
+		placeList.add(new RockPaperScissors());
+		placeList.add(new TicTacToe());
 
-		EnumMap<ExitKey, Exit> exitEnumMap = Exit.generateAllExits(placeEnumMap);
+		EnumMap<ExitKey, Exit> exitEnumMap = Exit.generateAllExits(placeList);
 
-		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		placeEnumMap.get(PlaceKey.CARNIVAL).addExits(exitEnumMap.get(ExitKey.EXIT_SHOP));
+		// Carnival
+		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_SHOP));
 
-		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_ROCK_PAPER_SCISSORS));
-		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_FIND_NUMBER));
-		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_QTE));
-		placeEnumMap.get(PlaceKey.COPPER_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// Copper hub
+		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_ROCK_PAPER_SCISSORS));
+		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_FIND_NUMBER));
+		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_QTE));
+		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_TIC_TAC_TOE));
-		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_RIDDLE));
-		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_HANOI_TOWER));
-		placeEnumMap.get(PlaceKey.GOLD_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// Gold hub
+		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_TIC_TAC_TOE));
+		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_RIDDLE));
+		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_HANOI_TOWER));
+		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_QUESTIONS));
-		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_KARAOKE));
-		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_HANGMAN));
-		placeEnumMap.get(PlaceKey.PLATINUM_HUB).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// Platinum hub
+		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_QUESTIONS));
+		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_KARAOKE));
+		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_HANGMAN));
+		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		placeEnumMap.get(PlaceKey.SHOP).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// Shop
+		placeList.get(4).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		placeEnumMap.get(PlaceKey.ROCK_PAPER_SCISSORS).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		placeEnumMap.get(PlaceKey.FIND_NUMBER).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		placeEnumMap.get(PlaceKey.QTE).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		// Rock paper scissors
+		placeList.get(12).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		// Find number
+		placeList.get(5).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		// QTE
+		placeList.get(9).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
 
-		placeEnumMap.get(PlaceKey.TIC_TAC_TOE).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		placeEnumMap.get(PlaceKey.RIDDLE).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		placeEnumMap.get(PlaceKey.HANOI_TOWER).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		// Tic Tac Toe
+		placeList.get(13).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		// Riddle
+		placeList.get(11).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		// Hanoi tower
+		placeList.get(7).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
 
-		placeEnumMap.get(PlaceKey.QUESTIONS).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		placeEnumMap.get(PlaceKey.KARAOKE).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		placeEnumMap.get(PlaceKey.HANGMAN).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		// Questions
+		placeList.get(10).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		// Karaoke
+		placeList.get(8).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		// Hangman
+		placeList.get(6).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
 
-		return placeEnumMap;
+		return placeList;
 	}
 }
