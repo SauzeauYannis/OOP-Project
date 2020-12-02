@@ -21,7 +21,7 @@ public class Take extends Command {
                 Shop shop = (Shop) place;
                 for (Item shopItem: shop.getItems()) {
                     if (shopItem.getName().split(" ")[0].toLowerCase().equals(item)) {
-                        player.addItems(shopItem);
+                        player.addItem(shopItem);
                         return;
                     }
                 }

@@ -25,16 +25,13 @@ public class Exit {
 	}
 
 	public void unlock() {
-		isLock = true;
-	}
-
-	public void printExit() {
-		System.out.print("Exit to " + this.place.getName());
-		if (this.isLock) {
-			System.out.println(" lock");
-		} else {
-			System.out.println(" unlock");
-		}
+		isLock = false;
+		String place = this.place.getName();
+		System.out.println(place +
+				" is now unlock.\n" +
+				"Type \"go " +
+				place.split(" ")[0].toLowerCase() +
+				"\" to play this game!");
 	}
 
 	public static EnumMap<ExitKey, Exit> generateAllExits(List<Place> placeList) {

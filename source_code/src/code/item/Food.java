@@ -1,5 +1,7 @@
 package code.item;
 
+import code.character.Player;
+
 public class Food extends Item {
 
 	private final int calorie;
@@ -19,21 +21,12 @@ public class Food extends Item {
 		this.calorie = calorie;
 	}
 
-	// GETTER
-
-	public int getCalorie() {
-		return this.calorie;
-	}
-
-
 	// OTHER METHODS
 
 	@Override
-	public void printItem() {
-		System.out.println("-" +
-				this.getName() +
-				" " +
-				this.getPrice() +
-				" coins.");
+	public void use(Player player) {
+		if (player.increaseHealth(this.calorie)) {
+			player.removeItem(this);
+		}
 	}
 }

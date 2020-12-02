@@ -35,6 +35,7 @@ public abstract class Command {
         commandList.add(new Quit());
         commandList.add(new Use());
         commandList.add(new Play());
+        commandList.add(new Inventory());
 
         return commandList;
     }

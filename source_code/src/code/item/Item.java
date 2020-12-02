@@ -32,14 +32,13 @@ public abstract class Item implements Describable {
 		System.out.println(this.description);
 	}
 
-	public void use(Player player) {
-		player.loseMoney(this.price);
+	public abstract void use(Player player);
+
+	public void printItem() {
+		System.out.println("-" +
+				this.getName() +
+				" " +
+				this.getPrice() +
+				" coins.");
 	}
-
-	public abstract void printItem();
-
-	public void buy(Player player) {
-		player.loseMoney(this.price);
-	}
-
 }

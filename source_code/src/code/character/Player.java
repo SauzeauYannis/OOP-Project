@@ -7,6 +7,7 @@ import code.exit.Exit;
 import code.place.Shop;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Player extends Character {
@@ -20,7 +21,7 @@ public class Player extends Character {
 	/// Attributes ///
 
 	private Place cur_place;
-	private List<Item> items;
+	private final List<Item> items;
 	private int health;
 
 	private int money;
@@ -45,6 +46,8 @@ public class Player extends Character {
 	public void printHealth() {
 		System.out.println("You have now " +
 				this.health +
+				"/" +
+				MAX_HEALTH +
 				" calories.");
 	}
 
@@ -54,14 +57,27 @@ public class Player extends Character {
 				" coins.");
 	}
 
-	public void increaseHealth(int health) {
-		if(this.health + health >= MAX_HEALTH){
+	public void printInventory() {
+		this.items.sort(Comparator.comparing(Item::getName));
+		System.out.println("In you inventory you have :");
+		for (Item item: this.items) {
+			System.out.println("-" + item.getName());
+		}
+	}
+
+	public boolean increaseHealth(int health) {
+		if (this.health == MAX_HEALTH) {
+			System.out.println("You're calorie are always at max");
+			return false;
+		}
+		else if (this.health + health >= MAX_HEALTH){
 			this.health = MAX_HEALTH;
 		}
 		else{
 			this.health += health;
 		}
 		printHealth();
+		return true;
 	}
 
 	public void decreaseHealth(int health) {
@@ -91,7 +107,14 @@ public class Player extends Character {
 		for (Exit exit: this.cur_place.getExitList()) {
 			if (location.equals(exit.getPlace().getName().split(" ")[0].toLowerCase())) {
 				if (exit.isLock()) {
-					System.out.println("You can't go there, this place is closed !");
+					String level = ((Game) this.cur_place.getExitList().get(0).getPlace()).getLevel().toString();
+					System.out.println("You can't go there, this game is lock!\n" +
+							"If you have a " +
+							level +
+							" key in your inventory, type \"use " +
+							 level +
+							"\" to unlock the first lock game.\n" +
+							"Else go to the shop to buy it.");
 				} else {
 					changePlace(exit.getPlace());
 				}
@@ -119,7 +142,7 @@ public class Player extends Character {
 		}
 	}
 
-	public void addItems(Item item) {
+	public void addItem(Item item) {
 		int price = item.getPrice();
 		if (price > this.money) {
 			System.out.println("You haven't any money to buy this item");
@@ -129,6 +152,12 @@ public class Player extends Character {
 					" is now in your inventory.");
 			this.loseMoney(price);
 		}
+	}
+
+	public void removeItem(Item item) {
+		this.items.remove(item);
+		System.out.println("You have lose one " +
+				item.getName().toLowerCase());
 	}
 
 	/// Accessors ///
