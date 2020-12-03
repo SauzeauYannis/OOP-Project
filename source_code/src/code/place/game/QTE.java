@@ -6,6 +6,7 @@ import code.character.Player;
 import code.enumeration.Level;
 import code.place.Game;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -45,13 +46,6 @@ public class QTE extends Game {
         NPC npc = this.getNpc();
         int round = 0;
 
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                lose(player);
-            }
-        };
-
         System.out.println("--- Game launched ---");
         npc.talk("Yo! Welcome to my stand bro!\n" +
                 "I am the fastest rapper of this carnival!\n" +
@@ -60,42 +54,29 @@ public class QTE extends Game {
         while (round < 3) {
             npc.talk(NPC_TALK[round] +
                     "\"" + ROUND[round] + "\" in " + TIME[round] + "s");
-            Timer timer = new Timer();
-            timer.schedule(timerTask, (TIME[round] * 1000L));
+            Date start = new Date();
             String playerSentence = Gameplay.scanner.nextLine();
+            Date end = new Date();
             if (playerSentence.equalsIgnoreCase(ROUND[round])) {
-                npc.talk("Well played for this round!");
+                int second = (int)((end.getTime() - start.getTime()) / 1000);
+                if (second < TIME[round]) {
+                    npc.talk(second +
+                            "s.\nWell played for this round!");
+                } else {
+                    npc.talk(second +
+                            "s.\nToo slow for me!");
+                    this.lose(player);
+                    return;
+                }
             } else {
-                npc.talk("I am the best!");
+                npc.talk("It was not my punch!\n" +
+                        "I am the best!");
                 this.lose(player);
                 return;
             }
-            timer.cancel();
             round++;
         }
 
         this.win(player, (int)(Math.random()*DEFAULT_REWARD) + 1);
     }
-
-/*    private static class MyTimer {
-
-        int second;
-
-        public MyTimer(int second) {
-            this.second = second;
-        }
-
-        public void decrease() {
-            try {
-                Thread.sleep(1000);
-            } catch (Exception exception) {
-                Thread.currentThread().interrupt();
-            }
-            this.second--;
-        }
-
-        public boolean isFinish() {
-            return this.second == 0;
-        }
-    }*/
 }

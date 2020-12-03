@@ -56,16 +56,8 @@ public class RockPaperScissors extends Game {
 
             checkWinner(playerTurn, NPCTurn);
 
-            System.out.println("-" +
-                    player.getName() +
-                    " : " +
-                    playerPoint +
-                    " points");
-            System.out.println("-" +
-                    this.getNpc().getName() +
-                    " : " +
-                    NPCPoint +
-                    " points");
+            printPoint(player.getName());
+            printPoint(this.getNpc().getName());
         }
 
         if (playerPoint == 3) {
@@ -75,6 +67,14 @@ public class RockPaperScissors extends Game {
         }
 
         Gameplay.scanner.nextLine();
+    }
+
+    private void printPoint(String name) {
+        System.out.println("-" +
+                name +
+                " : " +
+                playerPoint +
+                " points");
     }
 
     private void checkWinner(String playerTurn, int NPCTurn) {
