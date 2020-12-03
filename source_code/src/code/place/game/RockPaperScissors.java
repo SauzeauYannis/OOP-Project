@@ -39,7 +39,7 @@ public class RockPaperScissors extends Game {
         NPCPoint = 0;
 
         System.out.println("--- Game launched ---");
-        System.out.println("To play type one of this proposition :");
+        System.out.println("To play, type one of this proposition :");
         for (String proposition: ROSHAMBO) {
             System.out.println("-" + proposition);
         }
