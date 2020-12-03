@@ -15,7 +15,7 @@ public class Player extends Character {
 	/// Constants ///
 
 	static final int MAX_HEALTH = 100;
-	static final int DEFAULT_MONEY = 25;
+	static final int DEFAULT_MONEY = 250;
 
 
 	/// Attributes ///

@@ -6,9 +6,6 @@ import code.exit.Exit;
 import code.place.Game;
 import code.place.Place;
 
-import java.util.Collections;
-import java.util.List;
-
 public class Key extends Item {
 
 	final private Level level;
@@ -26,6 +23,12 @@ public class Key extends Item {
 						level.toString() +
 						" game.");
 		this.level = level;
+	}
+
+	// GETTER
+
+	public Level getLevel() {
+		return this.level;
 	}
 
 	// OTHER METHODS
