@@ -17,7 +17,23 @@ public class Hangman extends Game {
     private final String[] WORDS = {
             "Apple",
             "Pear",
-            "Chocolate"
+            "Pineapple",
+            "Peach",
+            "Pumpkin",
+            "Strawberry",
+            "Apricot",
+            "Eggplant",
+            "Cherry",
+            "Banana",
+            "Avocado",
+            "Lime",
+            "Melon",
+            "Watermelon",
+            "Fig",
+            "Tomato",
+            "Artichoke",
+            "Asparagus",
+            "Broccoli"
     };
 
     public Hangman(String name, String description, NPC npc, Level level) {
