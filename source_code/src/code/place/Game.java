@@ -7,6 +7,7 @@ import code.enumeration.Level;
 public abstract class Game extends Place {
 
 	private Level level;
+	private int reward;
 	// private int difficulty;
 
 	public Game(String name, String description, NPC npc) {
