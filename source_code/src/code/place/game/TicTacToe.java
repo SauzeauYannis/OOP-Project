@@ -18,10 +18,17 @@ public class TicTacToe extends Game {
     final static int DEFAULT_SIZE = 3;
     final static int DEFAULT_REWARD = 10;
 
+    final static String[] sentences = {
+            "Mmmmh, an interesting choice\n",
+            "Well, it's my turn now\n",
+            "Okey, it's difficult\n",
+            "You know what you're doing\n"
+    };
+
 
     /// Attributes ///
 
-    private int[][] matrix;
+    private int[][] cases;
     private int winner;
 
 
@@ -29,7 +36,7 @@ public class TicTacToe extends Game {
 
     public TicTacToe(String name, String description, NPC npc, Level level) {
         super(name, description, npc, level);
-        this.matrix = new int[DEFAULT_SIZE][DEFAULT_SIZE];
+        this.cases = new int[DEFAULT_SIZE][DEFAULT_SIZE];
         this.winner = NEUTRAL;
     }
 
@@ -44,7 +51,7 @@ public class TicTacToe extends Game {
     public void play(Player player) {
         System.out.println("--- Game launched ---");
 
-        this.initMatrix();
+        this.initCases();
         Scanner scan = Gameplay.scanner;
         Random rand = new Random();
         int beginner = headsOrTails(rand);
@@ -52,7 +59,7 @@ public class TicTacToe extends Game {
         int i, j;
 
         this.getNpc().talk("Hello, now play with me and  ! \n" +
-                "We well see who begin ! Choose 1 or 2.");
+                "We will see who begin ! Choose 1 or 2.");
 
         choosen = scan.nextInt();
 
@@ -93,21 +100,21 @@ public class TicTacToe extends Game {
         System.out.println("--- Game finished ---");
     }
 
-    private void initMatrix() {
+    private void initCases() {
         for (int i = 0; i < DEFAULT_SIZE; i++) {
             for (int j = 0; j < DEFAULT_SIZE; j++) {
-                this.matrix[i][j] = NEUTRAL;
+                this.cases[i][j] = NEUTRAL;
             }
         }
     }
 
     private static int headsOrTails(Random rand) {
-        return rand.nextInt(1) + 1;
+        return rand.nextInt(2);
     }
 
     private boolean setCase(int i, int j, int symbol) {
-        if (this.matrix[i][j] == NEUTRAL) {
-            this.matrix[i][j] = symbol;
+        if (this.cases[i][j] == NEUTRAL) {
+            this.cases[i][j] = symbol;
 
             this.isWin(i, j, symbol);
 
@@ -121,13 +128,13 @@ public class TicTacToe extends Game {
     }
 
     private void isWin(int i, int j, int symbol) {
-        if ((this.matrix[i][0] == this.matrix[i][1] && this.matrix[i][1] == this.matrix[i][2])
+        if ((this.cases[i][0] == this.cases[i][1] && this.cases[i][1] == this.cases[i][2])
                 ||
-                (this.matrix[0][j] == this.matrix[1][j] && this.matrix[1][j] == this.matrix[2][j])
+                (this.cases[0][j] == this.cases[1][j] && this.cases[1][j] == this.cases[2][j])
                 ||
-                ((i == j) && (this.matrix[0][0] == this.matrix[1][1] && this.matrix[1][1] == this.matrix[2][2]))
+                ((i == j) && (this.cases[0][0] == this.cases[1][1] && this.cases[1][1] == this.cases[2][2]))
                 ||
-                ((i + j == 2) && this.matrix[2][0] == this.matrix[1][1] && this.matrix[1][1] == this.matrix[0][2])
+                ((i + j == 2) && this.cases[2][0] == this.cases[1][1] && this.cases[1][1] == this.cases[0][2])
         ) {
             this.winner = symbol;
         }
@@ -137,6 +144,8 @@ public class TicTacToe extends Game {
         boolean stop = false;
         int i;
         int j;
+
+        System.out.println("\n|| NPC turn ||\n");
 
         while(!stop){
             i = rand.nextInt(DEFAULT_SIZE);
@@ -153,13 +162,17 @@ public class TicTacToe extends Game {
         int i;
         int j;
 
+        System.out.println("\n|| Your turn ||\n");
+
         while(!stop){
+
+            System.out.print("Choose your case :");
 
             i = scan.nextInt()-1;
             j = scan.nextInt()-1;
 
             if((i<0 || i>2 || j<0 || j>2)){
-                System.out.println("Please choose valid case");
+                System.out.println("Please choose valid case !\n(Between 1 and 3)");
             }
             else if(!this.setCase(i, j, CROSS)){
                 System.out.println("This case is already use, choose an over one");
@@ -173,10 +186,10 @@ public class TicTacToe extends Game {
     private void displayGame(){
         for (int i = 0; i < DEFAULT_SIZE; i++) {
             for (int j = 0; j < DEFAULT_SIZE; j++) {
-                if(this.matrix[i][j] == CROSS){
+                if(this.cases[i][j] == CROSS){
                     System.out.print(" X ");
                 }
-                else if(this.matrix[i][j] == CIRCLE){
+                else if(this.cases[i][j] == CIRCLE){
                     System.out.print(" O ");
                 }
                 else{
@@ -185,6 +198,7 @@ public class TicTacToe extends Game {
             }
             System.out.println();
         }
+        System.out.println("\n---------\n");
     }
 
 }
