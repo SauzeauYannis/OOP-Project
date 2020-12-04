@@ -44,7 +44,7 @@ public class Player extends Character {
 	}
 
 	public void printHealth() {
-		System.out.println("You have now " +
+		System.out.println("You have " +
 				this.health +
 				"/" +
 				MAX_HEALTH +
@@ -52,7 +52,7 @@ public class Player extends Character {
 	}
 
 	public void printMoney() {
-		System.out.println("You have now " +
+		System.out.println("You have " +
 				this.money +
 				" coins.");
 	}

@@ -9,9 +9,6 @@ public class NPC extends Character {
 	}
 
 	public void talk(String dialog) {
-		System.out.println("[" +
-				this.getName() +
-				"] : " +
-				dialog);
+		System.out.println(this + dialog);
 	}
 }

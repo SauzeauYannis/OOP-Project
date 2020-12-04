@@ -1,6 +1,6 @@
 package code.place;
 
-import code.Interface.Describable;
+import code.other.Describable;
 import code.character.NPC;
 import code.enumeration.ExitKey;
 import code.exit.Exit;

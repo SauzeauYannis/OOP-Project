@@ -1,7 +1,7 @@
 package code;
 
-import code.Command.Command;
-import code.Command.Interpreter;
+import code.command.Command;
+import code.command.Interpreter;
 import code.character.Player;
 import code.place.Place;
 

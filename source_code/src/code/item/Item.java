@@ -1,6 +1,6 @@
 package code.item;
 
-import code.Interface.Describable;
+import code.other.Describable;
 import code.character.Player;
 
 public abstract class Item implements Describable {

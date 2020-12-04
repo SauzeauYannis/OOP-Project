@@ -1,4 +1,4 @@
-package code.Interface;
+package code.other;
 
 public interface Describable {
 
