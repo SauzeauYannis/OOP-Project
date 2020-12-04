@@ -7,16 +7,17 @@ import code.enumeration.Level;
 import code.place.Game;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class HanoiTower extends Game {
 
     private final static int DEFAULT_REWARD = 15;
     private final static int DISK_NUMBER = 3;
 
-    private final String[] diskNum = {"3", "2", "1"};
-    private String[] aPillar = new String[DISK_NUMBER];
-    private String[] bPillar = new String[DISK_NUMBER];
-    private String[] cPillar = new String[DISK_NUMBER];
+    private String[][] game;
+    private Stack<Integer> aPillar;
+    private Stack<Integer> bPillar;
+    private Stack<Integer> cPillar;
 
     public HanoiTower(String name, String description, NPC npc, Level level) {
         super(name, description, npc, level);
@@ -34,6 +35,8 @@ public class HanoiTower extends Game {
     public void play(Player player) {
         Scanner scanner = Gameplay.scanner;
         NPC npc = this.getNpc();
+        String command;
+        String[] commandTab;
 
         System.out.println("--- Game launched ---");
 
@@ -46,39 +49,140 @@ public class HanoiTower extends Game {
         initialize();
         printPillars();
 
-        npc.talk("To start type \"A C\" to move disc from A to C");
+        npc.talk("To start type \"a c\" to move disc from A to C");
 
-        while (!scanner.nextLine().equalsIgnoreCase("A C")) {
-            System.out.println("Type \"A C\"");
+        System.out.print(player);
+        command = scanner.nextLine();
+
+        while (!command.equalsIgnoreCase("A C")) {
+            System.out.println("Type \"a c\"");
+        }
+        commandTab = command.toLowerCase().split(" ");
+        moveDisk(commandTab[0], commandTab[1]);
+
+        printPillars();
+
+        while (!isWin()) {
+            System.out.print(player);
+            command = scanner.nextLine();
+
+            while (!checkCommand(command)) {
+                command = scanner.nextLine();
+            }
+
+            commandTab = command.toLowerCase().split(" ");
+
+            if (!canMove(commandTab[0])) {
+                npc.talk("You need to choose a non empty pillar!");
+                continue;
+            }
+
+            if (moveDisk(commandTab[0], commandTab[1])) {
+                printPillars();
+            } else {
+                npc.talk("Oh no you've lose!");
+                this.lose(player);
+                return;
+            }
+
+            npc.talk("Very good, what is your next move?");
         }
 
-        System.out.println("--- Game finished ---");
+        npc.talk("Oh thanks a lot!");
+        this.win(player, DEFAULT_REWARD);
     }
 
-    private boolean moveDisk(String cmd) {
+    private boolean checkCommand(String cmd) {
         String[] cmdTab = cmd.toLowerCase().split(" ");
-        return true;
+        String match = "[abc]";
+        if (cmdTab.length >= 2) {
+            return cmdTab[0].matches(match) && cmdTab[1].matches(match) && !cmdTab[0].equals(cmdTab[1]);
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isWin() {
+        return this.cPillar.size() == 3;
+    }
+
+    private boolean canMove(String src) {
+        return !getPillar(src).empty();
+    }
+
+    private boolean moveDisk(String src, String dest) {
+        int disk;
+        boolean isWin;
+        Stack<Integer> srcPillar = getPillar(src);
+        Stack<Integer> destPillar = getPillar(dest);
+        int srcLength = srcPillar.size();
+
+        disk = srcPillar.pop();
+
+        if (destPillar.empty()) {
+            isWin = true;
+        } else {
+            isWin = disk < destPillar.peek();
+        }
+
+        if (!isWin) {
+            return false;
+        } else {
+            destPillar.push(disk);
+            changeGame(src, dest, srcLength, destPillar.size());
+            return true;
+        }
+    }
+
+    private void changeGame(String src, String dest, int srcLength, int destLength) {
+        int s = src.charAt(0) - 97;
+        int d = dest.charAt(0) - 97;
+
+        String tmp = this.game[DISK_NUMBER-srcLength][s];
+        this.game[DISK_NUMBER-srcLength][s] = this.game[DISK_NUMBER-destLength][d];
+        this.game[DISK_NUMBER-destLength][d] = tmp;
+    }
+
+    private Stack<Integer> getPillar(String pillar) {
+        if (pillar.equals("a")) {
+            return aPillar;
+        } else if (pillar.equals("b")) {
+            return bPillar;
+        } else {
+            return cPillar;
+        }
     }
 
     private void initialize() {
+        this.game = new String[DISK_NUMBER][DISK_NUMBER];
+
         for (int i = 0; i < DISK_NUMBER; i++) {
-            this.aPillar[i] = this.diskNum[i];
-            this.bPillar[i] = "|";
-            this.cPillar[i] = "|";
+            for (int j = 0; j < DISK_NUMBER; j++) {
+                if (j == 0) {
+                    this.game[i][j] = Integer.toString(i+1);
+                } else {
+                    this.game[i][j] = "|";
+                }
+            }
+        }
+
+        this.aPillar = new Stack<>();
+        this.bPillar = new Stack<>();
+        this.cPillar = new Stack<>();
+
+        for (int i = DISK_NUMBER; i > 0; i--) {
+            aPillar.push(i);
         }
     }
 
     private void printPillars() {
-        for (int i = (DISK_NUMBER - 1); i >= 0; i--) {
-            System.out.println(this.aPillar[i] + "\t"  + this.bPillar[i] + "\t" + this.cPillar[i] + "\t");
+        for (int i = 0; i < DISK_NUMBER; i++) {
+            for (int j = 0; j < DISK_NUMBER; j++) {
+                System.out.print(this.game[i][j] + "\t");
+            }
+            System.out.println();
         }
-        System.out.println("_\t_\t_\t");
-        System.out.println("A\tB\tC\t");
-    }
-
-    private void swap(String[] src, String[] dest, int srcPos, int destPos) {
-        String srcString = src[srcPos];
-        src[srcPos] = dest[destPos];
-        dest[destPos] = srcString;
+        System.out.println("-\t-\t-\t");
+        System.out.println("a\tb\tc\t");
     }
 }
