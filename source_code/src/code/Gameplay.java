@@ -28,7 +28,7 @@ public class Gameplay {
 		player.printMoney();
 
 		while (!player.getIsLose()) {
-			System.out.print("[" + player.getName() + "] : ");
+			System.out.print(player);
 
 			commandTab = scanner.nextLine().split(" ");
 

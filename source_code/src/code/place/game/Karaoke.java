@@ -7,6 +7,11 @@ import code.place.Game;
 
 public class Karaoke extends Game {
 
+    private String[][] music = {
+            {"pozaeopepo ... iezapo", "word"},
+            {"pozaeopepo ... iezapo", "word"}
+    };
+
     public Karaoke(String name, String description, NPC npc, Level level) {
         super(name, description, npc, level);
     }
@@ -20,6 +25,7 @@ public class Karaoke extends Game {
 
     @Override
     public void play(Player player) {
-        System.out.println("Game launched");
+
+        System.out.println("--- Game launched ---");
     }
 }

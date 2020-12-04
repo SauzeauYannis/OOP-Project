@@ -18,9 +18,9 @@ public class QTE extends Game {
             "You're fast but you can't be more fast for this last punch\n"
     };
     private final String[] ROUND = {
-            "todo mettre une citation de rap gitan pour phrase 1",
-            "todo mettre une citation de rap gitan pour phrase 2",
-            "todo mettre une citation de rap gitan pour phrase 3"
+            "You drink wine i drink the blood of your dead",
+            "You eat chocopipe during i eat hedgehog",
+            "I am all even in your hole"
     };
     private final int[] TIME = {
             20,
@@ -34,7 +34,8 @@ public class QTE extends Game {
 
     public QTE() {
         this("QTE",
-                "TODO : description",
+                "You are in front of the faster gipsy's rapper.\n" +
+                "Type \"play\" to start the game.",
                 new NPC("Ethoufet Kwallah"),
                 Level.COPPER);
     }

@@ -33,7 +33,15 @@ public class Hangman extends Game {
             "Tomato",
             "Artichoke",
             "Asparagus",
-            "Broccoli"
+            "Broccoli",
+            "Cabbage",
+            "Corn",
+            "Garlic",
+            "Onion",
+            "Leek",
+            "Soy",
+            "Potato",
+            "Cucumber"
     };
 
     public Hangman(String name, String description, NPC npc, Level level) {

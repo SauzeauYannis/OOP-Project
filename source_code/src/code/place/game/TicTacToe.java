@@ -6,6 +6,7 @@ import code.character.Player;
 import code.enumeration.Level;
 import code.place.Game;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe extends Game {
