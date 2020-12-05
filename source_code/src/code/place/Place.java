@@ -1,5 +1,6 @@
 package code.place;
 
+import code.command.Interpreter;
 import code.other.Describable;
 import code.character.NPC;
 import code.enumeration.ExitKey;
@@ -10,76 +11,87 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
+// This class implements an interface to force use a description
 public class Place implements Describable {
 
-	private final List<Exit> exitList;
-	private NPC npc;
+	/*****************************
+	 * Attributes and constructor
+	 *****************************/
+
+	// Attributes
 	private final String name;
 	private final String description;
+	private final NPC npc;
+	private final List<Exit> exitList;
 
+	// Constructor
 	public Place(String name, String description, NPC npc) {
 		this.name = name;
-		this.exitList = new ArrayList<>();
 		this.description = description;
 		this.npc = npc;
+		this.exitList = new ArrayList<>();
 	}
 
-	public List<Exit> getExitList() {
-		return this.exitList;
-	}
+	/**********
+	 * Methods
+	 **********/
 
+	// Getters
 	public String getName() {
 		return this.name;
-	}
-
-	public void setNpc(NPC npc) {
-		this.npc = npc;
 	}
 
 	public NPC getNpc() {
 		return this.npc;
 	}
 
-	private void addExits(Exit e) {
-		this.exitList.add(e);
+	public List<Exit> getExitList() {
+		return this.exitList;
 	}
-	
+
+	// Setters
+	public void addExit(Exit exit) {
+		this.exitList.add(exit);
+	}
+
+	// Override the method of Describable interface
+	@Override
+	public void readDescription() {
+		System.out.println(this.description);
+	}
+
+	// To print the place next to the place
 	public void printExitsPlace() {
+		List<Exit> exitList = this.exitList;
+
 		System.out.println("You can go to :");
-		for (Exit exit : this.exitList) {
-			System.out.print("- " + exit.getPlace().getName());
+		// Print each place of the exit in the exit list attribute
+		for (Exit exit : exitList) {
+			Place place = exit.getPlace();
+			System.out.print("- " + place.getName());
 			if (exit.isLock()) {
 				System.out.println(" [lock]");
 			} else {
 				System.out.println(" [unlock]");
 			}
 		}
-		String hintPlace = this.exitList.get(0).getPlace().getName();
+
+		// Print a advice to help the player
+		String hintPlace = exitList.get(0).getPlace().getName();
 		System.out.println("Try to typing \"go " +
-				hintPlace.split(" ")[0].toLowerCase() +
+				Interpreter.getFirstWord(hintPlace) +
 				"\" to go to " +
 				hintPlace
 		);
 	}
 
-	public Exit getExit(int i){
-		return this.exitList.get(i);
-	}
-
-	public int lengthExitList() {
-		return this.exitList.size();
-	}
-
-	@Override
-	public void readDescription() {
-		System.out.println(this.description);
-	}
-
+	// This method generate all places to return a list of them
 	public static List<Place> generateAllPlaces() {
 		List<Place> placeList = new ArrayList<>();
 
 		NPC npc_main = new NPC("Gesui'hun Guyde");
 
+		// Create instance of each place and add to the list
 		placeList.add(new Place("Carnival",
 						"This is the principal place of the carnival",
 						npc_main));
@@ -104,55 +116,58 @@ public class Place implements Describable {
 		placeList.add(new RockPaperScissors());
 		placeList.add(new TicTacToe());
 
+		// Generate the exits
 		EnumMap<ExitKey, Exit> exitEnumMap = Exit.generateAllExits(placeList);
 
-		// Carnival
-		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		placeList.get(0).addExits(exitEnumMap.get(ExitKey.EXIT_SHOP));
+		// Add exits to :
 
-		// Copper hub
-		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_ROCK_PAPER_SCISSORS));
-		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_FIND_NUMBER));
-		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_QTE));
-		placeList.get(1).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// - Carnival
+		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_SHOP));
 
-		// Gold hub
-		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_TIC_TAC_TOE));
-		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_RIDDLE));
-		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_HANOI_TOWER));
-		placeList.get(2).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// - Copper hub
+		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_ROCK_PAPER_SCISSORS));
+		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_FIND_NUMBER));
+		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_QTE));
+		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		// Platinum hub
-		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_QUESTIONS));
-		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_KARAOKE));
-		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_HANGMAN));
-		placeList.get(3).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// - Gold hub
+		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_TIC_TAC_TOE));
+		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_RIDDLE));
+		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_HANOI_TOWER));
+		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		// Shop
-		placeList.get(4).addExits(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
+		// - Platinum hub
+		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_QUESTIONS));
+		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_KARAOKE));
+		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_HANGMAN));
+		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		// Rock paper scissors
-		placeList.get(12).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		// Find number
-		placeList.get(5).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		// QTE
-		placeList.get(9).addExits(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		// - Shop
+		placeList.get(4).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
 
-		// Tic Tac Toe
-		placeList.get(13).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		// Riddle
-		placeList.get(11).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		// Hanoi tower
-		placeList.get(7).addExits(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		// - Rock paper scissors
+		placeList.get(12).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		// - Find number
+		placeList.get(5).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
+		// - QTE
+		placeList.get(9).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
 
-		// Questions
-		placeList.get(10).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		// Karaoke
-		placeList.get(8).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		// Hangman
-		placeList.get(6).addExits(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		// - Tic Tac Toe
+		placeList.get(13).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		// - Riddle
+		placeList.get(11).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+		// - Hanoi tower
+		placeList.get(7).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
+
+		// - Questions
+		placeList.get(10).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		// - Karaoke
+		placeList.get(8).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		// - Hangman
+		placeList.get(6).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
 
 		return placeList;
 	}

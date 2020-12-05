@@ -4,7 +4,7 @@ import code.character.Player;
 
 import java.util.List;
 
-public class Interpreter {
+public abstract class Interpreter {
 
     public static Command interpretCommand(List<Command> commandList, String[] commandTab) {
 
@@ -23,5 +23,9 @@ public class Interpreter {
                         "Type help for have the command list");
             }
         };
+    }
+
+    public static String getFirstWord(String sentence) {
+        return sentence.split(" ")[0].toLowerCase();
     }
 }

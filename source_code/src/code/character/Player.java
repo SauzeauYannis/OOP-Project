@@ -1,5 +1,6 @@
 package code.character;
 
+import code.command.Interpreter;
 import code.item.Item;
 import code.place.Game;
 import code.place.Place;
@@ -110,10 +111,15 @@ public class Player extends Character {
 
 	public boolean goToPlace(String location) {
 		for (Exit exit: this.cur_place.getExitList()) {
-			if (location.equals(exit.getPlace().getName().split(" ")[0].toLowerCase())) {
+			Place place = exit.getPlace();
+			String placeName = place.getName();
+			if (location.equals(Interpreter.getFirstWord(placeName))) {
 				if (exit.isLock()) {
-					String level = ((Game) this.cur_place.getExitList().get(0).getPlace()).getLevel().toString();
-					System.out.println("| You can't go there, this game is lock!\n" +
+					Game game = ((Game) this.cur_place.getExitList().get(0).getPlace());
+					String level = game.getLevel().toString();
+					System.out.println("| You can't go to " +
+							placeName +
+							", this game is lock!\n" +
 							"| If you have a " +
 							level +
 							" key in your inventory, type \"use " +
@@ -121,7 +127,8 @@ public class Player extends Character {
 							"\" to unlock the first lock game.\n" +
 							"| Else go to the shop to buy it.");
 				} else {
-					changePlace(exit.getPlace());
+					changePlace(place);
+					place.getNpc().talk("Welcome to " + placeName + "!");
 				}
 				return true;
 			}
@@ -131,7 +138,6 @@ public class Player extends Character {
 
 	private void changePlace(Place place){
 		this.cur_place = place;
-		System.out.println("| You go to : " + place.getName());
 		if (place instanceof Shop) {
 			Shop shop = (Shop) place;
 			shop.printItemsList();
