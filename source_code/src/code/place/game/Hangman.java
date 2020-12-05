@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class Hangman extends Game {
 
-    private final static int DEFAULT_REWARD = 10;
     private final static int NB_TRY = 5;
 
     private final String[] WORDS = {
@@ -144,7 +143,7 @@ public class Hangman extends Game {
         System.out.println("--- Game ended ---");
 
         if(win)
-            this.win(player,DEFAULT_REWARD);
+            this.win(player);
         else
             this.lose(player);
 

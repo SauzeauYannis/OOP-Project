@@ -16,7 +16,6 @@ public class TicTacToe extends Game {
     final static int CIRCLE = 2;
 
     final static int DEFAULT_SIZE = 3;
-    final static int DEFAULT_REWARD = 10;
 
     final static String[] sentences = {
             "Mmmmh, an interesting choice\n",
@@ -91,7 +90,7 @@ public class TicTacToe extends Game {
         }
 
         if(winner == CROSS){
-            this.win(player, DEFAULT_REWARD);
+            this.win(player);
         }
         else {
             this.lose(player);

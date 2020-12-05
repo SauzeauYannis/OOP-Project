@@ -13,7 +13,6 @@ public class FindNumber extends Game {
     private final static int MAX_INT = 999;
     private final static int STOP = -1;
     private final static int DEFAULT_ATTEMPT = 10;
-    private final static int DEFAULT_REWARD = 10;
 
     public FindNumber(String name, String description, NPC npc, Level level) {
         super(name, description, npc, level);
@@ -69,7 +68,7 @@ public class FindNumber extends Game {
                     } else if (rand < choose) {
                         this.getNpc().talk("It's less!");
                     } else {
-                        this.win(player, (int)(Math.random()*DEFAULT_REWARD) + 1);
+                        this.win(player);
                         break;
                     }
                     this.getNpc().talk("You only have " +
