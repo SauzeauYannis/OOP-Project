@@ -26,20 +26,20 @@ public abstract class Game extends Place {
 	public abstract void play(Player player);
 
 	public void win(Player player, int money) {
-		System.out.println("You win a " +
+		System.out.println("| You win a " +
 				this.level.toString().toLowerCase() +
 				" game");
-		System.out.println("Here are " +
+		System.out.println("| Here are " +
 				money +
 				" coins to reward you");
 		player.earnMoney(money);
 	}
 
 	public void lose(Player player) {
-		System.out.println("You lose a " +
+		System.out.println("| You lose a " +
 				this.level.toString().toLowerCase() +
 				" game");
-		System.out.println("You lose 10 calorie");
+		System.out.println("| You lose 10 calorie");
 		player.decreaseHealth(10);
 	}
 }

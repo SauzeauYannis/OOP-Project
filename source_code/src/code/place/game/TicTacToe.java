@@ -19,10 +19,10 @@ public class TicTacToe extends Game {
     final static int DEFAULT_REWARD = 10;
 
     final static String[] sentences = {
-            "Mmmmh, an interesting choice\n",
-            "Well, it's my turn now\n",
-            "Okey, it's difficult\n",
-            "You know what you're doing\n"
+            "Mmmmh, an interesting choice",
+            "Well, it's my turn now <3",
+            "You know what you're doing darling",
+            "I find this party interesting"
     };
 
 
@@ -49,34 +49,39 @@ public class TicTacToe extends Game {
 
     @Override
     public void play(Player player) {
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
 
-        this.initCases();
+        this.initGame();
         Scanner scan = Gameplay.scanner;
         Random rand = new Random();
-        int beginner = headsOrTails(rand);
-        int choosen;
+        int beginner = rand.nextInt(2) + 1;
+        int chosen;
         int i, j;
 
-        this.getNpc().talk("Hello, now play with me and  ! \n" +
-                "We will see who begin ! Choose 1 or 2.");
+        this.getNpc().talk("Hello little darling,  how are you today ? \n" +
+                "What ?! You want to play with me ? Hahaha, alright darling ;)\n" +
+                "We will see who begin  with a Heads or Tails! Choose 1 or 2.");
 
-        choosen = scan.nextInt();
+        System.out.print("-> Choice : ");
+        chosen = scan.nextInt();
 
-        while (choosen < 1 || choosen > 2) {
-            this.getNpc().talk("What are you going ? I said choose between 1 or 2 ! Dumb kid ...\n" +
+        while (chosen < 1 || chosen > 2) {
+            this.getNpc().talk("What are you going ? I said choose between 1 or 2 ! Darling ...\n" +
                     "So, which one ?");
-            choosen = scan.nextInt();
+            chosen = scan.nextInt();
         }
 
-        if (choosen == beginner) {
+        this.getNpc().talk("Ok, so the result is ...\n=> " +
+                beginner + " !!");
+
+        if (chosen == beginner) {
             this.getNpc().talk("Right, you're the beginner\n" +
                     "So you're cross, and I take circle\n" +
                     "Now choose where you want to place you cross");
         } else {
-            this.getNpc().talk("Nice, I'm the beginner. You're lost boy.\n" +
+            this.getNpc().talk("Nice, I'm the beginner.\n" +
                     "So you're cross, and I take circle\n" +
-                    "I'll choose my case ! ");
+                    "I'll choose my case !  Good luck darling ;)");
 
             this.npcTurn(rand);
         }
@@ -91,25 +96,30 @@ public class TicTacToe extends Game {
         }
 
         if(winner == CROSS){
+            this.getNpc().talk("Ooooh, you're pretty strong darling ! <3\n" +
+                    "You've deserve your reward, my little boy\n" +
+                    "I hope I can see you again, maybe to show you something ... new ;)");
+
             this.win(player, DEFAULT_REWARD);
         }
         else {
+            this.getNpc().talk("Tsss, sorry darling but you've lost this time ...\n" +
+                    "You're not as strong as I thought.\n" +
+                    "Give me your money darling, an see you later to give it to me again ;)");
+
             this.lose(player);
         }
 
-        System.out.println("--- Game finished ---");
+        System.out.println("\n--- Game finished ---\n");
     }
 
-    private void initCases() {
+    private void initGame() {
         for (int i = 0; i < DEFAULT_SIZE; i++) {
             for (int j = 0; j < DEFAULT_SIZE; j++) {
                 this.cases[i][j] = NEUTRAL;
             }
         }
-    }
-
-    private static int headsOrTails(Random rand) {
-        return rand.nextInt(2);
+        this.winner = NEUTRAL;
     }
 
     private boolean setCase(int i, int j, int symbol) {
@@ -144,8 +154,10 @@ public class TicTacToe extends Game {
         boolean stop = false;
         int i;
         int j;
+        String sentence = sentences[rand.nextInt(sentences.length)];
 
         System.out.println("\n|| NPC turn ||\n");
+        this.getNpc().talk(sentence);
 
         while(!stop){
             i = rand.nextInt(DEFAULT_SIZE);
@@ -155,6 +167,7 @@ public class TicTacToe extends Game {
                 stop = true;
             }
         }
+
     }
 
     private void playerTurn(Scanner scan){
@@ -162,11 +175,12 @@ public class TicTacToe extends Game {
         int i;
         int j;
 
-        System.out.println("\n|| Your turn ||\n");
+        System.out.println("\n|| Your turn ||\n" +
+                "Type a sequence like this : '2 2', to put your symbol to the case(2,2)");
 
         while(!stop){
 
-            System.out.print("Choose your case :");
+            System.out.print("-> Choose your case : ");
 
             i = scan.nextInt()-1;
             j = scan.nextInt()-1;
@@ -184,6 +198,8 @@ public class TicTacToe extends Game {
     }
 
     private void displayGame(){
+        System.out.println();
+
         for (int i = 0; i < DEFAULT_SIZE; i++) {
             for (int j = 0; j < DEFAULT_SIZE; j++) {
                 if(this.cases[i][j] == CROSS){
@@ -198,7 +214,7 @@ public class TicTacToe extends Game {
             }
             System.out.println();
         }
-        System.out.println("\n---------\n");
+        System.out.println();
     }
 
 }

@@ -44,7 +44,7 @@ public class Player extends Character {
 	}
 
 	public void printHealth() {
-		System.out.println("You have " +
+		System.out.println("| You have " +
 				this.health +
 				"/" +
 				MAX_HEALTH +
@@ -52,18 +52,18 @@ public class Player extends Character {
 	}
 
 	public void printMoney() {
-		System.out.println("You have " +
+		System.out.println("| You have " +
 				this.money +
 				" coins.");
 	}
 
 	public void printInventory() {
 		if (this.items.isEmpty()) {
-			System.out.println("You haven't anything in your inventory!\n" +
-					"Go to the shop to buy items.");
+			System.out.println("| You haven't anything in your inventory!\n" +
+					"| Go to the shop to buy items.");
 		} else {
 			this.items.sort(Comparator.comparing(Item::getName));
-			System.out.println("In you inventory you have :");
+			System.out.println("| In you inventory you have :");
 			for (Item item: this.items) {
 				System.out.println("-" + item.getName());
 			}
@@ -72,7 +72,7 @@ public class Player extends Character {
 
 	public boolean increaseHealth(int health) {
 		if (this.health == MAX_HEALTH) {
-			System.out.println("You're calorie are always at max");
+			System.out.println("| You're calorie are always at max");
 			return false;
 		}
 		else if (this.health + health >= MAX_HEALTH){
@@ -113,13 +113,13 @@ public class Player extends Character {
 			if (location.equals(exit.getPlace().getName().split(" ")[0].toLowerCase())) {
 				if (exit.isLock()) {
 					String level = ((Game) this.cur_place.getExitList().get(0).getPlace()).getLevel().toString();
-					System.out.println("You can't go there, this game is lock!\n" +
-							"If you have a " +
+					System.out.println("| You can't go there, this game is lock!\n" +
+							"| If you have a " +
 							level +
 							" key in your inventory, type \"use " +
 							 level +
 							"\" to unlock the first lock game.\n" +
-							"Else go to the shop to buy it.");
+							"| Else go to the shop to buy it.");
 				} else {
 					changePlace(exit.getPlace());
 				}
@@ -131,7 +131,7 @@ public class Player extends Character {
 
 	private void changePlace(Place place){
 		this.cur_place = place;
-		System.out.println("You go to : " + place.getName());
+		System.out.println("| You go to : " + place.getName());
 		if (place instanceof Shop) {
 			Shop shop = (Shop) place;
 			shop.printItemsList();
@@ -143,17 +143,17 @@ public class Player extends Character {
 			Game game = (Game) this.cur_place;
 			game.play(this);
 		} else {
-			System.out.println("You are not in a game");
+			System.out.println("| You are not in a game");
 		}
 	}
 
 	public void addItem(Item item) {
 		int price = item.getPrice();
 		if (price > this.money) {
-			System.out.println("You haven't any money to buy this item");
+			System.out.println("| You haven't any money to buy this item");
 		} else {
 			this.items.add(item);
-			System.out.println(item.getName() + "" +
+			System.out.println("| " + item.getName() +
 					" is now in your inventory.");
 			this.loseMoney(price);
 		}
@@ -161,7 +161,7 @@ public class Player extends Character {
 
 	public void removeItem(Item item) {
 		this.items.remove(item);
-		System.out.println("You have lose one " +
+		System.out.println("| You have lose one " +
 				item.getName().toLowerCase());
 	}
 
