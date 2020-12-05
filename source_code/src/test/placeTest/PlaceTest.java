@@ -55,6 +55,8 @@ public class PlaceTest {
         List<Place> placeList = Place.generateAllPlaces();
 
         assertSame(placeList.get(0).getNpc(), placeList.get(3).getNpc());
-        assertSame(placeList.get(5).getExitList().get(0), placeList.get(12).getExitList().get(0));
+        assertSame(placeList.get(6).getExitList().get(0), placeList.get(7).getExitList().get(0));
+        assertSame(placeList.get(9).getExitList().get(0), placeList.get(10).getExitList().get(0));
+        assertSame(placeList.get(12).getExitList().get(0), placeList.get(13).getExitList().get(0));
     }
 }
