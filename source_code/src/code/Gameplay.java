@@ -28,6 +28,7 @@ public class Gameplay {
 		player.printMoney();
 
 		while (!player.getIsLose()) {
+			System.out.println("Nombres de jeux finis : " + player.getGamesFinished());
 			System.out.print(player);
 
 			commandTab = scanner.nextLine().split(" ");

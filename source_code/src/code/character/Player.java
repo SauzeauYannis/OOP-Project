@@ -28,6 +28,8 @@ public class Player extends Character {
 	private int money;
 	private boolean isLose;
 
+	private int gamesFinished;
+
 
 	/// Methods ///
 
@@ -38,6 +40,7 @@ public class Player extends Character {
 		this.money = money;
 		this.items = new ArrayList<>();
 		this.isLose = false;
+		this.gamesFinished = 0;
 	}
 
 	public Player(String name, Place p) {
@@ -175,6 +178,10 @@ public class Player extends Character {
 				item.getName().toLowerCase());
 	}
 
+	public void increaseGameFinished(){
+		this.gamesFinished += 1;
+	}
+
 	/// Accessors ///
 
 	public Place getPlace(){
@@ -187,5 +194,9 @@ public class Player extends Character {
 
 	public List<Item> getItems() {
 		return this.items;
+	}
+
+	public int getGamesFinished(){
+		return this.gamesFinished;
 	}
 }

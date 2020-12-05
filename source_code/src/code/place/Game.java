@@ -12,6 +12,7 @@ public abstract class Game extends Place {
 
 	private Level level;
 	private int reward;
+	private boolean firstTime;
 	// private int difficulty;
 
 	public Game(String name, String description, NPC npc) {
@@ -31,6 +32,7 @@ public abstract class Game extends Place {
 			default:
 				this.reward = PLATINUM_REWARD;
 		}
+		this.firstTime = true;
 	}
 
 	public Level getLevel() {
@@ -51,6 +53,11 @@ public abstract class Game extends Place {
 				" coins to reward you");
 
 		player.earnMoney(money);
+
+		if(this.firstTime){
+			player.increaseGameFinished();
+			this.firstTime = false;
+		}
 	}
 
 	public void lose(Player player) {
