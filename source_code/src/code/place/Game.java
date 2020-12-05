@@ -42,11 +42,11 @@ public abstract class Game extends Place {
 	public void win(Player player) {
 		int money = (int)(Math.random()*this.reward) + 2;
 
-		System.out.println("You win a " +
+		System.out.println("| You win a " +
 				this.level.toString().toLowerCase() +
 				" game");
 
-		System.out.println("Here are " +
+		System.out.println("| Here are " +
 				money +
 				" coins to reward you");
 
@@ -54,10 +54,10 @@ public abstract class Game extends Place {
 	}
 
 	public void lose(Player player) {
-		System.out.println("You lose a " +
+		System.out.println("| You lose a " +
 				this.level.toString().toLowerCase() +
 				" game");
-		System.out.println("You lose 10 calorie");
+		System.out.println("| You lose 10 calorie");
 		player.decreaseHealth(10);
 	}
 }
