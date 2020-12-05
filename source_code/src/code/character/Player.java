@@ -115,7 +115,7 @@ public class Player extends Character {
 			String placeName = place.getName();
 			if (location.equals(Interpreter.getFirstWord(placeName))) {
 				if (exit.isLock()) {
-					Game game = ((Game) this.cur_place.getExitList().get(0).getPlace());
+					Game game = ((Game) this.cur_place.getExitList().get(1).getPlace());
 					String level = game.getLevel().toString();
 					System.out.println("| You can't go to " +
 							placeName +

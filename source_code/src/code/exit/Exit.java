@@ -1,9 +1,9 @@
 package code.exit;
 
-import code.enumeration.ExitKey;
+import code.place.Game;
 import code.place.Place;
 
-import java.util.EnumMap;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exit {
@@ -34,21 +34,17 @@ public class Exit {
 				"\" to play this game!");
 	}
 
-	public static EnumMap<ExitKey, Exit> generateAllExits(List<Place> placeList) {
-		EnumMap<ExitKey, Exit> exitEnumMap = new EnumMap<>(ExitKey.class);
+	public static List<Exit> generateAllExits(List<Place> placeList) {
+		List<Exit> exitList = new ArrayList<>();
+		boolean isLock;
 
-		int counter = 0;
-		boolean isLock = false;
+		for (Place place: placeList) {
+			isLock = place instanceof Game;
 
-		for (ExitKey exit: ExitKey.values()) {
-			// Mettre le if en commentaire pour unlock toutes les portes
-			if (counter > 5) isLock = true;
-			exitEnumMap.put(exit,
-					new Exit(placeList.get(counter), isLock));
-			counter++;
+			exitList.add(new Exit(place, isLock));
 		}
 
-		return exitEnumMap;
+		return exitList;
 	}
 
 }
