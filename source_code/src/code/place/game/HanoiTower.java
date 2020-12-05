@@ -11,7 +11,6 @@ import java.util.Stack;
 
 public class HanoiTower extends Game {
 
-    private final static int DEFAULT_REWARD = 15;
     private final static int DISK_NUMBER = 3;
 
     private String[][] game;
@@ -56,6 +55,7 @@ public class HanoiTower extends Game {
 
         while (!command.equalsIgnoreCase("A C")) {
             System.out.println("Type \"a c\"");
+            command = scanner.nextLine();
         }
         commandTab = command.toLowerCase().split(" ");
         moveDisk(commandTab[0], commandTab[1]);
@@ -67,6 +67,7 @@ public class HanoiTower extends Game {
             command = scanner.nextLine();
 
             while (!checkCommand(command)) {
+                System.out.println("Unknown command, retry!");
                 command = scanner.nextLine();
             }
 
@@ -89,7 +90,7 @@ public class HanoiTower extends Game {
         }
 
         npc.talk("Oh thanks a lot!");
-        this.win(player, DEFAULT_REWARD);
+        this.win(player);
     }
 
     private boolean checkCommand(String cmd) {
@@ -144,12 +145,13 @@ public class HanoiTower extends Game {
     }
 
     private Stack<Integer> getPillar(String pillar) {
-        if (pillar.equals("a")) {
-            return aPillar;
-        } else if (pillar.equals("b")) {
-            return bPillar;
-        } else {
-            return cPillar;
+        switch (pillar) {
+            case "a":
+                return aPillar;
+            case "b":
+                return bPillar;
+            default:
+                return cPillar;
         }
     }
 

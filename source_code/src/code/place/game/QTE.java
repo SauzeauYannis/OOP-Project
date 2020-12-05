@@ -10,8 +10,6 @@ import java.util.Date;
 
 public class QTE extends Game {
 
-    private final static int DEFAULT_REWARD = 10;
-
     private final String[] NPC_TALK = {
             "Start slowly with this first punch!\n",
             "Okay now faster with this second punch!\n",
@@ -76,6 +74,6 @@ public class QTE extends Game {
             round++;
         }
 
-        this.win(player, (int)(Math.random()*DEFAULT_REWARD) + 1);
+        this.win(player);
     }
 }

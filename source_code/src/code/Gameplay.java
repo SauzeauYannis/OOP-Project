@@ -22,7 +22,7 @@ public class Gameplay {
 		String[] commandTab;
 
 		player.getPlace().getNpc().talk("Welcome to Gypsy's Carnival!\n" +
-				"Type help to have the commands list");
+				"Type \"help\" to have the commands list");
 
 		player.printHealth();
 		player.printMoney();

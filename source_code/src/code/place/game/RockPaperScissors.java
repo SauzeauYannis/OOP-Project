@@ -10,8 +10,6 @@ import java.util.Scanner;
 
 public class RockPaperScissors extends Game {
 
-    private final static int DEFAULT_REWARD = 10;
-
     private final String[] ROSHAMBO = {
             "rock",
             "paper",
@@ -61,7 +59,7 @@ public class RockPaperScissors extends Game {
         }
 
         if (playerPoint == 3) {
-            this.win(player, (int)(Math.random()*DEFAULT_REWARD) + 1);
+            this.win(player);
         } else {
             this.lose(player);
         }
