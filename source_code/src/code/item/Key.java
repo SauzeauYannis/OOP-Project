@@ -35,7 +35,7 @@ public class Key extends Item {
 
 	@Override
 	public void use(Player player) {
-		Place nextPlace = player.getPlace().getExitList().get(0).getPlace();
+		Place nextPlace = player.getPlace().getExitList().get(1).getPlace();
 		if (nextPlace instanceof Game) {
 			Game game = (Game) nextPlace;
 			if (this.level == game.getLevel()) {

@@ -17,7 +17,7 @@ public class Gameplay {
 
 		List<Place> placeList = Place.generateAllPlaces();
 
-		Player player = new Player("Benjapied Tablenuit", placeList.get(0));
+		Player player = new Player("Benjapied Tablenuit", placeList.get(0), 1000);
 
 		String[] commandTab;
 

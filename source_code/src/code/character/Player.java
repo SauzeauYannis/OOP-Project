@@ -31,13 +31,17 @@ public class Player extends Character {
 
 	/// Methods ///
 
-	public Player(String name, Place p) {
+	public Player(String name, Place p, int money) {
 		super(name);
 		this.cur_place = p;
 		this.health = MAX_HEALTH;
-		this.money = DEFAULT_MONEY;
+		this.money = money;
 		this.items = new ArrayList<>();
 		this.isLose = false;
+	}
+
+	public Player(String name, Place p) {
+		this(name, p, DEFAULT_MONEY);
 	}
 
 	private void lose(){
