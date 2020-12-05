@@ -21,7 +21,7 @@ public class Look extends Command {
             String item = args[1].toLowerCase();
             if (playerPlace instanceof Shop) {
                 Shop shop = (Shop) playerPlace;
-                for (Item shopItem: shop.getItems()) {
+                for (Item shopItem: shop.getItemList()) {
                     if (shopItem.getName().split(" ")[0].toLowerCase().equals(item)) {
                         shopItem.readDescription();
                         return;

@@ -1,6 +1,9 @@
 package code.place;
 
 import code.command.Interpreter;
+import code.enumeration.Level;
+import code.item.Food;
+import code.item.Key;
 import code.other.Describable;
 import code.character.NPC;
 import code.enumeration.ExitKey;
@@ -89,23 +92,41 @@ public class Place implements Describable {
 	public static List<Place> generateAllPlaces() {
 		List<Place> placeList = new ArrayList<>();
 
-		NPC npc_main = new NPC("Gesui'hun Guyde");
+		NPC npcMain = new NPC("Gesui'hun Guyde");
 
 		// Create instance of each place and add to the list
 		placeList.add(new Place("Carnival",
 						"This is the principal place of the carnival",
-						npc_main));
+						npcMain));
 
 		placeList.add(new Place("Copper hub",
 						"This is the place where you can choose to go to a copper Game",
-						npc_main));
+						npcMain));
 		placeList.add(new Place("Gold hub",
 						"This is the place where you can choose to go to a gold Game",
-						npc_main));
+						npcMain));
 		placeList.add(new Place("Platinum hub",
 						"This is the place where you can choose to go to a platinum Game",
-						npc_main));
-		placeList.add(new Shop());
+						npcMain));
+
+		NPC npcShop = new NPC("Gesui'hun Von Deur");
+
+		Shop keyShop = new Shop("Key shop",
+				"This is the place where you can buy key to unlock the different games.\n",
+				npcShop);
+		keyShop.addItem(new Key("Copper key", 25, Level.COPPER));
+		keyShop.addItem(new Key("Gold key", 50, Level.GOLD));
+		keyShop.addItem(new Key("Platinum key", 100, Level.PLATINUM));
+		placeList.add(keyShop);
+
+		Shop foodShop = new Shop("Food shop",
+				"This is the place where you can buy some food, like ChocoPipe.\n",
+				npcShop);
+		foodShop.addItem(new Food("Apple candy", 5, 5));
+		foodShop.addItem(new Food("Cotton candy", 10, 15));
+		foodShop.addItem(new Food("Chocolate eclair", 15, 20));
+		placeList.add(foodShop);
+
 		placeList.add(new FindNumber());
 		placeList.add(new Hangman());
 		placeList.add(new HanoiTower());
@@ -125,7 +146,8 @@ public class Place implements Describable {
 		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
 		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
 		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_SHOP));
+		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_KEY_SHOP));
+		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_FOOD_SHOP));
 
 		// - Copper hub
 		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_ROCK_PAPER_SCISSORS));

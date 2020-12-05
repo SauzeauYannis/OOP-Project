@@ -127,8 +127,8 @@ public class Player extends Character {
 							"\" to unlock the first lock game.\n" +
 							"| Else go to the shop to buy it.");
 				} else {
-					changePlace(place);
 					place.getNpc().talk("Welcome to " + placeName + "!");
+					changePlace(place);
 				}
 				return true;
 			}

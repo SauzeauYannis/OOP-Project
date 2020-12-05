@@ -42,7 +42,7 @@ public class Exit {
 
 		for (ExitKey exit: ExitKey.values()) {
 			// Mettre le if en commentaire pour unlock toutes les portes
-			// if (counter > 4) isLock = true;
+			if (counter > 5) isLock = true;
 			exitEnumMap.put(exit,
 					new Exit(placeList.get(counter), isLock));
 			counter++;

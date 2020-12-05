@@ -19,7 +19,7 @@ public class Take extends Command {
             if (place instanceof Shop) {
                 String item = args[1].toLowerCase();
                 Shop shop = (Shop) place;
-                for (Item shopItem: shop.getItems()) {
+                for (Item shopItem: shop.getItemList()) {
                     if (shopItem.getName().split(" ")[0].toLowerCase().equals(item)) {
                         player.addItem(shopItem);
                         return;
