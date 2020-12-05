@@ -56,6 +56,7 @@ public class HanoiTower extends Game {
 
         while (!command.equalsIgnoreCase("A C")) {
             System.out.println("Type \"a c\"");
+            command = scanner.nextLine();
         }
         commandTab = command.toLowerCase().split(" ");
         moveDisk(commandTab[0], commandTab[1]);
@@ -67,6 +68,7 @@ public class HanoiTower extends Game {
             command = scanner.nextLine();
 
             while (!checkCommand(command)) {
+                System.out.println("Unknown command, retry!");
                 command = scanner.nextLine();
             }
 
