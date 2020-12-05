@@ -17,7 +17,7 @@ public class Unlock extends Command{
     @Override
     public void executeCommand(Player player, String[] args) {
         if (args.length > 1) {
-            Place nextPlace = player.getPlace().getExitList().get(0).getPlace();
+            Place nextPlace = player.getPlace().getExitList().get(1).getPlace();
             if (nextPlace instanceof Game) {
                 for (Exit exit: player.getPlace().getExitList()) {
                     if (exit.getPlace().getName().split(" ")[0].equalsIgnoreCase(args[1])) {

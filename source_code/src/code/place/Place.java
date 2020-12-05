@@ -6,12 +6,10 @@ import code.item.Food;
 import code.item.Key;
 import code.other.Describable;
 import code.character.NPC;
-import code.enumeration.ExitKey;
 import code.exit.Exit;
 import code.place.game.*;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
 
 // This class implements an interface to force use a description
@@ -93,12 +91,16 @@ public class Place implements Describable {
 		List<Place> placeList = new ArrayList<>();
 
 		NPC npcMain = new NPC("Gesui'hun Guyde");
+		NPC npcShop = new NPC("Gesui'hun Von Deur");
 
 		// Create instance of each place and add to the list
+
+		// Carnival
 		placeList.add(new Place("Carnival",
 						"This is the principal place of the carnival",
 						npcMain));
 
+		// Hubs
 		placeList.add(new Place("Copper hub",
 						"This is the place where you can choose to go to a copper Game",
 						npcMain));
@@ -109,8 +111,7 @@ public class Place implements Describable {
 						"This is the place where you can choose to go to a platinum Game",
 						npcMain));
 
-		NPC npcShop = new NPC("Gesui'hun Von Deur");
-
+		// Key shop
 		Shop keyShop = new Shop("Key shop",
 				"This is the place where you can buy key to unlock the different games.\n",
 				npcShop);
@@ -119,6 +120,7 @@ public class Place implements Describable {
 		keyShop.addItem(new Key("Platinum key", 100, Level.PLATINUM));
 		placeList.add(keyShop);
 
+		// Food shop
 		Shop foodShop = new Shop("Food shop",
 				"This is the place where you can buy some food, like ChocoPipe.\n",
 				npcShop);
@@ -127,69 +129,91 @@ public class Place implements Describable {
 		foodShop.addItem(new Food("Chocolate eclair", 15, 20));
 		placeList.add(foodShop);
 
+		// Copper games
 		placeList.add(new FindNumber());
-		placeList.add(new Hangman());
-		placeList.add(new HanoiTower());
-		placeList.add(new Karaoke());
 		placeList.add(new QTE());
-		placeList.add(new Questions());
-		placeList.add(new Riddle());
 		placeList.add(new RockPaperScissors());
+
+		// Gold games
+		placeList.add(new Riddle());
+		placeList.add(new HanoiTower());
 		placeList.add(new TicTacToe());
 
+		// Platinum games
+		placeList.add(new Hangman());
+		placeList.add(new Karaoke());
+		placeList.add(new Questions());
+
 		// Generate the exits
-		EnumMap<ExitKey, Exit> exitEnumMap = Exit.generateAllExits(placeList);
+		List<Exit> exitList = Exit.generateAllExits(placeList);
 
-		// Add exits to :
+		int carnival = 0;
+		int copperHub = 1;
+		int goldHub = 2;
+		int platinumHub = 3;
 
-		// - Carnival
-		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_KEY_SHOP));
-		placeList.get(0).addExit(exitEnumMap.get(ExitKey.EXIT_FOOD_SHOP));
-
-		// - Copper hub
-		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_ROCK_PAPER_SCISSORS));
-		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_FIND_NUMBER));
-		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_QTE));
-		placeList.get(1).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
-
-		// - Gold hub
-		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_TIC_TAC_TOE));
-		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_RIDDLE));
-		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_HANOI_TOWER));
-		placeList.get(2).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
-
-		// - Platinum hub
-		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_QUESTIONS));
-		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_KARAOKE));
-		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_HANGMAN));
-		placeList.get(3).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
-
-		// - Shop
-		placeList.get(4).addExit(exitEnumMap.get(ExitKey.EXIT_CARNIVAL));
-
-		// - Rock paper scissors
-		placeList.get(12).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		// - Find number
-		placeList.get(5).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-		// - QTE
-		placeList.get(9).addExit(exitEnumMap.get(ExitKey.EXIT_COPPER_HUB));
-
-		// - Tic Tac Toe
-		placeList.get(13).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		// - Riddle
-		placeList.get(11).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-		// - Hanoi tower
-		placeList.get(7).addExit(exitEnumMap.get(ExitKey.EXIT_GOLD_HUB));
-
-		// - Questions
-		placeList.get(10).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		// - Karaoke
-		placeList.get(8).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
-		// - Hangman
-		placeList.get(6).addExit(exitEnumMap.get(ExitKey.EXIT_PLATINUM_HUB));
+		// Add exit for each place
+		for (Place place: placeList) {
+			// If the place is a shop
+			if (place instanceof Shop) {
+				// Exit to carnival
+				place.addExit(exitList.get(carnival));
+			} else if (place instanceof Game) {
+				Game game = (Game) place;
+				switch (game.getLevel()) {
+					case COPPER:
+						// Exit to copper hub
+						place.addExit(exitList.get(copperHub));
+						break;
+					case GOLD:
+						// Exit to gold hub
+						place.addExit(exitList.get(goldHub));
+						break;
+					default:
+						// Exit to platinum hub
+						place.addExit(exitList.get(platinumHub));
+				}
+			} else { // If place is not a game nor a shop
+				// For each exit
+				for (Exit exit: exitList) {
+					Place placeExit = exit.getPlace();
+					// If exit to a game
+					if (placeExit instanceof Game) {
+						Game game = (Game) placeExit;
+						// If place is copper hub
+						if (place.equals(placeList.get(copperHub))) {
+							// Exit to the copper games
+							if (game.getLevel() == Level.COPPER) {
+								place.addExit(exit);
+							}
+						} else if (place.equals(placeList.get(goldHub))) { // If place is gold hub
+							// Exit to the gold games
+							if (game.getLevel() == Level.GOLD) {
+								place.addExit(exit);
+							}
+						} else if (place.equals(placeList.get(platinumHub))) { // If place is platinum hub
+							// Exit to the platinum games
+							if (game.getLevel() == Level.PLATINUM) {
+								place.addExit(exit);
+							}
+						}
+					} else { // If exit to not a game
+						// If exit to the main place
+						if (placeExit.equals(placeList.get(carnival))) {
+							// If it's not the main place
+							if (!place.equals(placeList.get(carnival))) {
+								place.addExit(exit);
+							}
+						} else { // If not exit to the main place
+							// If it's the main place
+							if (place.equals(placeList.get(carnival))) {
+								place.addExit(exit);
+							}
+						}
+					}
+				}
+			}
+		}
 
 		return placeList;
 	}
