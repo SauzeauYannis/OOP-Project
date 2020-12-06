@@ -1,5 +1,6 @@
 package code.exit;
 
+import code.place.Ending;
 import code.place.Game;
 import code.place.Place;
 
@@ -31,17 +32,15 @@ public class Exit {
 				" is now unlock.\n" +
 				"Type \"go " +
 				place.split(" ")[0].toLowerCase() +
-				"\" to play this game!");
+				"\" to get inside!");
 	}
 
 	public static List<Exit> generateAllExits(List<Place> placeList) {
 		List<Exit> exitList = new ArrayList<>();
-		boolean isLock;
 
 		for (Place place: placeList) {
-			isLock = place instanceof Game;
-
-			exitList.add(new Exit(place, isLock));
+			exitList.add(new Exit(place,
+					(place instanceof Game || place instanceof Ending)));
 		}
 
 		return exitList;

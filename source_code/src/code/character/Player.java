@@ -2,6 +2,7 @@ package code.character;
 
 import code.command.Interpreter;
 import code.item.Item;
+import code.place.Ending;
 import code.place.Game;
 import code.place.Place;
 import code.exit.Exit;
@@ -40,7 +41,7 @@ public class Player extends Character {
 		this.money = money;
 		this.items = new ArrayList<>();
 		this.isLose = false;
-		this.gamesFinished = 0;
+		this.gamesFinished = 9;
 	}
 
 	public Player(String name, Place p) {
@@ -63,6 +64,12 @@ public class Player extends Character {
 		System.out.println("| You have " +
 				this.money +
 				" coins.");
+	}
+
+	public void printGames() {
+		System.out.println("| You have finish " +
+				this.gamesFinished + "/" + Game.NB_GAMES +
+				" games.");
 	}
 
 	public void printInventory() {
@@ -122,17 +129,22 @@ public class Player extends Character {
 			String placeName = place.getName();
 			if (location.equals(Interpreter.getFirstWord(placeName))) {
 				if (exit.isLock()) {
-					Game game = ((Game) this.cur_place.getExitList().get(1).getPlace());
-					String level = game.getLevel().toString();
-					System.out.println("| You can't go to " +
-							placeName +
-							", this game is lock!\n" +
-							"| If you have a " +
-							level +
-							" key in your inventory, type \"use " +
-							 level +
-							"\" to unlock the first lock game.\n" +
-							"| Else go to the shop to buy it.");
+					if (place instanceof Game) {
+						Game game = (Game) place;
+						String level = game.getLevel().toString();
+						System.out.println("| You can't go to " +
+								placeName +
+								", this game is lock!\n" +
+								"| If you have a " +
+								level +
+								" key in your inventory, type \"use " +
+								level +
+								"\" to unlock the first lock game.\n" +
+								"| Else go to the shop to buy it.");
+					} else if (place instanceof Ending) {
+						System.out.println("You don't know why but this place attracts you but it's lock.\n" +
+								"Try to type \"unlock sparkling\" to to get inside.");
+					}
 				} else {
 					place.getNpc().talk("Welcome to " + placeName + "!");
 					changePlace(place);
@@ -148,6 +160,9 @@ public class Player extends Character {
 		if (place instanceof Shop) {
 			Shop shop = (Shop) place;
 			shop.printItemsList();
+		} else if (place instanceof Ending) {
+			Ending ending = (Ending) place;
+			ending.credit();
 		}
 	}
 
@@ -180,6 +195,7 @@ public class Player extends Character {
 
 	public void increaseGameFinished(){
 		this.gamesFinished += 1;
+		printGames();
 	}
 
 	/// Accessors ///

@@ -7,6 +7,7 @@ import code.enumeration.Level;
 import code.place.Game;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class QTE extends Game {
 
@@ -21,9 +22,9 @@ public class QTE extends Game {
             "I am all even in your hole"
     };
     private final int[] TIME = {
+            25,
             20,
-            15,
-            10
+            15
     };
 
     public QTE(String name, String description, NPC npc, Level level) {
@@ -50,10 +51,21 @@ public class QTE extends Game {
 
         while (round < 3) {
             npc.talk(NPC_TALK[round] +
-                    "\"" + ROUND[round] + "\" in " + TIME[round] + "s");
+                    "You have " + TIME[round] + "s to write the punch, good luck!");
+            for (int i = 3; i > 0; i--) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (Exception exception) {
+                    System.err.println("Error during sleep program in QTE");
+                }
+                npc.talk(Integer.toString(i));
+            }
+            npc.talk(ROUND[round]);
+
             Date start = new Date();
             String playerSentence = Gameplay.scanner.nextLine();
             Date end = new Date();
+
             if (playerSentence.equalsIgnoreCase(ROUND[round])) {
                 int second = (int)((end.getTime() - start.getTime()) / 1000);
                 if (second < TIME[round]) {

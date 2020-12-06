@@ -6,6 +6,7 @@ import code.enumeration.Level;
 
 public abstract class Game extends Place {
 
+	public static int NB_GAMES = 0;
 	private static final int COPPER_REWARD = 10;
 	private static final int GOLD_REWARD = 20;
 	private static final int PLATINUM_REWARD = 30;
@@ -13,7 +14,6 @@ public abstract class Game extends Place {
 	private Level level;
 	private int reward;
 	private boolean firstTime;
-	// private int difficulty;
 
 	public Game(String name, String description, NPC npc) {
 		super(name, description, npc);
@@ -33,6 +33,7 @@ public abstract class Game extends Place {
 				this.reward = PLATINUM_REWARD;
 		}
 		this.firstTime = true;
+		NB_GAMES++;
 	}
 
 	public Level getLevel() {
@@ -41,9 +42,7 @@ public abstract class Game extends Place {
 
 	public abstract void play(Player player);
 
-	public void win(Player player) {
-		int money = (int)(Math.random()*this.reward) + 2;
-
+	public void win(Player player, int money) {
 		System.out.println("| You win a " +
 				this.level.toString().toLowerCase() +
 				" game");
@@ -60,23 +59,16 @@ public abstract class Game extends Place {
 		}
 	}
 
+	public void win(Player player) {
+		int money = (int)(Math.random()*this.reward) + 2;
+		win(player, money);
+	}
+
 	public void lose(Player player) {
 		System.out.println("| You lose a " +
 				this.level.toString().toLowerCase() +
 				" game");
 		System.out.println("| You lose 10 calorie");
 		player.decreaseHealth(10);
-	}
-
-	public void win(Player player, int money) {
-		System.out.println("You win a " +
-				this.getLevel().toString().toLowerCase() +
-				" game");
-
-		System.out.println("Here are " +
-				money +
-				" coins to reward you");
-
-		player.earnMoney(money);
 	}
 }

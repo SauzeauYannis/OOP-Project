@@ -102,13 +102,16 @@ public class Place implements Describable {
 
 		// Hubs
 		placeList.add(new Place("Copper hub",
-						"This is the place where you can choose to go to a copper Game",
+						"This is the place where you can choose to go to a copper Game\n" +
+								"Type \"go\" for have the list of games you can access",
 						npcMain));
 		placeList.add(new Place("Gold hub",
-						"This is the place where you can choose to go to a gold Game",
+						"This is the place where you can choose to go to a gold Game\n" +
+								"Type \"go\" for have the list of games you can access",
 						npcMain));
 		placeList.add(new Place("Platinum hub",
-						"This is the place where you can choose to go to a platinum Game",
+						"This is the place where you can choose to go to a platinum Game\n" +
+								"Type \"go\" for have the list of games you can access",
 						npcMain));
 
 		// Key shop
@@ -143,6 +146,9 @@ public class Place implements Describable {
 		placeList.add(new Hangman());
 		placeList.add(new Karaoke());
 		placeList.add(new Questions());
+
+		// Last place
+		placeList.add(new Ending());
 
 		// Generate the exits
 		List<Exit> exitList = Exit.generateAllExits(placeList);

@@ -13,5 +13,6 @@ public class Inventory extends Command{
         player.printInventory();
         player.printMoney();
         player.printHealth();
+        player.printGames();
     }
 }

@@ -42,7 +42,7 @@ public class Questions extends Game {
 
     public Questions() {
         this("Questions",
-                "In this game, your culture will be useful to find out the missing lyrics.\n"  +
+                "In this game, your culture will be useful to find out the correct answer to questions.\n"  +
                         "Type \"play\" to start the game.",
                 new NPC("Samuel Outienne"),
                 Level.PLATINUM);
@@ -142,6 +142,7 @@ public class Questions extends Game {
             this.win(player, jackpot);
         }
 
+        Gameplay.scanner.nextLine();
     }
 
     public int randNum(int length){
@@ -150,21 +151,21 @@ public class Questions extends Game {
     }
 
     private boolean wantStop(int jackpot, NPC npc) {
-        Scanner scanner;
+        Scanner scanner = Gameplay.scanner;
+        scanner.nextLine();
         boolean stop = false;
         String response = "";
 
-       System.out.println("Jackpot: " + jackpot + " coins.");
-       npc.talk("Do you want to stop the game and cash your jackpot ?");
+        System.out.println("Jackpot: " + jackpot + " coins.");
+        npc.talk("Do you want to stop the game and cash your jackpot ?");
 
         while ((response.compareTo("YES")!=0) && (response.compareTo("NO")!=0)) {
            System.out.println("\t(TAPE: \"yes\" or \"no\")");
-           scanner = Gameplay.scanner;
            response = scanner.nextLine();
            response = response.toUpperCase();
-       }
+        }
 
-       if (response.compareTo("YES")==0) {
+        if (response.compareTo("YES")==0) {
            stop = true;
         }
 

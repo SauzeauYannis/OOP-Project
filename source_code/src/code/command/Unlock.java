@@ -4,8 +4,11 @@ import code.character.Player;
 import code.exit.Exit;
 import code.item.Item;
 import code.item.Key;
+import code.place.Ending;
 import code.place.Game;
 import code.place.Place;
+
+import java.util.List;
 
 public class Unlock extends Command{
 
@@ -17,9 +20,11 @@ public class Unlock extends Command{
     @Override
     public void executeCommand(Player player, String[] args) {
         if (args.length > 1) {
-            Place nextPlace = player.getPlace().getExitList().get(1).getPlace();
+            List<Exit> exitList = player.getPlace().getExitList();
+            Exit lastExit = exitList.get(exitList.size()-1);
+            Place nextPlace = lastExit.getPlace();
             if (nextPlace instanceof Game) {
-                for (Exit exit: player.getPlace().getExitList()) {
+                for (Exit exit: exitList) {
                     if (exit.getPlace().getName().split(" ")[0].equalsIgnoreCase(args[1])) {
                         if (exit.isLock()) {
                             Game game = (Game) exit.getPlace();
@@ -44,6 +49,17 @@ public class Unlock extends Command{
                 }
                 System.out.println("Unknown game.\n" +
                         "Type \"go\" to have the list of game you can unlock.");
+            } else if (nextPlace instanceof Ending) {
+                if (lastExit.isLock()) {
+                    if (player.getGamesFinished() == Game.NB_GAMES) {
+                        lastExit.unlock();
+                        System.out.println("Congratulations, you've unlocked all the locations.");
+                    } else {
+                        System.out.println("This place is unlockable only when you have won all the games.");
+                    }
+                } else {
+                    System.out.println("This place is always unlock!");
+                }
             } else {
                 System.out.println("You need to be in front of the game to unlock it.");
             }
