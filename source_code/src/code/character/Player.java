@@ -163,7 +163,7 @@ public class Player extends Character {
 			shop.printItemsList();
 		} else if (place instanceof Ending) {
 			Ending ending = (Ending) place;
-			ending.credit();
+			ending.printCredits();
 		}
 	}
 

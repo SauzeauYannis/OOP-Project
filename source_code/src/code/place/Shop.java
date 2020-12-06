@@ -9,9 +9,9 @@ import java.util.List;
 // This class is a subclass of Place
 public class Shop extends Place {
 
-	/*****************************
-	 * Attributes and constructor
-	 *****************************/
+	/****************************
+	 * Attribute and constructor
+	 ****************************/
 
 	// Attribute
 	private final List<Item> itemList;
