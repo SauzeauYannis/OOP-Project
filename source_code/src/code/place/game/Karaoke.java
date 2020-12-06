@@ -40,7 +40,7 @@ public class Karaoke extends Game {
 
     public Karaoke() {
         this("Karaoke",
-                "In this game, your culture will be useful to find out the missing lyrics.\n" +
+                "In this game, your music culture will be useful to find out the missing lyrics.\n" +
                         "Type \"play\" to start the game.",
                 new NPC("Kharra Okey"),
                 Level.PLATINUM);
@@ -61,10 +61,8 @@ public class Karaoke extends Game {
 
         System.out.println("--- Game launched ---");
 
-        npc.talk("Laddies and Gentlemen, welcome to...\n" +
-                "ROUBAIX...\n" +
-                "Just kidding :)\n" +
-                "Welcome to my stand where your music culture would be roughly tested...\n" +
+        npc.talk("Laddies and Gentlemen, welcome to my stand! " +
+                "Here your music culture would be roughly tested...\n" +
                 "You have " + NB_TRY + " guesses. Good luck!\n" +
                 "Get ready, get set, go!\n");
 
@@ -115,7 +113,7 @@ public class Karaoke extends Game {
         return rd.nextInt(length);
     }
 
-    public boolean checkWin(int trials_left, String word, NPC npc){
+    private boolean checkWin(int trials_left, String word, NPC npc){
         boolean win = false;
         if (trials_left<1){
             npc.talk("Sorry for your lack of culture :/ (You're a miss...)");

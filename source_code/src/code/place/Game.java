@@ -67,4 +67,16 @@ public abstract class Game extends Place {
 		System.out.println("| You lose 10 calorie");
 		player.decreaseHealth(10);
 	}
+
+	public void win(Player player, int money) {
+		System.out.println("You win a " +
+				this.getLevel().toString().toLowerCase() +
+				" game");
+
+		System.out.println("Here are " +
+				money +
+				" coins to reward you");
+
+		player.earnMoney(money);
+	}
 }
