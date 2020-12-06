@@ -61,15 +61,15 @@ public class Place implements Describable {
 		System.out.println(this.description);
 	}
 
-	// To print the place next to the place
-	public void printExitsPlace() {
+	// To print the places accessible from the current place
+	public void printExitPlaces() {
 		List<Exit> exitList = this.exitList;
 
-		System.out.println("You can go to :");
+		System.out.println("| You can go to :");
 		// Print each place of the exit in the exit list attribute
 		for (Exit exit : exitList) {
 			Place place = exit.getPlace();
-			System.out.print("- " + place.getName());
+			System.out.print("| - " + place.getName());
 			if (exit.isLock()) {
 				System.out.println(" [lock]");
 			} else {
@@ -79,7 +79,7 @@ public class Place implements Describable {
 
 		// Print a advice to help the player
 		String hintPlace = exitList.get(0).getPlace().getName();
-		System.out.println("Try to typing \"go " +
+		System.out.println("| Try to typing \"go " +
 				Interpreter.getFirstWord(hintPlace) +
 				"\" to go to " +
 				hintPlace
@@ -97,26 +97,26 @@ public class Place implements Describable {
 
 		// Carnival
 		placeList.add(new Place("Carnival",
-						"This is the principal place of the carnival",
+						"| This is the principal place of the carnival",
 						npcMain));
 
 		// Hubs
 		placeList.add(new Place("Copper hub",
-						"This is the place where you can choose to go to a copper Game\n" +
-								"Type \"go\" for have the list of games you can access",
+						"| This is the place where you can choose to go to a copper Game\n" +
+								"| Type \"go\" for have the list of games you can access",
 						npcMain));
 		placeList.add(new Place("Gold hub",
-						"This is the place where you can choose to go to a gold Game\n" +
-								"Type \"go\" for have the list of games you can access",
+						"| This is the place where you can choose to go to a gold Game\n" +
+								"| Type \"go\" for have the list of games you can access",
 						npcMain));
 		placeList.add(new Place("Platinum hub",
-						"This is the place where you can choose to go to a platinum Game\n" +
-								"Type \"go\" for have the list of games you can access",
+						"| This is the place where you can choose to go to a platinum Game\n" +
+								"| Type \"go\" for have the list of games you can access",
 						npcMain));
 
 		// Key shop
 		Shop keyShop = new Shop("Key shop",
-				"This is the place where you can buy key to unlock the different games.\n",
+				"| This is the place where you can buy key to unlock the different games.\n",
 				npcShop);
 		keyShop.addItem(new Key("Copper key", 25, Level.COPPER));
 		keyShop.addItem(new Key("Gold key", 50, Level.GOLD));
@@ -125,7 +125,7 @@ public class Place implements Describable {
 
 		// Food shop
 		Shop foodShop = new Shop("Food shop",
-				"This is the place where you can buy some food, like ChocoPipe.\n",
+				"| This is the place where you can buy some food, like ChocoPipe.\n",
 				npcShop);
 		foodShop.addItem(new Food("Apple candy", 5, 5));
 		foodShop.addItem(new Food("Cotton candy", 10, 15));
@@ -164,8 +164,9 @@ public class Place implements Describable {
 			if (place instanceof Shop) {
 				// Exit to carnival
 				place.addExit(exitList.get(carnival));
-			} else if (place instanceof Game) {
+			} else if (place instanceof Game) { // If the place is a game
 				Game game = (Game) place;
+				// Add exit according to the game level
 				switch (game.getLevel()) {
 					case COPPER:
 						// Exit to copper hub

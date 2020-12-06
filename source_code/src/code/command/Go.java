@@ -16,7 +16,7 @@ public class Go extends Command {
                 System.out.println("Please enter valid place !");
             }
         } else {
-            player.getPlace().printExitsPlace();
+            player.getPlace().printExitPlaces();
         }
     }
 }
