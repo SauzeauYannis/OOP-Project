@@ -14,14 +14,14 @@ public class Karaoke extends Game {
     private final static int NB_TRY = 3;
 
     private final String[][] LYRICS = {
-            //{"I believe I can fly! I believe I can touch the ___!","sky"},
+            {"I believe I can fly! I believe I can touch the ___!","sky"},
             {"___ _ ____ meet you! And this is crazy!", "Hey i just"},
             {"Boom! Boom! Boom! Boom! I want you in my ____ !", "room"},
             {"Arouf Gangsta, _______ même dans ton trou !","partout"},
             {"Ta les boules, ta les _______, ta les crottes de nez qui pendent!", "glandes"},
             {"___ __ _____! RS4 gris nardo, bien sûr qu'ils m'ont raté ! (gros, bien sûr)", "oui ma gatée" },
             {"Jeunes renoies sauvages! Elles ont du ______ dans l'oesophage! (Bendo na bendo!)", "sperme"},
-            //{"Tape tape dans tes mains, ______ ____ ____!", "petit ours brun"}
+            {"Tape tape dans tes mains, ______ ____ ____!", "petit ours brun"}
     };
 
     private final String[] COMMENTARY = {
@@ -40,8 +40,8 @@ public class Karaoke extends Game {
 
     public Karaoke() {
         this("Karaoke",
-                "In this game, your music culture will be useful to find out the missing lyrics.\n" +
-                        "Type \"play\" to start the game.",
+                "| In this game, your music culture will be useful to find out the missing lyrics.\n" +
+                        "| Type \"play\" to start the game.",
                 new NPC("Kharra Okey"),
                 Level.PLATINUM);
     }
@@ -59,7 +59,7 @@ public class Karaoke extends Game {
         NPC npc = this.getNpc();
         Scanner scanner;
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
 
         npc.talk("Laddies and Gentlemen, welcome to my stand! " +
                 "Here your music culture would be roughly tested...\n" +
@@ -91,6 +91,7 @@ public class Karaoke extends Game {
             }
 
             npc.talk("What is your guess ?");
+            System.out.print(player);
             scanner = Gameplay.scanner;
 
             guess = scanner.nextLine();
@@ -100,12 +101,12 @@ public class Karaoke extends Game {
         }
         boolean win = this.checkWin(trials_left, word,npc);
 
-        System.out.println("--- Game ended ---");
-
         if(win)
             this.win(player);
         else
             this.lose(player);
+
+        System.out.println("\n--- Game finished ---\n");
     }
 
     public int randNum(int length){

@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class FindNumber extends Game {
 
     private final static int MAX_INT = 999;
-    private final static int STOP = -1;
     private final static int DEFAULT_ATTEMPT = 10;
 
     public FindNumber(String name, String description, NPC npc, Level level) {
@@ -20,8 +19,8 @@ public class FindNumber extends Game {
 
     public FindNumber() {
         this("Find Number",
-                "In this game you need to find a number think by the man who is in front of you.\n" +
-                "Type \"play\" to start the game",
+                "| In this game you need to find a number think by the man who is in front of you.\n" +
+                "| Type \"play\" to start the game.",
                 new NPC("Vincent Faygaf"),
                 Level.COPPER);
     }
@@ -35,16 +34,16 @@ public class FindNumber extends Game {
         int choose;
         int rand = (int)(Math.random()*(MAX_INT));
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
 
         this.getNpc().talk("You need to find my number between 0 and " +
                 MAX_INT +
                 " in " +
                 DEFAULT_ATTEMPT +
-                " attempts");
+                " attempts!");
 
         while (attempt > 0) {
-            System.out.print("-> Choose a number : ");
+            System.out.print(player);
 
             try {
                 choose = scanner.nextInt();
@@ -54,11 +53,11 @@ public class FindNumber extends Game {
                 this.getNpc().talk("You need to write a number!");
             }
 
-            if(choose > MAX_INT || choose < STOP) {
-                System.out.println("Please entry a valid number, or '-1' if you want to give up");
+            if(choose > MAX_INT || choose < 0) {
+                this.getNpc().talk("Please entry a valid number!");
             } else {
                 attempt--;
-                if (choose == STOP || attempt == 0) {
+                if (attempt == 0 && choose != rand) {
                     this.getNpc().talk("The number was " + rand);
                     this.lose(player);
                     break;
@@ -73,11 +72,13 @@ public class FindNumber extends Game {
                     }
                     this.getNpc().talk("You only have " +
                             attempt +
-                            " attempts left");
+                            " attempts left!");
                 }
             }
         }
 
         scanner.nextLine();
+
+        System.out.println("\n--- Game finished ---\n");
     }
 }

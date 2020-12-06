@@ -17,7 +17,7 @@ public class Player extends Character {
 	/// Constants ///
 
 	static final int MAX_HEALTH = 100;
-	static final int DEFAULT_MONEY = 25;
+	static final int DEFAULT_MONEY = 50;
 
 
 	/// Attributes ///
@@ -41,7 +41,7 @@ public class Player extends Character {
 		this.money = money;
 		this.items = new ArrayList<>();
 		this.isLose = false;
-		this.gamesFinished = 9;
+		this.gamesFinished = 0;
 	}
 
 	public Player(String name, Place p) {
@@ -104,8 +104,9 @@ public class Player extends Character {
 		this.health -= health;
 		if(this.health <= 0){
 			this.lose();
+		} else {
+			printHealth();
 		}
-		printHealth();
 	}
 
 	public void earnMoney(int money) {

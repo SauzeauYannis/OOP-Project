@@ -6,7 +6,6 @@ import code.character.Player;
 import code.enumeration.Level;
 import code.place.Game;
 
-import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -39,8 +38,9 @@ public class Riddle extends Game {
 
     public Riddle() {
         this("Riddle",
-                "| Here you need to answer to a riddle. You have only ??? attempts !\n" +
-                        "| Turn on your brain, and make it work hard !",
+                "| Here you need to answer to a riddle. You have only ??? attempts!\n" +
+                        "| Turn on your brain, and make it work hard!" +
+                        "| Type \"play\" to start the game.",
                 new NPC("Jean-Pierre Fougas"),
                 Level.GOLD);
     }
@@ -50,48 +50,48 @@ public class Riddle extends Game {
 
         Scanner scan = Gameplay.scanner;
         Random rand = new Random();
-        boolean stop = false;
         String[] riddle = RIDDLES[rand.nextInt(RIDDLES.length)];
         String answer;
 
         this.attempts = DEFAULT_ATTEMPTS;
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
 
-        this.getNpc().talk("Oh oh oh, greetings traveler ! I hope you aren't so tired to be arrived here !\n" +
-                "Because you will be probationned, by my self ! You should find the right answer to my riddle.\n" +
-                "But you know, I am a professional in this domain ! I have 50 years ... bla bla bla ...\n" +
-                "... but I am remember this guy, Ethoufet Kwallah, my first rival in ... bla bla bla ...\n" +
-                "... and this is how I am became what I am today ! Wait you're sleeping during my story ?!\n" +
-                "Ooooh, like each time. Ok so, are you ready ?\n");
+        this.getNpc().talk("Oh oh oh, greetings traveler! I hope you aren't so tired to be arrived here!\n" +
+                "Because you will be probationned, by my self! You should find the right answer to my riddle.\n" +
+                "But you know, I am a professional in this domain! I have 50 years... bla bla bla...\n" +
+                "... but I am remember this guy, Ethoufet Kwallah, my first rival in... bla bla bla...\n" +
+                "... and this is how I am became what I am today! Wait you're sleeping during my story?!\n" +
+                "Ooooh, like each time. Ok so, are you read?\n");
 
         while(attempts != 0){
 
-            System.out.print("-> Choice (yes or no) : ");
+            System.out.println("-> Choice (yes or no): ");
+            System.out.print(player);
             answer = scan.nextLine().toLowerCase();
 
             if(answer.equals("yes") || answer.equals("no")){
                 if(answer.equals("no")){
                     this.getNpc().talk("Oh...Ok...So, goodbye kid. I hope you will change\n" +
-                            " your opinion, and come back traveler ...");
+                            " your opinion, and come back traveler...");
                 }
                 else {
-                    this.getNpc().talk("Oh oh perfect ! Ok ok, let's begin\n" +
-                            "Sit down, calm down and listen :\n");
+                    this.getNpc().talk("Oh oh perfect! Ok ok, let's begin!\n" +
+                            "Sit down, calm down and listen:\n");
 
                     System.out.println("|[ " + riddle[0] + " ]|\n");
 
-                    this.getNpc().talk("So traveler, what is your answer ? O.O");
+                    this.getNpc().talk("So traveler, what is your answer? O.O");
 
                     while(attempts != 0){
-                        System.out.print("-> Answer : ");
-
+                        System.out.println("-> Answer: ");
+                        System.out.print(player);
                         answer = scan.nextLine().toLowerCase();
 
                         if(answer.equals(riddle[1].toLowerCase())){
                             this.getNpc().talk("INCREDIBLE TRAVELER !!!!\n" +
                                     "You are a true Hercule Kourge ! (it isn't Poirot ?)\n" +
-                                    "You have deserved your reward traveler ! Take it !");
+                                    "You have deserved your reward traveler! Take it!");
                             this.win(player);
                             attempts = 0;
                         }
@@ -122,5 +122,6 @@ public class Riddle extends Game {
             }
         }
 
+        System.out.println("\n--- Game finished ---\n");
     }
 }

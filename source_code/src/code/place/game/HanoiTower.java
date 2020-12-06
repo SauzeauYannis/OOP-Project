@@ -24,8 +24,8 @@ public class HanoiTower extends Game {
 
     public HanoiTower() {
         this("Hanoi tower",
-                "You are in front of a person who needs help to solve a puzzle.\n" +
-                        "Type \"play\" to help him.",
+                "| You are in front of a person who needs help to solve a puzzle.\n" +
+                        "| Type \"play\" to help him.",
                 new NPC("Edwardo Nald"),
                 Level.GOLD);
     }
@@ -37,7 +37,7 @@ public class HanoiTower extends Game {
         String command;
         String[] commandTab;
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
 
         npc.talk("Hi young man, I'm really annoyed by this problem, can you help me?\n" +
                 "I have three pillars in front of me and I have to pass the three discs from pillar A to pillar C using pillar B.\n" +
@@ -48,13 +48,14 @@ public class HanoiTower extends Game {
         initialize();
         printPillars();
 
-        npc.talk("To start type \"a c\" to move disc from A to C");
+        npc.talk("To start type \"a c\" to move disc from A to C.");
 
         System.out.print(player);
         command = scanner.nextLine();
 
         while (!command.equalsIgnoreCase("A C")) {
             System.out.println("Type \"a c\"");
+            System.out.print(player);
             command = scanner.nextLine();
         }
         commandTab = command.toLowerCase().split(" ");
@@ -68,6 +69,7 @@ public class HanoiTower extends Game {
 
             while (!checkCommand(command)) {
                 System.out.println("Unknown command, retry!");
+                System.out.print(player);
                 command = scanner.nextLine();
             }
 
@@ -89,8 +91,10 @@ public class HanoiTower extends Game {
             npc.talk("Very good, what is your next move?");
         }
 
-        npc.talk("Oh thanks a lot!");
+        npc.talk("Oh thanks a lot for helping me!");
         this.win(player);
+
+        System.out.println("\n--- Game finished ---\n");
     }
 
     private boolean checkCommand(String cmd) {

@@ -25,8 +25,8 @@ public class RockPaperScissors extends Game {
 
     public RockPaperScissors() {
         this("Rock paper scissors",
-                "In this game you need to beat at roshambo the man who is in front of you.\n" +
-                        "Type \"play\" to start the game",
+                "| In this game you need to beat at roshambo the man who is in front of you.\n" +
+                        "| Type \"play\" to start the game.",
                 new NPC("Pierre Dupuis"),
                 Level.COPPER);
     }
@@ -36,7 +36,7 @@ public class RockPaperScissors extends Game {
         playerPoint = 0;
         NPCPoint = 0;
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
         System.out.println("To play, type one of this proposition :");
         for (String proposition: ROSHAMBO) {
             System.out.println("-" + proposition);
@@ -44,12 +44,12 @@ public class RockPaperScissors extends Game {
         System.out.println("Good luck!");
 
         this.getNpc().talk("I am unbeatable in that game!\n" +
-                "I take you in 3 rounds");
+                "I take you in 3 rounds!");
 
         while (playerPoint < 3 && NPCPoint < 3) {
             this.getNpc().talk("\nRo..\nSham..\nBo!");
 
-            String playerTurn = getPlayerTurn();
+            String playerTurn = getPlayerTurn(player);
             int NPCTurn = getNPCTurn();
 
             checkWinner(playerTurn, NPCTurn);
@@ -65,14 +65,23 @@ public class RockPaperScissors extends Game {
         }
 
         Gameplay.scanner.nextLine();
+
+        System.out.println("\n--- Game finished ---\n");
     }
 
     private void printPoint(String name) {
+        int point;
+        if (name.equals(this.getNpc().getName())) {
+            point = NPCPoint;
+        } else {
+            point = playerPoint;
+        }
+
         System.out.println("-" +
                 name +
                 " : " +
-                playerPoint +
-                " points");
+                point +
+                " points.");
     }
 
     private void checkWinner(String playerTurn, int NPCTurn) {
@@ -96,12 +105,16 @@ public class RockPaperScissors extends Game {
         return rand;
     }
 
-    private String getPlayerTurn() {
+    private String getPlayerTurn(Player player) {
         Scanner scanner = Gameplay.scanner;
 
+        System.out.print(player);
         String playerTurn = scanner.next();
 
         while (!checkPlayerTurn(playerTurn)) {
+            this.getNpc().talk("You haven't the right to use this!" +
+                    "\nRo..\nSham..\nBo!");
+            System.out.print(player);
             playerTurn = scanner.next();
         }
 

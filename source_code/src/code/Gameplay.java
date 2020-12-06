@@ -17,12 +17,12 @@ public class Gameplay {
 
 		List<Place> placeList = Place.generateAllPlaces();
 
-		Player player = new Player("Benjapied Tablenuit", placeList.get(0), 1000);
+		Player player = new Player("Benjapied Tablenuit", placeList.get(0));
 
 		String[] commandTab;
 
 		player.getPlace().getNpc().talk("Welcome to Gypsy's Carnival!\n" +
-				"Type \"help\" to have the commands list");
+				"Type \"help\" to have the commands list.");
 
 		player.printHealth();
 		player.printMoney();
@@ -37,5 +37,7 @@ public class Gameplay {
 
 			command.executeCommand(player, commandTab);
 		}
+
+		System.out.println("| Oh no you've have lose too much calories you can't continue!");
 	}
 }

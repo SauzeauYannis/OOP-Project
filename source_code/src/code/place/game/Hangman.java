@@ -49,8 +49,8 @@ public class Hangman extends Game {
 
     public Hangman() {
         this("Hangman",
-                "In this game, you have to found the word the stand owner is thinking of by giving him letters.\n" +
-                        "Type \"play\" to start the game.",
+                "| In this game, you have to found the word the stand owner is thinking of by giving him letters.\n" +
+                        "| Type \"play\" to start the game.",
                 new NPC("Marina Lependu"),
                 Level.PLATINUM);
     }
@@ -64,7 +64,7 @@ public class Hangman extends Game {
         NPC npc = this.getNpc();
         Scanner scanner;
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
 
         npc.talk("ZZzzzZZZ... Wha... Sh... Hello! ^^'\n" +
                 "I wasn't sleeping... Well, I'm Mrs.Lependu and welcome to my stand! \n" +
@@ -98,7 +98,8 @@ public class Hangman extends Game {
             if (trials_left != NB_TRY)
                 npc.talk("You have " + trials_left + " guesses left.");
 
-            npc.talk("What is your guess ?");
+            npc.talk("What is your guess?");
+            System.out.print(player);
             scanner = Gameplay.scanner;
 
             guess = scanner.nextLine();
@@ -140,13 +141,14 @@ public class Hangman extends Game {
 
         boolean win = this.checkWin(trials_left, wordToFind,trials,npc);
 
-        System.out.println("--- Game ended ---");
-
-        if(win)
+        if(win) {
             this.win(player);
-        else
+        }
+        else {
             this.lose(player);
+        }
 
+        System.out.println("\n--- Game finished ---\n");
     }
 
     public boolean isLetterFound(String lettersFound, char letter, NPC npc){

@@ -14,7 +14,7 @@ public class QTE extends Game {
     private final String[] NPC_TALK = {
             "Start slowly with this first punch!\n",
             "Okay now faster with this second punch!\n",
-            "You're fast but you can't be more fast for this last punch\n"
+            "You're fast but you can't be more fast for this last punch!\n"
     };
     private final String[] ROUND = {
             "You drink wine i drink the blood of your dead",
@@ -33,8 +33,8 @@ public class QTE extends Game {
 
     public QTE() {
         this("QTE",
-                "You are in front of the faster gipsy's rapper.\n" +
-                "Type \"play\" to start the game.",
+                "| You are in front of the faster gipsy's rapper.\n" +
+                "| Type \"play\" to start the game.",
                 new NPC("Ethoufet Kwallah"),
                 Level.COPPER);
     }
@@ -44,10 +44,11 @@ public class QTE extends Game {
         NPC npc = this.getNpc();
         int round = 0;
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
+
         npc.talk("Yo! Welcome to my stand bro!\n" +
                 "I am the fastest rapper of this carnival!\n" +
-                "Try to repeat that I say in a limited time");
+                "Try to repeat that I say in a limited time!");
 
         while (round < 3) {
             npc.talk(NPC_TALK[round] +
@@ -63,6 +64,7 @@ public class QTE extends Game {
             npc.talk(ROUND[round]);
 
             Date start = new Date();
+            System.out.print(player);
             String playerSentence = Gameplay.scanner.nextLine();
             Date end = new Date();
 
@@ -87,5 +89,7 @@ public class QTE extends Game {
         }
 
         this.win(player);
+
+        System.out.println("\n--- Game finished ---\n");
     }
 }

@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Questions extends Game {
 
     private final static int NB_ROUND = 5; //Must be <= nb of questions
-    private final int DEFAULT_REWARD = 5;
+    private final static int DEFAULT_REWARD = 5;
 
     // Here, correct answers are always put in index 1
     private final String[][] QUESTIONS_EASY = {
@@ -42,8 +42,8 @@ public class Questions extends Game {
 
     public Questions() {
         this("Questions",
-                "In this game, your culture will be useful to find out the correct answer to questions.\n"  +
-                        "Type \"play\" to start the game.",
+                "| In this game, your culture will be useful to find out the correct answer to questions.\n"  +
+                        "| Type \"play\" to start the game.",
                 new NPC("Samuel Outienne"),
                 Level.PLATINUM);
     }
@@ -61,7 +61,7 @@ public class Questions extends Game {
         NPC npc = this.getNpc();
         Scanner scanner;
 
-        System.out.println("--- Game launched ---");
+        System.out.println("\n--- Game launched ---\n");
 
         npc.talk("Laddies and Gentlemen, welcome to my stand! " +
                 "Here your culture would be roughly tested...\n" +
@@ -70,7 +70,7 @@ public class Questions extends Game {
         );
 
         // To chose the level so to chose the string array we will work with
-        String[][] QUESTIONS = getQUESTIONS(npc);
+        String[][] QUESTIONS = getQUESTIONS(npc, player);
 
         npc.talk("Right. Get ready, get set, go!");
 
@@ -99,7 +99,7 @@ public class Questions extends Game {
 
             // Asks if the player wants to continue
             if (round > 1) {
-                stop = wantStop(jackpot,npc);
+                stop = wantStop(jackpot, npc, player);
             }
 
             if (!stop) {
@@ -115,6 +115,7 @@ public class Questions extends Game {
                 while ((answer!=1) && (answer!=2) && (answer!=3) && (answer!=4)) {
                     System.out.println("\t(TAPE: \"1\", \"2\", \"3\" or \"4\")");
                     scanner = Gameplay.scanner;
+                    System.out.print(player);
                     answer = scanner.nextInt();
                 }
 
@@ -134,8 +135,6 @@ public class Questions extends Game {
 
         endGame(lose,round,npc);
 
-        System.out.println("--- Game ended ---");
-
         if (lose) {
             this.lose(player);
         } else {
@@ -143,6 +142,8 @@ public class Questions extends Game {
         }
 
         Gameplay.scanner.nextLine();
+
+        System.out.println("\n--- Game finished ---\n");
     }
 
     public int randNum(int length){
@@ -150,7 +151,7 @@ public class Questions extends Game {
         return rd.nextInt(length);
     }
 
-    private boolean wantStop(int jackpot, NPC npc) {
+    private boolean wantStop(int jackpot, NPC npc, Player player) {
         Scanner scanner = Gameplay.scanner;
         scanner.nextLine();
         boolean stop = false;
@@ -161,6 +162,7 @@ public class Questions extends Game {
 
         while ((response.compareTo("YES")!=0) && (response.compareTo("NO")!=0)) {
            System.out.println("\t(TAPE: \"yes\" or \"no\")");
+            System.out.print(player);
            response = scanner.nextLine();
            response = response.toUpperCase();
         }
@@ -185,7 +187,7 @@ public class Questions extends Game {
         return found;
     }
 
-    private String[][] getQUESTIONS(NPC npc){
+    private String[][] getQUESTIONS(NPC npc, Player player){
         Scanner scanner;
 
         String lvl_chosen = "";
@@ -194,6 +196,7 @@ public class Questions extends Game {
         while ((lvl_chosen.compareTo("EASY")!=0) && (lvl_chosen.compareTo("DIFFICULT")!=0)) {
             System.out.println("\t(TAPE: \"easy\" or \"difficult\")");
             scanner = Gameplay.scanner;
+            System.out.print(player);
             lvl_chosen = scanner.nextLine();
             lvl_chosen = lvl_chosen.toUpperCase();
         }
@@ -202,9 +205,6 @@ public class Questions extends Game {
             npc.talk("You choose \"easy\". Well, easily but surely!");
             QUESTIONS = new String[getLengthQUESTEASY()][];
             cloneEASY(QUESTIONS,getLengthQUESTEASY());
-            /*for (int i = 0; i < getLengthQUESTEASY(); i++) {
-                QUESTIONS[i] = QUESTIONS_EASY[i].clone();
-            }*/
         } else {
             npc.talk("You choose \"difficult\". Such a warrior!");
             QUESTIONS = new String[getLengthQUESTDIFF()][5];
@@ -271,7 +271,6 @@ public class Questions extends Game {
     private void cloneDIFFICULT(String[][] target, int length) {
         for (int i = 0; i < length; i++) {
             target[i] = QUESTIONS_DIFFICULT[i].clone();
-            //System.arraycopy(QUESTIONS_DIFFICULT[i], 0, target[i], 0, QUESTIONS_DIFFICULT[i].length);
         }
     }
 

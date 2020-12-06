@@ -7,9 +7,9 @@ import code.enumeration.Level;
 public abstract class Game extends Place {
 
 	public static int NB_GAMES = 0;
-	private static final int COPPER_REWARD = 10;
-	private static final int GOLD_REWARD = 20;
-	private static final int PLATINUM_REWARD = 30;
+	private static final int COPPER_REWARD = 25;
+	private static final int GOLD_REWARD = 50;
+	private static final int PLATINUM_REWARD = 100;
 
 	private Level level;
 	private int reward;
@@ -45,11 +45,11 @@ public abstract class Game extends Place {
 	public void win(Player player, int money) {
 		System.out.println("| You win a " +
 				this.level.toString().toLowerCase() +
-				" game");
+				" game!");
 
 		System.out.println("| Here are " +
 				money +
-				" coins to reward you");
+				" coins to reward you!");
 
 		player.earnMoney(money);
 
@@ -65,10 +65,11 @@ public abstract class Game extends Place {
 	}
 
 	public void lose(Player player) {
+		int losingCalories = 10 + (int)(Math.random()*10);
 		System.out.println("| You lose a " +
 				this.level.toString().toLowerCase() +
-				" game");
-		System.out.println("| You lose 10 calorie");
-		player.decreaseHealth(10);
+				" game!");
+		System.out.println("| You lose " + losingCalories + "calorie!");
+		player.decreaseHealth(losingCalories);
 	}
 }

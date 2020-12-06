@@ -138,8 +138,8 @@ public class Place implements Describable {
 		placeList.add(new RockPaperScissors());
 
 		// Gold games
-		placeList.add(new Riddle());
 		placeList.add(new HanoiTower());
+		placeList.add(new Riddle());
 		placeList.add(new TicTacToe());
 
 		// Platinum games
