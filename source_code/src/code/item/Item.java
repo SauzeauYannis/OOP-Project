@@ -45,7 +45,7 @@ public abstract class Item implements Describable {
 	public abstract void use(Player player);
 
 	public void printItem() {
-		System.out.println("-" +
+		System.out.println("- " +
 				this.getName() +
 				" " +
 				this.getPrice() +

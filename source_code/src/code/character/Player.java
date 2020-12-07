@@ -198,7 +198,7 @@ public class Player extends Character {
 
 			// Display all items in the inventory
 			for (Item item: this.items) {
-				System.out.println("-" + item.getName());
+				System.out.println("| - " + item.getName());
 			}
 		}
 	}
