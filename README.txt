@@ -55,7 +55,7 @@ where there is the file gypsy's_carnival.jar
 
 - The game is entirely on command line
 
-- You have several orders, each of which has its own specificities
+- You have several orders, each has its own specificities
 
 - To display the commands type "help" and follow the instructions.
 
