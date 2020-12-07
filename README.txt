@@ -1,6 +1,7 @@
 --------------------------- Version Française --------------------------
 
 
+
 <=====================> Pour lancer le programme <=====================>
 
 - Installer java => 
@@ -17,7 +18,7 @@ où il y a le fichier gypsy's_carnival.jar
 - Jouer
 
 
-<==========================> Pour jouer : <============================>
+<==========================> Pour jouer <=============================>
 
 - Le jeu est entièrement en ligne de commande
 
@@ -29,7 +30,9 @@ où il y a le fichier gypsy's_carnival.jar
 propriétaires de chaque stand du carnavale
 
 
+
 --------------------------- English Version ---------------------------
+
 
 
 <======================> To launch the program <======================>
@@ -48,7 +51,7 @@ where there is the file gypsy's_carnival.jar
 - Play
 
 
-<============================> To play : <============================> 
+<============================> To play <=============================> 
 
 - The game is entirely on command line
 
