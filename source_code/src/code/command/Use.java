@@ -8,7 +8,7 @@ public class Use extends Command {
 
     public Use() {
         super("use",
-                "use [object] : To use the object selected");
+                "| use <object> : To use the object selected");
     }
 
     @Override
@@ -21,10 +21,10 @@ public class Use extends Command {
                     return;
                 }
             }
-            System.out.println("You have not " + item + " in your inventory");
+            System.out.println("| You have not " + item + " in your inventory");
         } else {
-            System.out.println("You need to have a 2nd argument.\n" +
-                    "Type \"help use\" for more information.");
+            System.out.println("| ou need to have a 2nd argument.\n" +
+                    "| Type \"help use\" for more information.");
         }
     }
 }

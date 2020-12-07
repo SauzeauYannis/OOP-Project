@@ -7,7 +7,7 @@ public class Go extends Command {
 
     public Go() {
         super("go",
-                "go [location] : To go in the location specified by the command");
+                "| go <location> : To go in the location specified by the command");
     }
 
     @Override

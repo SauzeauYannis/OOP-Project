@@ -10,7 +10,7 @@ public class Look extends Command {
 
     public Look() {
         super("look",
-                "look [item] : To Read the description of the object or the place description if you have not specified an object");
+                "| look <item> : To Read the description of the object or the place description if you have not specified an object");
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Look extends Command {
                         return;
                     }
                 }
-                System.out.println("This item is not in the shop");
+                System.out.println("| This item is not in the shop");
             } else {
                 for (Item playerItem: player.getItems()) {
                     if (playerItem.getName().split(" ")[0].toLowerCase().equals(item)) {
@@ -36,7 +36,7 @@ public class Look extends Command {
                         return;
                     }
                 }
-                System.out.println("This item is not in your inventory");
+                System.out.println("| This item is not in your inventory");
             }
         }
     }

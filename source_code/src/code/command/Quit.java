@@ -7,7 +7,7 @@ public class Quit extends Command {
 
     public Quit() {
         super("quit",
-                "quit : To quit the game");
+                "| quit : To quit the game");
     }
 
     @Override
