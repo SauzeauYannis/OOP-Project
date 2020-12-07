@@ -11,6 +11,10 @@ import java.util.Stack;
 
 public class HanoiTower extends Game {
 
+    /*****************************
+     * Attributes and constructor
+     *****************************/
+
     private final static int DISK_NUMBER = 3;
 
     private String[][] game;
@@ -18,17 +22,17 @@ public class HanoiTower extends Game {
     private Stack<Integer> bPillar;
     private Stack<Integer> cPillar;
 
-    public HanoiTower(String name, String description, NPC npc, Level level) {
-        super(name, description, npc, level);
-    }
-
     public HanoiTower() {
-        this("Hanoi tower",
+        super("Hanoi tower",
                 "| You are in front of a person who needs help to solve a puzzle.\n" +
                         "| Type \"play\" to help him.",
                 new NPC("Edwardo Nald"),
                 Level.GOLD);
     }
+
+    /**********
+     * Methods
+     **********/
 
     @Override
     public void play(Player player) {

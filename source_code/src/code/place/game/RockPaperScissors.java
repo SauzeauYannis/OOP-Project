@@ -10,6 +10,10 @@ import java.util.Scanner;
 
 public class RockPaperScissors extends Game {
 
+    /*****************************
+     * Attributes and constructor
+     *****************************/
+
     private final String[] ROSHAMBO = {
             "rock",
             "paper",
@@ -19,17 +23,17 @@ public class RockPaperScissors extends Game {
     private int playerPoint;
     private int NPCPoint;
 
-    public RockPaperScissors(String name, String description, NPC npc, Level level) {
-        super(name, description, npc, level);
-    }
-
     public RockPaperScissors() {
-        this("Rock paper scissors",
+        super("Rock paper scissors",
                 "| In this game you need to beat at roshambo the man who is in front of you.\n" +
                         "| Type \"play\" to start the game.",
                 new NPC("Pierre Dupuis"),
                 Level.COPPER);
     }
+
+    /**********
+     * Methods
+     **********/
 
     @Override
     public void play(Player player) {

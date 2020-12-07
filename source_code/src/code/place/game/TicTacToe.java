@@ -220,7 +220,7 @@ public class TicTacToe extends Game {
         int j;
 
         System.out.println("\n|| Your turn ||\n" +
-                "Type a sequence like this: \"2 2\", to put your symbol to the case (2,2)");
+                "| Type a sequence like this: \"2 2\", to put your symbol to the case (2,2)");
 
         // While stop equal to false
         while(!stop){
