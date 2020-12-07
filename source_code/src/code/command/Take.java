@@ -23,6 +23,7 @@ public class Take extends Command {
 
     @Override
     public void executeCommand(Player player, String[] args) {
+        // Check if a 2nd argument is past
         if (args.length > 1) {
             Place place = player.getPlace();
             if (place instanceof Shop) {
@@ -37,7 +38,7 @@ public class Take extends Command {
             } else {
                 System.out.println("| You need to go in a shop to take items.");
             }
-        } else {
+        } else { // If there is only one argument
             System.out.println("| You need to have a 2nd argument.\n" +
                     "| Type \"help take\" for more information.");
         }

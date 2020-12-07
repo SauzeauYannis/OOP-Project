@@ -22,6 +22,7 @@ public class Help extends Command{
     @Override
     public void executeCommand(Player player, String[] args) {
         List<Command> commandList = Command.commandList;
+        // Check if a 2nd argument is past
         if (args.length > 1) {
             for (Command command: commandList) {
                 if (command.getCommand().equals(args[1].toLowerCase())) {
@@ -29,7 +30,7 @@ public class Help extends Command{
                     break;
                 }
             }
-        } else {
+        } else { // If there is only one argument
             System.out.println("| Command list :");
             for (Command command: commandList) {
                 System.out.println("| - " + command.getCommand());

@@ -81,7 +81,7 @@ public class Unlock extends Command{
             // If the second argument is equal to the place name associated to the exit
             System.out.println("| Unknown place.\n" +
                     "| Type \"go\" to have the list of place you can go.");
-        } else {
+        } else { // If there is only one argument
             System.out.println("| You need to have a 2nd argument.\n" +
                     "| Type \"help unlock\" for more information.");
         }

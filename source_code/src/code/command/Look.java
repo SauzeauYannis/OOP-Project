@@ -23,10 +23,11 @@ public class Look extends Command {
 
     @Override
     public void executeCommand(Player player, String[] args) {
+        // Check if a 2nd argument is past
         Place playerPlace = player.getPlace();
         if (args.length == 1) {
             playerPlace.readDescription();
-        } else {
+        } else { // If there is only one argument
             String item = args[1].toLowerCase();
             if (playerPlace instanceof Shop) {
                 Shop shop = (Shop) playerPlace;
