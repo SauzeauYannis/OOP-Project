@@ -38,6 +38,8 @@ public class Take extends Command {
                         return;
                     }
                 }
+                // If the item is not in the shop
+                System.out.println("| This item is not in the shop");
             } else { // If player is not in a shop
                 System.out.println("| You need to go in a shop to take items.");
             }

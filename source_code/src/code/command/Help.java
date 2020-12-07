@@ -24,13 +24,17 @@ public class Help extends Command{
         List<Command> commandList = Command.commandList;
         // Check if a 2nd argument is past
         if (args.length > 1) {
+            // For each command available
             for (Command command: commandList) {
+                // If command equals the 2nd argument
                 if (command.getCommand().equals(args[1].toLowerCase())) {
+                    // Print command help
                     command.printHelp();
                     break;
                 }
             }
         } else { // If there is only one argument
+            // Print the command list
             System.out.println("| Command list :");
             for (Command command: commandList) {
                 System.out.println("| - " + command.getCommand());
