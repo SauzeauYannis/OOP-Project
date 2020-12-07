@@ -28,49 +28,59 @@ public class Unlock extends Command{
 
     @Override
     public void executeCommand(Player player, String[] args) {
+        // Check if a 2nd argument is past
         if (args.length > 1) {
+            // Get exit list of the player place
             List<Exit> exitList = player.getPlace().getExitList();
-            Exit lastExit = exitList.get(exitList.size()-1);
-            Place nextPlace = lastExit.getPlace();
-            if (nextPlace instanceof Game) {
-                for (Exit exit: exitList) {
-                    if (exit.getPlace().getName().split(" ")[0].equalsIgnoreCase(args[1])) {
-                        if (exit.isLock()) {
-                            Game game = (Game) exit.getPlace();
+            // For each exit in the exit list of the place
+            for (Exit exit: exitList) {
+                // If the second argument is equal to the place name associated to the exit
+                if (Interpreter.getFirstWord(exit.getPlace().getName()).equalsIgnoreCase(args[1])) {
+                    // If exit is lock
+                    if (exit.isLock()) {
+                        Place place = exit.getPlace();
+                        // If place is a game
+                        if (place instanceof Game) {
+                            Game game = (Game) place;
+                            // Check if the player has a key
                             for (Item item: player.getItems()) {
+                                // If player has a key
                                 if (item instanceof Key) {
                                     Key key = (Key) item;
+                                    // If the key level is equals to the game level
                                     if (key.getLevel() == game.getLevel()) {
+                                        // Unlock the exit and remove the key of the player inventory
                                         exit.unlock();
                                         player.removeItem(item);
+                                        // Stop the function
                                         return;
                                     }
                                 }
                             }
+                            // If the player hasn't a key of the same level of the game
                             System.out.println("| You haven't a " + game.getLevel().toString() + " key.\n" +
                                     "| Go to the shop to buy one.");
-                        } else {
-                            System.out.println("| This game is always unlock!");
+                            return;
+                        } else if (place instanceof Ending) { // Else if a place is a Ending
+                            // If player has finished all the games
+                            if (player.getGamesFinished() == Game.NB_GAMES) {
+                                // Unlock the exit
+                                exit.unlock();
+                                System.out.println("| Congratulations, you've unlocked all the locations.");
+                            } else { // If player has not finished all the games
+                                System.out.println("| This place is unlockable only when you have won all the games.");
+                            }
+                            return;
                         }
+                    } else { // If the exit is not lock
+                        System.out.println("| This place is always unlock!");
                         return;
                     }
                 }
-                System.out.println("| Unknown game.\n" +
-                        "| Type \"go\" to have the list of game you can unlock.");
-            } else if (nextPlace instanceof Ending) {
-                if (lastExit.isLock()) {
-                    if (player.getGamesFinished() == Game.NB_GAMES) {
-                        lastExit.unlock();
-                        System.out.println("| Congratulations, you've unlocked all the locations.");
-                    } else {
-                        System.out.println("| This place is unlockable only when you have won all the games.");
-                    }
-                } else {
-                    System.out.println("| This place is always unlock!");
-                }
-            } else {
-                System.out.println("| You need to be in front of the game to unlock it.");
             }
+            // If the second argument is equal to the place name associated to the exit
+            System.out.println("| Unknown place.\n" +
+                    "| Type \"go\" to have the list of place you can go.");
         } else {
             System.out.println("| You need to have a 2nd argument.\n" +
                     "| Type \"help unlock\" for more information.");
