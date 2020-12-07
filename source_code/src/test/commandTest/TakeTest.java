@@ -1,4 +1,4 @@
-package code.command;
+package test.commandTest;
 
 import org.junit.Test;
 

@@ -1,10 +1,10 @@
-package code.command;
+package test.commandTest;
 
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UseTest {
+public class UnlockTest {
 
     @Test
     public void executeCommand() {
