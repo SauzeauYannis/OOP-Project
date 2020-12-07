@@ -49,6 +49,7 @@ public class FindNumber extends Game {
 
             System.out.print(player);
 
+            // Check if the player choose only a number
             try {
                 chosenNumber = scanner.nextInt();
             } catch (Exception exception) {
@@ -57,15 +58,20 @@ public class FindNumber extends Game {
                 continue;
             }
 
+            // Check if the player type a valid number
             if(chosenNumber > MAX_NUMBER || chosenNumber < 0) {
                 this.getNpc().talk("Please entry a valid number!");
             } else {
                 attempt--;
+
+                // The player has abandoned
                 if (attempt == 0 && chosenNumber != rand) {
                     this.getNpc().talk("The number was " + rand);
                     this.lose(player);
                     break;
                 } else {
+
+                    //Check where is the number chosen
                     if (rand > chosenNumber) {
                         this.getNpc().talk("It's more!");
                     } else if (rand < chosenNumber) {
@@ -81,6 +87,7 @@ public class FindNumber extends Game {
             }
         }
 
+        // Prevent a bug at the end of the game
         scanner.nextLine();
 
         System.out.println("\n--- Game finished ---\n");
