@@ -14,7 +14,7 @@ public class FoodTest {
     Food food;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         food = new Food("FoodTest", 10, 5);
     }
 
@@ -26,6 +26,6 @@ public class FoodTest {
         food.use(player);
 
         assertFalse(player.getItems().contains(food));
-        assertEquals(95,player.getHealth);
+        assertEquals(95,player.getHealth());
     }
 }
