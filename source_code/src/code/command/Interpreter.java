@@ -2,13 +2,16 @@ package code.command;
 
 import code.character.Player;
 
-import java.util.List;
-
 // This class is an abstract class
 public abstract class Interpreter {
 
-    // Static method to interpret
-    public static Command interpretCommand(String command) {
+    public static void interpretCommand(Player player, String command) {
+        Command cmd = getCommand(command);
+        cmd.executeCommand(player, command.split(" "));
+    }
+
+    // Static method to interpret a command
+    private static Command getCommand(String command) {
 
         String mainCommand = getFirstWord(command);
 
@@ -27,6 +30,7 @@ public abstract class Interpreter {
         };
     }
 
+    // Static method to get the first word of a sentence in lower case
     public static String getFirstWord(String sentence) {
         return sentence.split(" ")[0].toLowerCase();
     }
