@@ -1,16 +1,23 @@
 package code.command;
 
-import code.Gameplay;
 import code.character.Player;
 import java.util.List;
 
 // This class is a subclass of Command
 public class Help extends Command{
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Help() {
         super("help",
-                "help [command] : To have the list of the available command or to have an help on a specified command");
+                "| help <command> : To have the list of the available command or to have an help on a specified command");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {
@@ -23,11 +30,11 @@ public class Help extends Command{
                 }
             }
         } else {
-            System.out.println("Command list :");
+            System.out.println("| Command list :");
             for (Command command: commandList) {
-                System.out.println("- " + command.getCommand());
+                System.out.println("| - " + command.getCommand());
             }
-            System.out.println("Type help [command] to more information");
+            System.out.println("| Type \"help <command>\" to more information");
         }
     }
 }

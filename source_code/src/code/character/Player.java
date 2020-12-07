@@ -64,6 +64,10 @@ public class Player extends Character {
 		return this.items;
 	}
 
+	public int getHealth(){
+		return this.health;
+	}
+
 	public int getGamesFinished(){
 		return this.gamesFinished;
 	}
@@ -160,7 +164,7 @@ public class Player extends Character {
 	// Display the player's health remain
 	public void printHealth() {
 		System.out.println("| You have " +
-				this.health +
+				this.getHealth() +
 				"/" +
 				MAX_HEALTH +
 				" calories.");
@@ -194,7 +198,7 @@ public class Player extends Character {
 
 			// Display all items in the inventory
 			for (Item item: this.items) {
-				System.out.println("-" + item.getName());
+				System.out.println("| - " + item.getName());
 			}
 		}
 	}
@@ -203,7 +207,7 @@ public class Player extends Character {
 	// Others //
 	////////////
 
-	// Check if the place is valid, and change the player's postion
+	// Check if the place is valid, and change the player's position
 	public boolean goToPlace(String location) {
 
 		// For each exit in the list

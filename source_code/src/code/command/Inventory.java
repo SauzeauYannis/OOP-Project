@@ -6,7 +6,7 @@ import code.character.Player;
 public class Inventory extends Command{
     public Inventory() {
         super("inventory",
-                "inventory : Print your inventory");
+                "| inventory : Print your inventory");
     }
 
     @Override

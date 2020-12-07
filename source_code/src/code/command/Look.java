@@ -8,10 +8,18 @@ import code.place.Shop;
 // This class is a subclass of Command
 public class Look extends Command {
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Look() {
         super("look",
-                "look [item] : To Read the description of the object or the place description if you have not specified an object");
+                "| look <item> : To Read the description of the object or the place description if you have not specified an object");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {
@@ -28,7 +36,7 @@ public class Look extends Command {
                         return;
                     }
                 }
-                System.out.println("This item is not in the shop");
+                System.out.println("| This item is not in the shop");
             } else {
                 for (Item playerItem: player.getItems()) {
                     if (playerItem.getName().split(" ")[0].toLowerCase().equals(item)) {
@@ -36,7 +44,7 @@ public class Look extends Command {
                         return;
                     }
                 }
-                System.out.println("This item is not in your inventory");
+                System.out.println("| This item is not in your inventory");
             }
         }
     }

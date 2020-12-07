@@ -5,10 +5,18 @@ import code.character.Player;
 // This class is a subclass of Command
 public class Go extends Command {
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Go() {
         super("go",
-                "go [location] : To go in the location specified by the command");
+                "| go <location> : To go in the location specified by the command");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {

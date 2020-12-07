@@ -15,7 +15,7 @@ public class FoodTest {
 
     @Before
     public void setUp() throws Exception {
-        food = new Food("FoodTest",10,5);
+        food = new Food("FoodTest", 10, 5);
     }
 
     @Test

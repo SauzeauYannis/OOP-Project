@@ -1,5 +1,4 @@
 package test.itemTest;
-
 import code.character.Player;
 import code.enumeration.Level;
 import code.exit.Exit;
@@ -7,8 +6,8 @@ import code.item.Key;
 import code.place.Place;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.List;
+
 
 import static org.junit.Assert.*;
 
