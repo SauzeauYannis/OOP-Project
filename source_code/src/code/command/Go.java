@@ -20,11 +20,13 @@ public class Go extends Command {
 
     @Override
     public void executeCommand(Player player, String[] args) {
+        // Check if a 2nd argument is past
         if (args.length > 1) {
+            // If player has enter an invalid place
             if (!player.goToPlace(args[1].toLowerCase())) {
                 System.out.println("Please enter valid place !");
             }
-        } else {
+        } else { // If there is only one argument
             player.getPlace().printExitPlaces();
         }
     }
