@@ -26,16 +26,19 @@ public class Take extends Command {
         // Check if a 2nd argument is past
         if (args.length > 1) {
             Place place = player.getPlace();
+            // If the player is in a shop
             if (place instanceof Shop) {
                 String item = args[1].toLowerCase();
                 Shop shop = (Shop) place;
+                // For each item available in the shop
                 for (Item shopItem: shop.getItemList()) {
-                    if (shopItem.getName().split(" ")[0].toLowerCase().equals(item)) {
+                    // If the 2nd argument is equal to an item in the shop
+                    if (Interpreter.getFirstWord(shopItem.getName()).equalsIgnoreCase(item)) {
                         player.addItem(shopItem);
                         return;
                     }
                 }
-            } else {
+            } else { // If player is not in a shop
                 System.out.println("| You need to go in a shop to take items.");
             }
         } else { // If there is only one argument
