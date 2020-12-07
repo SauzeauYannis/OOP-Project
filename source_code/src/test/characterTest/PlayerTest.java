@@ -7,6 +7,7 @@ import code.exit.Exit;
 import code.item.Food;
 import code.item.Item;
 import code.item.Key;
+import code.place.Ending;
 import code.place.Place;
 import code.place.Shop;
 import code.place.game.TicTacToe;
@@ -27,6 +28,7 @@ public class PlayerTest {
     TicTacToe game;
     Place place;
     Shop shop;
+    Ending ending;
 
     Food chocoPipe;
     Key chocoKey;
@@ -44,8 +46,11 @@ public class PlayerTest {
                 "NULL",
                 new NPC("NPC shop"));
 
+        ending = new Ending();
+
         place.addExit(new Exit(game, true));
         place.addExit(new Exit(shop, false));
+        place.addExit(new Exit(ending, true));
 
         game.addExit(new Exit(place, false));
         shop.addExit(new Exit(place, false));
@@ -126,25 +131,85 @@ public class PlayerTest {
 
     @Test
     public void earnMoney() {
+        List<Item> li1 = new ArrayList<>();
+        List<Item> li2 = new ArrayList<>();
+        li1.add(chocoPipe);
+
+        player1.earnMoney(10);
+
+        player1.addItem(chocoPipe);
+        player2.addItem(chocoPipe);
+
+        assertEquals(player1.getItems(), li1);
+        assertEquals(player2.getItems(), li2);
     }
 
     @Test
     public void loseMoney() {
+        List<Item> li1 = new ArrayList<>();
+        List<Item> li2 = new ArrayList<>();
+        li2.add(chocoKey);
+
+        player1.loseMoney(30);
+
+        player1.addItem(chocoKey);
+        player2.addItem(chocoKey);
+
+        assertEquals(player1.getItems(), li1);
+        assertEquals(player2.getItems(), li2);
     }
 
     @Test
     public void addItem() {
+        List<Item> li1 = new ArrayList<>();
+        List<Item> li2 = new ArrayList<>();
+        li2.add(chocoKey);
+
+        player1.addItem(chocoPipe);
+        player2.addItem(chocoKey);
+
+        assertEquals(player1.getItems(), li1);
+        assertEquals(player2.getItems(), li2);
+        assertSame(player1.getItems(), player3.getItems());
     }
 
     @Test
     public void removeItem() {
+        List<Item> li1 = new ArrayList<>();
+        List<Item> li2 = new ArrayList<>();
+        li1.add(chocoKey);
+
+        player1.addItem(chocoKey);
+        assertEquals(player1.getItems(), li1);
+
+        player1.removeItem(chocoKey);
+        assertEquals(player1.getItems(), li2);
+
     }
 
     @Test
     public void increaseGameFinished() {
+        player1.increaseGameFinished();
+        assertEquals(player1.getGamesFinished(), 1);
     }
 
     @Test
     public void goToPlace() {
+
+        player1.goToPlace("shop");
+        assertSame(player1.getPlace(), shop);
+
+        player1.goToPlace("wrong");
+        assertSame(player1.getPlace(), shop);
+
+        player1.goToPlace("place");
+        player2.goToPlace("place");
+        assertSame(player1.getPlace(), player2.getPlace());
+
+        player2.goToPlace("tic");
+        assertSame(player2.getPlace(), place);
+
+        player3.goToPlace("sparkling");
+        assertSame(player3.getPlace(), place);
     }
 }

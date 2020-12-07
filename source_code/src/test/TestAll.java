@@ -16,9 +16,11 @@ import test.placeTest.ShopTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+
         //characterTest
         CharacterTest.class,
         PlayerTest.class,
+
         //commandTest
         CommandTest.class,
         GoTest.class,
@@ -26,12 +28,15 @@ import test.placeTest.ShopTest;
         TakeTest.class,
         UnlockTest.class,
         UseTest.class,
+
         //exitTest
         ExitTest.class,
+
         //itemTest
         FoodTest.class,
         ItemTest.class,
         KeyTest.class,
+
         //placeTest
         GameTest.class,
         PlaceTest.class,
