@@ -5,6 +5,7 @@ import code.character.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+// This class is an abstract class
 public abstract class Command {
 
     /******************************
@@ -25,6 +26,7 @@ public abstract class Command {
      * Methods *
      ***********/
 
+    // Getters
     public String getCommand() {
         return command;
     }

@@ -1,5 +1,6 @@
 package code.character;
 
+// This class is an abstract class
 public abstract class Character{
 
 	/******************************

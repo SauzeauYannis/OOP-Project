@@ -8,6 +8,7 @@ import code.place.Game;
 import java.util.Random;
 import java.util.Scanner;
 
+// This class is a subclass of Game
 public class Questions extends Game {
 
     /*****************************
@@ -129,7 +130,6 @@ public class Questions extends Game {
                     } catch (Exception exception) {
                         scanner.nextLine();
                         this.getNpc().talk("I expect a number!");
-                        continue;
                     }
                 }
 

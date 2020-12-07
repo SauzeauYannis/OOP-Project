@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+// This class is a subclass of Character
 public class Player extends Character {
 
 	/*******************************

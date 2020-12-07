@@ -9,6 +9,7 @@ import code.place.Game;
 import java.util.Scanner;
 import java.util.Stack;
 
+// This class is a subclass of Game
 public class HanoiTower extends Game {
 
     /*****************************

@@ -4,6 +4,7 @@ import code.character.Player;
 
 import java.util.List;
 
+// This class is an abstract class
 public abstract class Interpreter {
 
     public static Command interpretCommand(List<Command> commandList, String[] commandTab) {

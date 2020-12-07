@@ -2,6 +2,7 @@ package code.item;
 
 import code.character.Player;
 
+// This class is a subclass of Item
 public class Food extends Item {
 
 	/*****************************

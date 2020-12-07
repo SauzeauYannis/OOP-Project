@@ -2,6 +2,7 @@ package code.command;
 
 import code.character.Player;
 
+// This class is a subclass of Command
 public class Inventory extends Command{
     public Inventory() {
         super("inventory",

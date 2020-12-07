@@ -1,5 +1,6 @@
 package code.character;
 
+// This class is a subclass of Character
 public class NPC extends Character {
 
 	/***************

@@ -3,6 +3,7 @@ package code.item;
 import code.other.Describable;
 import code.character.Player;
 
+// This class is an abstract class and implements Describable interface
 public abstract class Item implements Describable {
 
 	/*****************************

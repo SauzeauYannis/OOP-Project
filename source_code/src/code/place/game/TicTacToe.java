@@ -9,6 +9,7 @@ import code.place.Game;
 import java.util.Random;
 import java.util.Scanner;
 
+// This class is a subclass of Game
 public class TicTacToe extends Game {
 
     /******************************

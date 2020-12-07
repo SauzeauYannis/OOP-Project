@@ -1,5 +1,6 @@
 package code.enumeration;
 
+// This class is an enumeration
 public enum Level {
 
 	COPPER,

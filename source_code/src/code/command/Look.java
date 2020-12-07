@@ -5,6 +5,7 @@ import code.item.Item;
 import code.place.Place;
 import code.place.Shop;
 
+// This class is a subclass of Command
 public class Look extends Command {
 
     public Look() {

@@ -10,6 +10,7 @@ import code.place.Place;
 
 import java.util.List;
 
+// This class is a subclass of Command
 public class Unlock extends Command{
 
     public Unlock() {

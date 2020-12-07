@@ -3,6 +3,7 @@ package code.command;
 import code.character.Player;
 import code.item.Item;
 
+// This class is a subclass of Command
 public class Use extends Command {
 
     public Use() {

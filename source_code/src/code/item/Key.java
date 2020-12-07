@@ -6,6 +6,7 @@ import code.exit.Exit;
 import code.place.Game;
 import code.place.Place;
 
+// This class is a subclass of Item
 public class Key extends Item {
 
 	/*****************************

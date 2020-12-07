@@ -9,6 +9,7 @@ import code.place.Game;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+// This class is a subclass of Game
 public class QTE extends Game {
 
     /*****************************

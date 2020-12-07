@@ -8,6 +8,7 @@ import code.place.Game;
 
 import java.util.Scanner;
 
+// This class is a subclass of Game
 public class FindNumber extends Game {
 
     /*****************************

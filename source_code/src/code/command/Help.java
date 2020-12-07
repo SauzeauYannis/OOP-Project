@@ -4,6 +4,7 @@ import code.Gameplay;
 import code.character.Player;
 import java.util.List;
 
+// This class is a subclass of Command
 public class Help extends Command{
 
     public Help() {

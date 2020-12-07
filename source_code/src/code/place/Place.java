@@ -12,7 +12,7 @@ import code.place.game.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// This class implements an interface to force use a description
+// This class implements an interface to force use a description and implements Describable interface
 public class Place implements Describable {
 
 	/*****************************
