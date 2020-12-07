@@ -8,10 +8,18 @@ import code.place.Shop;
 // This class is a subclass of Command
 public class Take extends Command {
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Take() {
         super("take",
-                "take [item] : To Add the object in your inventory");
+                "| take <item> : To Add the object in your inventory");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {
@@ -27,11 +35,11 @@ public class Take extends Command {
                     }
                 }
             } else {
-                System.out.println("You need to go in a shop to take items.");
+                System.out.println("| You need to go in a shop to take items.");
             }
         } else {
-            System.out.println("You need to have a 2nd argument.\n" +
-                    "Type \"help take\" for more information.");
+            System.out.println("| You need to have a 2nd argument.\n" +
+                    "| Type \"help take\" for more information.");
         }
     }
 }

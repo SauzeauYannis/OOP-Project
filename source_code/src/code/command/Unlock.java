@@ -13,10 +13,18 @@ import java.util.List;
 // This class is a subclass of Command
 public class Unlock extends Command{
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Unlock() {
         super("unlock",
-                "unlock [game] : to unlock the game sectioned");
+                "| unlock <game> : to unlock the game sectioned");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {
@@ -39,34 +47,34 @@ public class Unlock extends Command{
                                     }
                                 }
                             }
-                            System.out.println("You haven't a " +
+                            System.out.println("| You haven't a " +
                                     game.getLevel().toString() +
                                     " key.\nGo to the shop to buy one.");
                         } else {
-                            System.out.println("This game is always unlock!");
+                            System.out.println("| This game is always unlock!");
                         }
                         return;
                     }
                 }
-                System.out.println("Unknown game.\n" +
-                        "Type \"go\" to have the list of game you can unlock.");
+                System.out.println("| Unknown game.\n" +
+                        "| Type \"go\" to have the list of game you can unlock.");
             } else if (nextPlace instanceof Ending) {
                 if (lastExit.isLock()) {
                     if (player.getGamesFinished() == Game.NB_GAMES) {
                         lastExit.unlock();
-                        System.out.println("Congratulations, you've unlocked all the locations.");
+                        System.out.println("| Congratulations, you've unlocked all the locations.");
                     } else {
-                        System.out.println("This place is unlockable only when you have won all the games.");
+                        System.out.println("| This place is unlockable only when you have won all the games.");
                     }
                 } else {
-                    System.out.println("This place is always unlock!");
+                    System.out.println("| This place is always unlock!");
                 }
             } else {
-                System.out.println("You need to be in front of the game to unlock it.");
+                System.out.println("| You need to be in front of the game to unlock it.");
             }
         } else {
-            System.out.println("You need to have a 2nd argument.\n" +
-                    "Type \"help unlock\" for more information.");
+            System.out.println("| You need to have a 2nd argument.\n" +
+                    "| Type \"help unlock\" for more information.");
         }
     }
 }
