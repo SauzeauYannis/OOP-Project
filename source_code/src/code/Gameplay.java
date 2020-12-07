@@ -25,10 +25,12 @@ public class Gameplay {
 		player.printMoney();
 		player.printGames();
 
+		String command;
+
 		while (!player.getIsLose()) {
 			System.out.print(player);
-
-			Interpreter.interpretCommand(player, scanner.nextLine());
+			command = scanner.nextLine();
+			Interpreter.interpretCommand(player, command);
 		}
 
 		System.out.println("| Oh no you've have lose too much calories you can't continue!");
