@@ -8,10 +8,18 @@ import code.place.Shop;
 // This class is a subclass of Command
 public class Take extends Command {
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Take() {
         super("take",
                 "| take <item> : To Add the object in your inventory");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {

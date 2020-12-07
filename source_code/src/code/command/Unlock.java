@@ -13,10 +13,18 @@ import java.util.List;
 // This class is a subclass of Command
 public class Unlock extends Command{
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Unlock() {
         super("unlock",
                 "| unlock <game> : to unlock the game sectioned");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {

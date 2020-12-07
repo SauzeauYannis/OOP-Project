@@ -8,10 +8,18 @@ import code.place.Shop;
 // This class is a subclass of Command
 public class Look extends Command {
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Look() {
         super("look",
                 "| look <item> : To Read the description of the object or the place description if you have not specified an object");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {

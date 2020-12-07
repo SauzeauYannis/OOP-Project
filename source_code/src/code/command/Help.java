@@ -7,10 +7,18 @@ import java.util.List;
 // This class is a subclass of Command
 public class Help extends Command{
 
+    /***************
+     * Constructor *
+     ***************/
+
     public Help() {
         super("help",
                 "| help <command> : To have the list of the available command or to have an help on a specified command");
     }
+
+    /**********
+     * Method *
+     **********/
 
     @Override
     public void executeCommand(Player player, String[] args) {

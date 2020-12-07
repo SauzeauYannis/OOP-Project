@@ -30,8 +30,8 @@ public abstract class Interpreter {
         return new Command("unknown", "") {
             @Override
             public void executeCommand(Player player, String[] args) {
-                System.out.println("Unknown command\n" +
-                        "Type help for have the command list");
+                System.out.println("| Unknown command\n" +
+                        "| Type help for have the command list");
             }
         };
     }
