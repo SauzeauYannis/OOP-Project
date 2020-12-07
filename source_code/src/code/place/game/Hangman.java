@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 public class Hangman extends Game {
 
+    /*****************************
+     * Attributes and constructor
+     *****************************/
+    // ATTRIBUTES
     private final static int NB_TRY = 5;
 
     private final String[] WORDS = {
@@ -43,6 +47,7 @@ public class Hangman extends Game {
             "Cucumber"
     };
 
+    //CONSTRUCTORS
     public Hangman(String name, String description, NPC npc, Level level) {
         super(name, description, npc, level);
     }
@@ -55,10 +60,17 @@ public class Hangman extends Game {
                 Level.PLATINUM);
     }
 
+
+    /**********
+     * Methods
+     **********/
+
+    //GETTERS
     private int getLengthWORDS(){
         return this.WORDS.length;
     }
 
+    //OVERRIDE METHODS
     @Override
     public void play(Player player) {
         NPC npc = this.getNpc();
@@ -90,30 +102,35 @@ public class Hangman extends Game {
         String lettersFound = "";
         boolean letterFound;
 
-        // Here starts the game code
+        // Here starts the game loop
         while (wordToFind.contains("_") && (trials_left>0)) {
 
+            // Displays the word to find underscored
             System.out.println(wordToFind);
 
+            // Displays if it is not the first loop
             if (trials_left != NB_TRY)
                 npc.talk("You have " + trials_left + " guesses left.");
 
+            // Catches player guess' and convert it to upper case to be comparable
             npc.talk("What is your guess?");
             System.out.print(player);
             scanner = Gameplay.scanner;
-
             guess = scanner.nextLine();
             guess = guess.toUpperCase();
 
+            // Catches the first char (letter) of guess and convert it to upper case to be comparable
             letter = guess.charAt(0);
             letter = Character.toUpperCase(letter);
 
-            letterFound = this.isLetterFound(lettersFound,letter,npc);
+            // Checks if the letter was already found
+            letterFound = isLetterFound(lettersFound,letter,npc);
 
             if (!letterFound) {
-
+                // Adds the letter to lettersFound
                 lettersFound += letter;
 
+                // Check if the letter is in the word
                 if ((word.indexOf(letter)) != -1) {
                     npc.talk("Well done! " +
                             letter +
@@ -124,6 +141,7 @@ public class Hangman extends Game {
                         if (word.charAt(i) == letter && wordToFind.charAt(i) != letter) {
                             // To have the right element in index i
                             wordToFind = wordToFind.replaceAll("_ ", "1");
+                            // Adds the letter found is the right place
                             String tmp = wordToFind.substring(0, i)
                                     + letter
                                     + wordToFind.substring(i + 1);
@@ -139,8 +157,8 @@ public class Hangman extends Game {
             }
         }
 
+        // Checks if player wins and acts accordingly
         boolean win = this.checkWin(trials_left, wordToFind,trials,npc);
-
         if(win) {
             this.win(player);
         }
@@ -151,6 +169,7 @@ public class Hangman extends Game {
         System.out.println("\n--- Game finished ---\n");
     }
 
+    // Checks if lettersFound contains letter
     public boolean isLetterFound(String lettersFound, char letter, NPC npc){
         boolean letterFound;
         if ((lettersFound.indexOf(letter)) != -1) {
@@ -162,6 +181,7 @@ public class Hangman extends Game {
         return letterFound;
     }
 
+    //Chose a random word from WORDS array
     public String randWORDS(){
         Random rd = new Random();
         int rd_num = rd.nextInt(this.getLengthWORDS());
@@ -169,6 +189,7 @@ public class Hangman extends Game {
         return word.toUpperCase();
     }
 
+    //Checks if player wins
     public boolean checkWin(int trials_left, String wordToFind,int trials, NPC npc){
        boolean win = false;
         if (trials_left<1){

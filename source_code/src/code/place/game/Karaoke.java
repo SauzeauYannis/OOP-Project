@@ -11,16 +11,21 @@ import java.util.Scanner;
 
 public class Karaoke extends Game {
 
+    /*****************************
+     * Attributes and constructor
+     *****************************/
+
+    //ATTRIBUTES
     private final static int NB_TRY = 3;
 
     private final String[][] LYRICS = {
             {"I believe I can fly! I believe I can touch the ___!","sky"},
             {"___ _ ____ meet you! And this is crazy!", "Hey i just"},
             {"Boom! Boom! Boom! Boom! I want you in my ____ !", "room"},
-            {"Arouf Gangsta, _______ même dans ton trou !","partout"},
-            {"Ta les boules, ta les _______, ta les crottes de nez qui pendent!", "glandes"},
-            {"___ __ _____! RS4 gris nardo, bien sûr qu'ils m'ont raté ! (gros, bien sûr)", "oui ma gatée" },
-            {"Jeunes renoies sauvages! Elles ont du ______ dans l'oesophage! (Bendo na bendo!)", "sperme"},
+            {"Above us only sky. _______ all the people living for today","Imagine"},
+            {"____ ___ my lover! ____ ___ my friend", "Good bye"},
+            {"Oh, I'll ____ ___ ___ ____ __ when I see you again. When I see you again!", "tell you all about it" },
+            {"Oh no, not I, I will survive! Oh, as long as I know ___ __ ____, I know I'll stay alive", "how to love"},
             {"Tape tape dans tes mains, ______ ____ ____!", "petit ours brun"}
     };
 
@@ -34,6 +39,7 @@ public class Karaoke extends Game {
             "(It's a classic one.)"
     };
 
+    //CONSTRUCTORS
     public Karaoke(String name, String description, NPC npc, Level level) {
         super(name, description, npc, level);
     }
@@ -46,6 +52,11 @@ public class Karaoke extends Game {
                 Level.PLATINUM);
     }
 
+    /**********
+     * Methods
+     **********/
+
+    //GETTERS
     private int getLengthSENTENCES(){
         return this.LYRICS.length;
     }
@@ -54,6 +65,7 @@ public class Karaoke extends Game {
         return this.LYRICS.length;
     }
 
+    //OVERRIDE METHODS
     @Override
     public void play(Player player) {
         NPC npc = this.getNpc();
@@ -66,17 +78,20 @@ public class Karaoke extends Game {
                 "You have " + NB_TRY + " guesses. Good luck!\n" +
                 "Get ready, get set, go!\n");
 
-        //To choose randomly a word from the words array
+        // To choose randomly a lyrics and the word to find associated from the words array
         int index = randNum(this.getLengthSENTENCES());
         String sentence = LYRICS[index][0];
         String word = LYRICS[index][1];
         word = word.toUpperCase();
 
+        // To follow the game progress
         int trials_left = NB_TRY;
         String guess = "";
 
+        // Here starts the game loop
         while ((guess.compareTo(word)!=0) && (trials_left>0)) {
 
+            // Displays when it's not the first loop
             if (trials_left != NB_TRY) {
                 npc.talk(guess + " is not what I expected... Maybe a typing mistake?");
                 npc.talk("You still have " + trials_left + " trial(s) to find it. Think carefully...\n");
@@ -85,22 +100,24 @@ public class Karaoke extends Game {
             npc.talk("Find the word to complete the song :" );
             System.out.println("\"" + sentence + "\"");
 
+            // Displays a commentary from NPC if it's the first loop
             if (trials_left == NB_TRY) {
                 int rd_index = randNum(this.getLengthCOMMENTARY());
                 npc.talk(COMMENTARY[rd_index]);
             }
 
+            // Catches player guess' and convert it to upper case to be comparable
             npc.talk("What is your guess ?");
             System.out.print(player);
             scanner = Gameplay.scanner;
-
             guess = scanner.nextLine();
             guess = guess.toUpperCase();
 
             trials_left--;
         }
-        boolean win = this.checkWin(trials_left, word,npc);
 
+        // Test if player wins and acts accordingly
+        boolean win = this.checkWin(trials_left, word,npc);
         if(win)
             this.win(player);
         else
@@ -109,11 +126,14 @@ public class Karaoke extends Game {
         System.out.println("\n--- Game finished ---\n");
     }
 
+    //Provides a random number
     public int randNum(int length){
-        Random rd = new Random();rd.nextInt(length);
+        Random rd = new Random();
+        rd.nextInt(length);
         return rd.nextInt(length);
     }
 
+    //Checks if player wins
     private boolean checkWin(int trials_left, String word, NPC npc){
         boolean win = false;
         if (trials_left<1){

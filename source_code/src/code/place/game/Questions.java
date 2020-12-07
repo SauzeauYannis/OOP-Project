@@ -83,6 +83,7 @@ public class Questions extends Game {
 
         int[] quest_used = new int[NB_ROUND];
 
+        // Here starts the game loop
         while ((NB_ROUND + 1 > round) && (!stop) && (!lose)) {
 
             int id_quest;
@@ -114,9 +115,16 @@ public class Questions extends Game {
 
                 while ((answer!=1) && (answer!=2) && (answer!=3) && (answer!=4)) {
                     System.out.println("\t(TAPE: \"1\", \"2\", \"3\" or \"4\")");
+
                     scanner = Gameplay.scanner;
                     System.out.print(player);
-                    answer = scanner.nextInt();
+                    try {
+                        answer = scanner.nextInt();
+                    } catch (Exception exception) {
+                        scanner.nextLine();
+                        this.getNpc().talk("I expect a number!");
+                        continue;
+                    }
                 }
 
                 if (answer != good_answer){
@@ -147,7 +155,8 @@ public class Questions extends Game {
     }
 
     public int randNum(int length){
-        Random rd = new Random();rd.nextInt(length);
+        Random rd = new Random();
+        rd.nextInt(length);
         return rd.nextInt(length);
     }
 
