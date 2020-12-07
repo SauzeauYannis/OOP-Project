@@ -7,11 +7,12 @@ import java.util.List;
 // This class is an abstract class
 public abstract class Interpreter {
 
-    public static Command interpretCommand(List<Command> commandList, String[] commandTab) {
+    // Static method to interpret
+    public static Command interpretCommand(String[] commandTab) {
 
         String mainCommand = commandTab[0].toLowerCase();
 
-        for (Command command: commandList) {
+        for (Command command: Command.commandList) {
             if (command.getCommand().equals(mainCommand)) {
                 return command;
             }

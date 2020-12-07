@@ -13,6 +13,8 @@ public abstract class Command {
      ******************************/
 
     /// Attributes ///
+    public static final List<Command> commandList = Command.generateAllCommands();
+
     private final String command;
     private final String help;
 

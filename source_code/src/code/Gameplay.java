@@ -8,9 +8,9 @@ import code.place.Place;
 import java.util.List;
 import java.util.Scanner;
 
+// Main class of the program
 public class Gameplay {
 
-	public static final List<Command> commandList = Command.generateAllCommands();
 	public static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -33,7 +33,7 @@ public class Gameplay {
 
 			commandTab = scanner.nextLine().split(" ");
 
-			Command command = Interpreter.interpretCommand(commandList, commandTab);
+			Command command = Interpreter.interpretCommand(commandTab);
 
 			command.executeCommand(player, commandTab);
 		}

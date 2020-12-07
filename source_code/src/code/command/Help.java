@@ -14,7 +14,7 @@ public class Help extends Command{
 
     @Override
     public void executeCommand(Player player, String[] args) {
-        List<Command> commandList = Gameplay.commandList;
+        List<Command> commandList = Command.commandList;
         if (args.length > 1) {
             for (Command command: commandList) {
                 if (command.getCommand().equals(args[1].toLowerCase())) {
