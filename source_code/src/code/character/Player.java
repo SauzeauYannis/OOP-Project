@@ -215,7 +215,7 @@ public class Player extends Character {
 			Place place = exit.getPlace();
 			String placeName = place.getName();
 
-			// Check if the place in parameter is equal to the current place
+			// Check if the place in parameter is equal to the place of the exit
 			if (location.equals(Interpreter.getFirstWord(placeName))) {
 
 				// Check if the exit is locked
@@ -229,7 +229,7 @@ public class Player extends Character {
 						String level = game.getLevel().toString();
 						System.out.println("| You can't go to " +
 								placeName +
-								", this game is lock!\n" +
+								", this game is locked !\n" +
 								"| If you have a " +
 								level +
 								" key in your inventory, type \"use " +
@@ -239,7 +239,7 @@ public class Player extends Character {
 
 						// Check if 'place' is an instance of Ending
 					} else if (place instanceof Ending) {
-						System.out.println("You don't know why but this place attracts you but it's lock.\n" +
+						System.out.println("You don't know why but this place attracts you but it's locked.\n" +
 								"Try to type \"unlock sparkling\" to to get inside.");
 					}
 				} else {
