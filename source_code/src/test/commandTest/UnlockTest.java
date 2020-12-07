@@ -19,14 +19,14 @@ public class UnlockTest {
         Player player = new Player("player", placeList.get(1));
         Unlock unlock = new Unlock();
 
-        unlock.executeCommand(player, "unlock find".split( " "));
-        player.goToPlace("find");
+        unlock.executeCommand(player, "unlock rock".split( " "));
+        player.goToPlace("rock");
         assertSame(player.getPlace(), placeList.get(1));
 
         player.addItem(new Key("Copper key", 25, Level.COPPER));
-        unlock.executeCommand(player, "unlock find".split(" "));
-        player.goToPlace("find");
-        assertSame(player.getPlace(), placeList.get(6));
+        unlock.executeCommand(player, "unlock rock".split(" "));
+        player.goToPlace("rock");
+        assertSame(player.getPlace(), placeList.get(8));
         assertEquals(player.getItems().size(), 0);
     }
 }
