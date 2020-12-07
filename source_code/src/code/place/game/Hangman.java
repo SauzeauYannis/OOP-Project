@@ -47,19 +47,14 @@ public class Hangman extends Game {
             "Cucumber"
     };
 
-    //CONSTRUCTORS
-    public Hangman(String name, String description, NPC npc, Level level) {
-        super(name, description, npc, level);
-    }
-
+    //CONSTRUCTOR
     public Hangman() {
-        this("Hangman",
+        super("Hangman",
                 "| In this game, you have to found the word the stand owner is thinking of by giving him letters.\n" +
                         "| Type \"play\" to start the game.",
                 new NPC("Marina Lependu"),
                 Level.PLATINUM);
     }
-
 
     /**********
      * Methods
@@ -86,18 +81,17 @@ public class Hangman extends Game {
                 "Try to find the word... " +
                 "You have " + NB_TRY + " guesses. Good luck!");
 
-        //To choose randomly a word from the words array
+        // To choose randomly a word from the words array
         String word = this.randWORDS();
 
-        //To show the word in underscores form
+        // To show the word in underscores form
         String wordToFind = word.replaceAll("[A-Z]", "_ ");
 
+        // To declare variable needed for the game
         int trials = 0;
         int trials_left = NB_TRY;
-
         String guess;
         char letter;
-
         // To store and know if a letter was already guessed
         String lettersFound = "";
         boolean letterFound;

@@ -39,13 +39,9 @@ public class Karaoke extends Game {
             "(It's a classic one.)"
     };
 
-    //CONSTRUCTORS
-    public Karaoke(String name, String description, NPC npc, Level level) {
-        super(name, description, npc, level);
-    }
-
+    //CONSTRUCTOR
     public Karaoke() {
-        this("Karaoke",
+        super("Karaoke",
                 "| In this game, your music culture will be useful to find out the missing lyrics.\n" +
                         "| Type \"play\" to start the game.",
                 new NPC("Kharra Okey"),
@@ -84,7 +80,7 @@ public class Karaoke extends Game {
         String word = LYRICS[index][1];
         word = word.toUpperCase();
 
-        // To follow the game progress
+        // To declare variable needed for the game
         int trials_left = NB_TRY;
         String guess = "";
 
