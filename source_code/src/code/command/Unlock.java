@@ -47,9 +47,8 @@ public class Unlock extends Command{
                                     }
                                 }
                             }
-                            System.out.println("| You haven't a " +
-                                    game.getLevel().toString() +
-                                    " key.\nGo to the shop to buy one.");
+                            System.out.println("| You haven't a " + game.getLevel().toString() + " key.\n" +
+                                    "| Go to the shop to buy one.");
                         } else {
                             System.out.println("| This game is always unlock!");
                         }

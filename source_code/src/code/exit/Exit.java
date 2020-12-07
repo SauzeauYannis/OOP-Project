@@ -28,11 +28,8 @@ public class Exit {
 	public void unlock() {
 		isLock = false;
 		String place = this.place.getName();
-		System.out.println(place +
-				" is now unlock.\n" +
-				"Type \"go " +
-				place.split(" ")[0].toLowerCase() +
-				"\" to get inside!");
+		System.out.println("| " + place + " is now unlock.\n" +
+				"| Type \"go " + place.split(" ")[0].toLowerCase() + "\" to get inside!");
 	}
 
 	public static List<Exit> generateAllExits(List<Place> placeList) {
