@@ -26,17 +26,20 @@ public abstract class Command {
      * Methods *
      ***********/
 
-    // Getters
+    // Getter
     public String getCommand() {
         return command;
     }
 
+    // To execute the command, must be override by each subclasses
     public abstract void executeCommand(Player player, String[] args);
 
+    // To print help
     public void printHelp() {
         System.out.println(this.help);
     }
 
+    // This static method generate all commands to return a list of them
     public static List<Command> generateAllCommands() {
         List<Command> commandList = new ArrayList<>();
 

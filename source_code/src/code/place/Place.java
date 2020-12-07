@@ -86,7 +86,7 @@ public class Place implements Describable {
 		);
 	}
 
-	// This method generate all places to return a list of them
+	// This static method generate all places to return a list of them
 	public static List<Place> generateAllPlaces() {
 		List<Place> placeList = new ArrayList<>();
 
