@@ -14,9 +14,9 @@ public abstract class Game extends Place {
 	// Class attributes
 	public static int NB_GAMES = 0;
 
-	private static final int COPPER_REWARD = 25;
-	private static final int GOLD_REWARD = 50;
-	private static final int PLATINUM_REWARD = 100;
+	private static final int COPPER_REWARD = 50;
+	private static final int GOLD_REWARD = 100;
+	private static final int PLATINUM_REWARD = 200;
 
 	// Attributes
 	private final Level level;
@@ -71,7 +71,7 @@ public abstract class Game extends Place {
 	// To reward the winner with a random amount of money
 	public void win(Player player) {
 		// Generate a random amount of money
-		int money = (int) (Math.random() * this.reward) + 2;
+		int money = (int) (Math.random() * this.reward);
 
 		win(player, money);
 	}
