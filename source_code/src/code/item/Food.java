@@ -4,10 +4,14 @@ import code.character.Player;
 
 public class Food extends Item {
 
+	/*****************************
+	 * Attributes and constructor
+	 *****************************/
+
+	//ATTRIBUTES
 	private final int calorie;
 
 	// CONSTRUCTOR
-
 	public Food(String name, int price, int calorie) {
 		super(name,
 				price,
@@ -21,8 +25,11 @@ public class Food extends Item {
 		this.calorie = calorie;
 	}
 
-	// OTHER METHODS
+	/**********
+	 * Methods
+	 **********/
 
+	//OVERRIDE METHODS
 	@Override
 	public void use(Player player) {
 		if (player.increaseHealth(this.calorie)) {

@@ -5,17 +5,27 @@ import code.character.Player;
 
 public abstract class Item implements Describable {
 
+	/*****************************
+	 * Attributes and constructor
+	 *****************************/
+
+	//ATTRIBUTES
 	private final String name;
 	private final int price;
 	private final String description;
 
+	//CONSTRUCTOR
 	public Item(String name, int price, String description) {
 		this.name = name;
 		this.price = price;
 		this.description = description;
 	}
 
-	// GETTERS
+	/**********
+	 * Methods
+	 **********/
+
+	//GETTERS
 
 	public String getName() {
 		return this.name;
@@ -25,8 +35,7 @@ public abstract class Item implements Describable {
 		return this.price;
 	}
 
-	// OTHER METHODS
-
+	//OTHER METHODS
 	@Override
 	public void readDescription() {
 		System.out.println(this.description);
