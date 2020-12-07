@@ -27,9 +27,6 @@ public class Gameplay {
 		// Generate all places in a list
 		List<Place> placeList = Place.generateAllPlaces();
 
-
-		Player player = new Player("Benjapied Tablenuit", placeList.get(7));
-
 		// Create the player
 		Player player = new Player("Benjapied Tablenuit", placeList.get(0));
 
