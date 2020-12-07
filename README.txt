@@ -46,7 +46,7 @@ https://www.oracle.com/java/technologies/java-se-glance.html
 - Launch a command terminal and move into the directory 
 where there is the file gypsy's_carnival.jar
 
-- Run command "java -jar gypsy's_carnival.jar".
+- Run command "java -jar gypsy's_carnival.jar"
 
 - Play
 
@@ -57,7 +57,7 @@ where there is the file gypsy's_carnival.jar
 
 - You have several orders, each of which has its own specificities
 
-- To display the commands type "help" and follow the instructions.
+- To display the commands type "help" and follow the instructions
 
 - The goal of the game is to finish the 9 mini-games proposed by the
 owners of each carnival stand
