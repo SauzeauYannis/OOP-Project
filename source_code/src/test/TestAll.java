@@ -16,7 +16,7 @@ import test.placeTest.ShopTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        
+
         //characterTest
         CharacterTest.class,
         PlayerTest.class,
