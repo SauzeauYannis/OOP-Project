@@ -1,6 +1,5 @@
 package code.command;
 
-import code.Gameplay;
 import code.character.Player;
 import java.util.List;
 
