@@ -67,8 +67,8 @@ public class TicTacToe extends Game {
 
         // While chosen isn't initialize
         while(chosen == -1){
-            System.out.println("-> Choice: ");
             System.out.print(player);
+            System.out.print("-> Choice: ");
 
             // Check if the player choose only a number
             try {
@@ -227,7 +227,7 @@ public class TicTacToe extends Game {
         while(!stop){
 
             System.out.print(player);
-            System.out.println("-> Choose your case: ");
+            System.out.print("-> Choose your case: ");
 
             // Recovers the coordinates chosen by the player
             try {
