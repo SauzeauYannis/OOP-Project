@@ -9,21 +9,22 @@ public abstract class Character{
 	/// Attributes ///
 	private final String name;
 
-
 	/// Constructor ///
 	public Character(String name){
 		this.name = name;
 	}
 
 
-	/*************
-	 * Accessors *
-	 *************/
+	/***********
+	 * Methods *
+	 ***********/
 
+	// Getter
 	public String getName() {
 		return this.name;
 	}
 
+	// Override toString
 	@Override
 	public String toString() {
 		return "[" + this.name + "] : ";
