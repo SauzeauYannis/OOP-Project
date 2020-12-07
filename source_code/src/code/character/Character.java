@@ -2,19 +2,23 @@ package code.character;
 
 public abstract class Character{
 
-	/// Attributes ///
+	/******************************
+	 * Attributes and constructor *
+	 ******************************/
 
+	/// Attributes ///
 	private final String name;
 
 
-	/// Methods ///
-
+	/// Constructor ///
 	public Character(String name){
 		this.name = name;
 	}
 
 
-	/// Accessors ///
+	/*************
+	 * Accessors *
+	 *************/
 
 	public String getName() {
 		return this.name;
