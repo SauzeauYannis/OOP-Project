@@ -115,6 +115,16 @@ public class PlayerTest {
     }
 
     @Test
+    public void decreaseHealth() {
+
+        player1.decreaseHealth(50);
+        assertEquals(player1.getHealth(), 50);
+
+        player2.decreaseHealth(50);
+        assertEquals(player1.getHealth(), player2.getHealth());
+    }
+
+    @Test
     public void earnMoney() {
     }
 
