@@ -14,15 +14,18 @@ public class RockPaperScissors extends Game {
      * Attributes and constructor
      *****************************/
 
-    private final String[] ROSHAMBO = {
+    // Class attributes
+    private static final String[] ROSHAMBO = {
             "rock",
             "paper",
             "scissors"
     };
+    private static final int POINT_TO_WIN = 3;
 
     private int playerPoint;
     private int NPCPoint;
 
+    // Constructor
     public RockPaperScissors() {
         super("Rock paper scissors",
                 "| In this game you need to beat at roshambo the man who is in front of you.\n" +
@@ -35,11 +38,14 @@ public class RockPaperScissors extends Game {
      * Methods
      **********/
 
+    // To play the game
     @Override
     public void play(Player player) {
+        // Init the points
         playerPoint = 0;
         NPCPoint = 0;
 
+        // To print the game
         System.out.println("\n--- Game launched ---\n");
         System.out.println("To play, type one of this proposition :");
         for (String proposition: ROSHAMBO) {
@@ -50,57 +56,36 @@ public class RockPaperScissors extends Game {
         this.getNpc().talk("I am unbeatable in that game!\n" +
                 "I take you in 3 rounds!");
 
-        while (playerPoint < 3 && NPCPoint < 3) {
+        // Play while nobody have reach the number of points to win
+        while (playerPoint < POINT_TO_WIN && NPCPoint < POINT_TO_WIN) {
             this.getNpc().talk("\nRo..\nSham..\nBo!");
 
+            // To get the result of npc and player
             String playerTurn = getPlayerTurn(player);
             int NPCTurn = getNPCTurn();
 
+            // To check the winner
             checkWinner(playerTurn, NPCTurn);
 
+            // To print the point
             printPoint(player.getName());
             printPoint(this.getNpc().getName());
         }
 
-        if (playerPoint == 3) {
+        // Check the winner of the game
+        if (playerPoint == POINT_TO_WIN) {
             this.win(player);
         } else {
             this.lose(player);
         }
 
+        // To flush scanner
         Gameplay.scanner.nextLine();
 
         System.out.println("\n--- Game finished ---\n");
     }
 
-    private void printPoint(String name) {
-        int point;
-        if (name.equals(this.getNpc().getName())) {
-            point = NPCPoint;
-        } else {
-            point = playerPoint;
-        }
-
-        System.out.println("-" +
-                name +
-                " : " +
-                point +
-                " points.");
-    }
-
-    private void checkWinner(String playerTurn, int NPCTurn) {
-        NPC npc = this.getNpc();
-        if (playerTurn.equals(ROSHAMBO[NPCTurn])) {
-            npc.talk("Draw, I'll get you in the next round!");
-        } else if (playerTurn.equals(ROSHAMBO[(NPCTurn+1)%3])) {
-            npc.talk("I lose, it's impossible you cheated!");
-            playerPoint++;
-        } else {
-            npc.talk("I win, i'm too strong for you!");
-            NPCPoint++;
-        }
-    }
-
+    // Getters
     private int getNPCTurn() {
         int rand = (int)(Math.random()*3);
 
@@ -125,6 +110,7 @@ public class RockPaperScissors extends Game {
         return playerTurn;
     }
 
+    // To check check the player turn
     private boolean checkPlayerTurn(String playerTurn) {
         for (String proposition: ROSHAMBO) {
             if (playerTurn.equals(proposition)) {
@@ -132,5 +118,38 @@ public class RockPaperScissors extends Game {
             }
         }
         return false;
+    }
+
+    // To print point of player or npc by his name
+    private void printPoint(String name) {
+        // To get the point of player or npc by his name
+        int point;
+        if (name.equals(this.getNpc().getName())) {
+            point = NPCPoint;
+        } else {
+            point = playerPoint;
+        }
+
+        // To print the points
+        System.out.println("-" +
+                name +
+                " : " +
+                point +
+                " points.");
+    }
+
+    // To check winner of the round
+    private void checkWinner(String playerTurn, int NPCTurn) {
+        NPC npc = this.getNpc();
+        // If draw
+        if (playerTurn.equals(ROSHAMBO[NPCTurn])) {
+            npc.talk("Draw, I'll get you in the next round!");
+        } else if (playerTurn.equals(ROSHAMBO[(NPCTurn+1)%3])) { // If player win
+            npc.talk("I lose, it's impossible you cheated!");
+            playerPoint++;
+        } else { // If npc win
+            npc.talk("I win, i'm too strong for you!");
+            NPCPoint++;
+        }
     }
 }
