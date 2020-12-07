@@ -84,7 +84,7 @@ public class TicTacToe extends Game {
                     "So, which one?");
 
             System.out.print(player);
-            System.out.println("-> Choose your case: ");
+            System.out.print("-> Choose your case: ");
 
             // Check if the player choose only a number
             try {

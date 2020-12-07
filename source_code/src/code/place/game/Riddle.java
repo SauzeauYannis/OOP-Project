@@ -31,7 +31,7 @@ public class Riddle extends Game {
     // Constructor
     public Riddle() {
         super("Riddle",
-                "| Here you need to answer to a riddle. You have only ??? attempts!\n" +
+                "| Here you need to answer to a riddle. You have only " + DEFAULT_ATTEMPTS + " attempts!\n" +
                         "| Turn on your brain, and make it work hard!" +
                         "| Type \"play\" to start the game.",
                 new NPC("Jean-Pierre Fougas"),
@@ -70,7 +70,7 @@ public class Riddle extends Game {
         while(attempts != 0){
 
             System.out.print(player);
-            System.out.println("-> Choice (yes or no): ");
+            System.out.print("-> Choice (yes or no): ");
             answer = scan.nextLine().toLowerCase();
 
             // Check if the answer is valid or not
@@ -80,6 +80,9 @@ public class Riddle extends Game {
                 if(answer.equals("no")){
                     this.getNpc().talk("Oh...Ok...So, goodbye kid. I hope you will change\n" +
                             " your opinion, and come back traveler...");
+
+                    // To go out of the loop
+                    attempts = 0;
                 }
                 else {
                     this.getNpc().talk("Oh oh perfect! Ok ok, let's begin!\n" +
@@ -92,7 +95,7 @@ public class Riddle extends Game {
                     // While attempts isn't equal to 0
                     while(attempts != 0){
                         System.out.print(player);
-                        System.out.println("-> Answer: ");
+                        System.out.print("-> Answer: ");
                         answer = scan.nextLine().toLowerCase();
 
                         // Check the answer for the riddle
