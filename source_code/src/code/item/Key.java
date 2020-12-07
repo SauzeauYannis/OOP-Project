@@ -8,10 +8,14 @@ import code.place.Place;
 
 public class Key extends Item {
 
+	/*****************************
+	 * Attributes and constructor
+	 *****************************/
+
+	//ATTRIBUTES
 	final private Level level;
 
 	// CONSTRUCTOR
-
 	public Key(String name, int price, Level level) {
 		super(name,
 				price,
@@ -25,14 +29,16 @@ public class Key extends Item {
 		this.level = level;
 	}
 
-	// GETTER
+	/**********
+	 * Methods
+	 **********/
 
+	// GETTER
 	public Level getLevel() {
 		return this.level;
 	}
 
-	// OTHER METHODS
-
+	// OVERRIDE METHODS
 	@Override
 	public void use(Player player) {
 		Place nextPlace = player.getPlace().getExitList().get(1).getPlace();
