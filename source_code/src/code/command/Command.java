@@ -13,7 +13,7 @@ public abstract class Command {
      ******************************/
 
     /// Attributes ///
-    public static final List<Command> commandList = Command.generateAllCommands();
+    public static final List<Command> commandList = generateAllCommands();
 
     private final String command;
     private final String help;
@@ -42,7 +42,7 @@ public abstract class Command {
     }
 
     // This static method generate all commands to return a list of them
-    public static List<Command> generateAllCommands() {
+    private static List<Command> generateAllCommands() {
         List<Command> commandList = new ArrayList<>();
 
         commandList.add(new Go());

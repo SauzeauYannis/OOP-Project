@@ -19,7 +19,7 @@ public class Gameplay {
 
 		Player player = new Player("Benjapied Tablenuit", placeList.get(0));
 
-		String[] commandTab;
+		String cmd;
 
 		player.getPlace().getNpc().talk("Welcome to Gypsy's Carnival!\n" +
 				"Type \"help\" to have the commands list.");
@@ -31,11 +31,11 @@ public class Gameplay {
 		while (!player.getIsLose()) {
 			System.out.print(player);
 
-			commandTab = scanner.nextLine().split(" ");
+			cmd = scanner.nextLine();
 
-			Command command = Interpreter.interpretCommand(commandTab);
+			Command command = Interpreter.interpretCommand(cmd);
 
-			command.executeCommand(player, commandTab);
+			command.executeCommand(player, cmd.split(" "));
 		}
 
 		System.out.println("| Oh no you've have lose too much calories you can't continue!");

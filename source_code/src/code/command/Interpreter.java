@@ -8,13 +8,13 @@ import java.util.List;
 public abstract class Interpreter {
 
     // Static method to interpret
-    public static Command interpretCommand(String[] commandTab) {
+    public static Command interpretCommand(String command) {
 
-        String mainCommand = commandTab[0].toLowerCase();
+        String mainCommand = getFirstWord(command);
 
-        for (Command command: Command.commandList) {
-            if (command.getCommand().equals(mainCommand)) {
-                return command;
+        for (Command cmd: Command.commandList) {
+            if (cmd.getCommand().equals(mainCommand)) {
+                return cmd;
             }
         }
 

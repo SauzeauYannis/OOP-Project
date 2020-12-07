@@ -40,19 +40,4 @@ public class CommandTest {
         assertEquals(command2.getCommand(), "command 2");
         assertSame(command3.getCommand(), command1.getCommand());
     }
-
-    @Test
-    public void generateAllCommands() {
-        List<Command> commandList = Command.generateAllCommands();
-
-        assertEquals(commandList.get(0).getCommand(), "go");
-        assertEquals(commandList.get(1).getCommand(), "help");
-        assertEquals(commandList.get(2).getCommand(), "look");
-        assertEquals(commandList.get(3).getCommand(), "take");
-        assertEquals(commandList.get(4).getCommand(), "quit");
-        assertEquals(commandList.get(5).getCommand(), "use");
-        assertEquals(commandList.get(6).getCommand(), "play");
-        assertEquals(commandList.get(7).getCommand(), "inventory");
-        assertEquals(commandList.get(8).getCommand(), "unlock");
-    }
 }
