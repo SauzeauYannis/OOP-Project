@@ -16,7 +16,7 @@ public class Gameplay {
 
 		List<Place> placeList = Place.generateAllPlaces();
 
-		Player player = new Player("Benjapied Tablenuit", placeList.get(0));
+		Player player = new Player("Benjapied Tablenuit", placeList.get(7));
 
 		player.getPlace().getNpc().talk("Welcome to Gypsy's Carnival!\n" +
 				"Type \"help\" to have the commands list.");

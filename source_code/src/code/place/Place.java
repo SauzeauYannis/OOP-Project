@@ -116,7 +116,7 @@ public class Place implements Describable {
 
 		// Key shop
 		Shop keyShop = new Shop("Key shop",
-				"| This is the place where you can buy key to unlock the different games.\n",
+				"| This is the place where you can buy key to unlock different games.\n",
 				npcShop);
 		keyShop.addItem(new Key("Copper key", 25, Level.COPPER));
 		keyShop.addItem(new Key("Gold key", 50, Level.GOLD));
@@ -125,7 +125,7 @@ public class Place implements Describable {
 
 		// Food shop
 		Shop foodShop = new Shop("Food shop",
-				"| This is the place where you can buy some food, like ChocoPipe.\n",
+				"| This is the place where you can buy some food, like Apple Candy.\n",
 				npcShop);
 		foodShop.addItem(new Food("Apple candy", 5, 5));
 		foodShop.addItem(new Food("Cotton candy", 10, 15));
