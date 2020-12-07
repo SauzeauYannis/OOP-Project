@@ -11,36 +11,45 @@ import java.util.concurrent.TimeUnit;
 
 public class QTE extends Game {
 
-    private final String[] NPC_TALK = {
+    /*****************************
+     * Attributes and constructor
+     *****************************/
+
+    // Class attributes
+    private static final int ROUND_NUMBER = 3;
+    private static final String[] NPC_TALK = {
             "Start slowly with this first punch!\n",
             "Okay now faster with this second punch!\n",
             "You're fast but you can't be more fast for this last punch!\n"
     };
-    private final String[] ROUND = {
-            "You drink wine i drink the blood of your dead",
-            "You eat chocopipe during i eat hedgehog",
-            "I am all even in your hole"
+    private static final String[] PUNCHLINE = {
+            "My name is Ethoufet Kwallah the fast one",
+            "You eat chocopipe during i eat sausage",
+            "I rap faster than you and Eminem"
     };
-    private final int[] TIME = {
-            25,
+    private static final int[] TIME = {
             20,
-            15
+            15,
+            10
     };
 
-    public QTE(String name, String description, NPC npc, Level level) {
-        super(name, description, npc, level);
-    }
-
+    // Constructor
     public QTE() {
-        this("QTE",
+        super("QTE",
                 "| You are in front of the faster gipsy's rapper.\n" +
                 "| Type \"play\" to start the game.",
                 new NPC("Ethoufet Kwallah"),
                 Level.COPPER);
     }
 
+    /*********
+     * Method
+     *********/
+
+    // To play the game
     @Override
     public void play(Player player) {
+        // Method variables
         NPC npc = this.getNpc();
         int round = 0;
 
@@ -50,46 +59,76 @@ public class QTE extends Game {
                 "I am the fastest rapper of this carnival!\n" +
                 "Try to repeat that I say in a limited time!");
 
-        while (round < 3) {
-            npc.talk(NPC_TALK[round] +
-                    "You have " + TIME[round] + "s to write the punch, good luck!");
-            for (int i = 3; i > 0; i--) {
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (Exception exception) {
-                    System.err.println("Error during sleep program in QTE");
-                }
-                npc.talk(Integer.toString(i));
-            }
-            npc.talk(ROUND[round]);
+        // To play 3 rounds
+        while (round < ROUND_NUMBER) {
 
+            // Print the punchline of the current round
+            printPunchline(round);
+
+            // To know the number of seconds the player has write the punchline
             Date start = new Date();
             System.out.print(player);
             String playerSentence = Gameplay.scanner.nextLine();
             Date end = new Date();
+            int second = (int)((end.getTime() - start.getTime()) / 1000);
 
-            if (playerSentence.equalsIgnoreCase(ROUND[round])) {
-                int second = (int)((end.getTime() - start.getTime()) / 1000);
-                if (second < TIME[round]) {
-                    npc.talk(second +
-                            "s.\nWell played for this round!");
-                } else {
-                    npc.talk(second +
-                            "s.\nToo slow for me!");
-                    this.lose(player);
-                    return;
-                }
-            } else {
-                npc.talk("It was not my punch!\n" +
-                        "I am the best!");
+            // If the player lose then finish game
+            if (!winRound(playerSentence, round, second)) {
                 this.lose(player);
                 return;
+            } else { // Else if he wins then next round
+                round++;
             }
-            round++;
         }
 
+        // If the player wins the 3 rounds
         this.win(player);
 
         System.out.println("\n--- Game finished ---\n");
+    }
+
+    // To print the punchline
+    private void printPunchline(int round) {
+        // Method variable
+        NPC npc = this.getNpc();
+
+        npc.talk(NPC_TALK[round] +
+                "You have " + TIME[round] + "s to write the punch, good luck!");
+
+        // 3 second countdown
+        for (int i = ROUND_NUMBER; i > 0; i--) {
+            // Catch InterruptedException caused by sleep
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (Exception exception) {
+                System.err.println("Error during sleep program in QTE");
+            }
+            npc.talk(Integer.toString(i));
+        }
+        npc.talk(PUNCHLINE[round]);
+    }
+
+    // To check if the player win or not
+    private boolean winRound(String playerSentence, int round, int second) {
+        // Method variable
+        NPC npc = this.getNpc();
+
+        // If player writes the good punchline
+        if (playerSentence.equalsIgnoreCase(PUNCHLINE[round])) {
+            // If player is faster than NPC, he wins the round
+            if (second < TIME[round]) {
+                npc.talk(second +
+                        "s.\nWell played for this round!");
+                return true;
+            } else { // If player is too slow for NPC, he loses the round
+                npc.talk(second +
+                        "s.\nToo slow for me!");
+                return false;
+            }
+        } else { // If player doesn't write the good punchline
+            npc.talk("It was not my punch!\n" +
+                    "I am the best!");
+            return false;
+        }
     }
 }
