@@ -14,9 +14,9 @@ import java.util.List;
 
 public class Player extends Character {
 
-	/******************************
+	/*******************************
 	 * Attributes and constructors *
-	 ******************************/
+	 *******************************/
 
 	/// Constants ///
 	static final int MAX_HEALTH = 100;
@@ -50,52 +50,26 @@ public class Player extends Character {
 	 * Methods *
 	 ***********/
 
-	// Allows to say if the player has win
-	private void lose(){
-		this.isLose = true;
+	// Getters
+	public Place getPlace(){
+		return this.cur_place;
 	}
 
-	// Display the player's health remain
-	public void printHealth() {
-		System.out.println("| You have " +
-				this.health +
-				"/" +
-				MAX_HEALTH +
-				" calories.");
+	public boolean getIsLose(){
+		return this.isLose;
 	}
 
-	// Display the player's money
-	public void printMoney() {
-		System.out.println("| You have " +
-				this.money +
-				" coins.");
+	public List<Item> getItems() {
+		return this.items;
 	}
 
-	// Display how many games the player has finished
-	public void printGames() {
-		System.out.println("| You have finish " +
-				this.gamesFinished + "/" + Game.NB_GAMES +
-				" games.");
+	public int getGamesFinished(){
+		return this.gamesFinished;
 	}
 
-	// Display what the player has in his inventory
-	public void printInventory() {
-
-		// Check if his inventory is empty
-		if (this.items.isEmpty()) {
-			System.out.println("| You haven't anything in your inventory!\n" +
-					"| Go to the shop to buy items.");
-		} else {
-			// Sort by alphabetic order
-			this.items.sort(Comparator.comparing(Item::getName));
-			System.out.println("| In you inventory you have :");
-
-			// Display all items in the inventory
-			for (Item item: this.items) {
-				System.out.println("-" + item.getName());
-			}
-		}
-	}
+	/////////////
+	// Setters //
+	/////////////
 
 	// Increase the player's health remain
 	public boolean increaseHealth(int health) {
@@ -144,6 +118,89 @@ public class Player extends Character {
 		}
 		printMoney();
 	}
+
+	// Allows to say if the player has win
+	private void lose(){
+		this.isLose = true;
+	}
+
+	// Add item to the player's inventory
+	public void addItem(Item item) {
+		int price = item.getPrice();
+
+		// Check if the player has any money to buy the item
+		if (price > this.money) {
+			System.out.println("| You haven't any money to buy this item");
+		} else {
+			this.items.add(item);
+			System.out.println("| " + item.getName() +
+					" is now in your inventory.");
+			this.loseMoney(price);
+		}
+	}
+
+	// Remove an item from the player's inventory
+	public void removeItem(Item item) {
+		this.items.remove(item);
+		System.out.println("| You have lose one " +
+				item.getName().toLowerCase());
+	}
+
+	// Increase the number of games finished for the first time
+	public void increaseGameFinished(){
+		this.gamesFinished += 1;
+		printGames();
+	}
+
+	///////////
+	// Print //
+	///////////
+
+	// Display the player's health remain
+	public void printHealth() {
+		System.out.println("| You have " +
+				this.health +
+				"/" +
+				MAX_HEALTH +
+				" calories.");
+	}
+
+	// Display the player's money
+	public void printMoney() {
+		System.out.println("| You have " +
+				this.money +
+				" coins.");
+	}
+
+	// Display how many games the player has finished
+	public void printGames() {
+		System.out.println("| You have finish " +
+				this.gamesFinished + "/" + Game.NB_GAMES +
+				" games.");
+	}
+
+	// Display what the player has in his inventory
+	public void printInventory() {
+
+		// Check if his inventory is empty
+		if (this.items.isEmpty()) {
+			System.out.println("| You haven't anything in your inventory!\n" +
+					"| Go to the shop to buy items.");
+		} else {
+			// Sort by alphabetic order
+			this.items.sort(Comparator.comparing(Item::getName));
+			System.out.println("| In you inventory you have :");
+
+			// Display all items in the inventory
+			for (Item item: this.items) {
+				System.out.println("-" + item.getName());
+			}
+		}
+	}
+
+	////////////
+	// Others //
+	////////////
 
 	// Check if the place is valid, and change the player's postion
 	public boolean goToPlace(String location) {
@@ -222,51 +279,5 @@ public class Player extends Character {
 		} else {
 			System.out.println("| You are not in a game");
 		}
-	}
-
-	// Add item to the player's inventory
-	public void addItem(Item item) {
-		int price = item.getPrice();
-
-		// Check if the player has any money to buy the item
-		if (price > this.money) {
-			System.out.println("| You haven't any money to buy this item");
-		} else {
-			this.items.add(item);
-			System.out.println("| " + item.getName() +
-					" is now in your inventory.");
-			this.loseMoney(price);
-		}
-	}
-
-	// Remove an item from the player's inventory
-	public void removeItem(Item item) {
-		this.items.remove(item);
-		System.out.println("| You have lose one " +
-				item.getName().toLowerCase());
-	}
-
-	// Increase the number of games finished for the first time
-	public void increaseGameFinished(){
-		this.gamesFinished += 1;
-		printGames();
-	}
-
-	/// Accessors ///
-
-	public Place getPlace(){
-		return this.cur_place;
-	}
-
-	public boolean getIsLose(){
-		return this.isLose;
-	}
-
-	public List<Item> getItems() {
-		return this.items;
-	}
-
-	public int getGamesFinished(){
-		return this.gamesFinished;
 	}
 }

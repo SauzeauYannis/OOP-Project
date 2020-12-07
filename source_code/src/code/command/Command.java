@@ -7,13 +7,23 @@ import java.util.List;
 
 public abstract class Command {
 
+    /******************************
+     * Attributes and constructor *
+     ******************************/
+
+    /// Attributes ///
     private final String command;
     private final String help;
 
+    /// Constructor ///
     public Command(String command, String help) {
         this.command = command;
         this.help = help;
     }
+
+    /***********
+     * Methods *
+     ***********/
 
     public String getCommand() {
         return command;
