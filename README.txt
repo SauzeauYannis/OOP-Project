@@ -27,7 +27,7 @@ où il y a le fichier gypsy's_carnival.jar
 - Pour afficher les commandes tapez "help" et suivez les instructions
 
 - Le but du jeu est de finir les 9 mini-jeux proposés par les
-propriétaires de chaque stand du carnavale
+propriétaires de chaque stand du carnaval
 
 
 
