@@ -2,7 +2,9 @@ package code.character;
 
 public class NPC extends Character {
 
-	/// Methods ///
+	/***********
+	 * Methods *
+	 ***********/
 
 	public NPC(String name) {
 		super(name);
