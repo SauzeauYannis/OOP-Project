@@ -42,10 +42,16 @@ public class Key extends Item {
 	// OVERRIDE METHODS
 	@Override
 	public void use(Player player) {
+		// Takes the 2nd existing exit of the place where player is (will always be a game)
 		Place nextPlace = player.getPlace().getExitList().get(1).getPlace();
+
+		// Verifies if player is in a hub
 		if (nextPlace instanceof Game) {
 			Game game = (Game) nextPlace;
+
+			// Verifies if key level exists and is similar to the game level
 			if (this.level == game.getLevel()) {
+				// Unlocks the game
 				for (Exit exit: player.getPlace().getExitList()) {
 					if (exit.isLock()) {
 						exit.unlock();

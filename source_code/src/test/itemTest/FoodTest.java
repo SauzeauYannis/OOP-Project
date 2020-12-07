@@ -26,6 +26,6 @@ public class FoodTest {
         food.use(player);
 
         assertFalse(player.getItems().contains(food));
-        //assertEquals(95,player.getHealth);
+        assertEquals(95,player.getHealth);
     }
 }
