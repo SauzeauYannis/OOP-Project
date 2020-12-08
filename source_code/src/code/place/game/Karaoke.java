@@ -27,7 +27,6 @@ public class Karaoke extends Game {
             {"____ ___ my lover! ____ ___ my friend", "Good bye"},
             {"Oh, I'll ____ ___ ___ ____ __ when I see you again. When I see you again!", "tell you all about it" },
             {"Oh no, not I, I will survive! Oh, as long as I know ___ __ ____, I know I'll stay alive", "how to love"},
-            {"Tape tape dans tes mains, ______ ____ ____!", "petit ours brun"}
     };
 
     private final String[] COMMENTARY = {
