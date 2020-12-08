@@ -124,7 +124,7 @@ public class Karaoke extends Game {
     }
 
     //Provides a random number
-    public int randNum(int length){
+    private int randNum(int length){
         Random rd = new Random();
         rd.nextInt(length);
         return rd.nextInt(length);

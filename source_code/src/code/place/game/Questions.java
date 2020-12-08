@@ -55,11 +55,11 @@ public class Questions extends Game {
      **********/
 
     //GETTERS
-    public int getLengthQUESTEASY(){
+    private int getLengthQUESTEASY(){
         return this.QUESTIONS_EASY.length;
     }
 
-    public int getLengthQUESTDIFF(){
+    private int getLengthQUESTDIFF(){
         return this.QUESTIONS_DIFFICULT.length;
     }
 
@@ -165,7 +165,7 @@ public class Questions extends Game {
     }
 
     //To pick a random num
-    public int randNum(int length){
+    private int randNum(int length){
         Random rd = new Random();
         rd.nextInt(length);
         return rd.nextInt(length);
