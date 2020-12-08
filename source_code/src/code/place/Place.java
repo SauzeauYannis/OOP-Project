@@ -6,7 +6,7 @@ import code.item.Food;
 import code.item.Key;
 import code.Describable;
 import code.character.NPC;
-import code.exit.Exit;
+import code.place.exit.Exit;
 import code.place.game.*;
 
 import java.util.ArrayList;

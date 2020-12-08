@@ -1,7 +1,7 @@
 package test.itemTest;
 import code.character.Player;
 import code.Level;
-import code.exit.Exit;
+import code.place.exit.Exit;
 import code.item.Key;
 import code.place.Place;
 import org.junit.Before;

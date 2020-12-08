@@ -2,7 +2,7 @@ package code.item;
 
 import code.character.Player;
 import code.Level;
-import code.exit.Exit;
+import code.place.exit.Exit;
 import code.place.Game;
 import code.place.Place;
 

@@ -1,7 +1,7 @@
 package test.placeTest;
 
 import code.character.NPC;
-import code.exit.Exit;
+import code.place.exit.Exit;
 import code.place.Place;
 import org.junit.Before;
 import org.junit.Test;
