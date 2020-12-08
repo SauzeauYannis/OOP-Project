@@ -1,4 +1,4 @@
-package test.exitTest;
+package test.placeTest.exitTest;
 
 import code.character.NPC;
 import code.place.exit.Exit;
