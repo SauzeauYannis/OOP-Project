@@ -3,7 +3,7 @@ package code.place.game;
 import code.Gameplay;
 import code.character.NPC;
 import code.character.Player;
-import code.enumeration.Level;
+import code.Level;
 import code.place.Game;
 
 import java.util.Random;
@@ -165,7 +165,7 @@ public class Hangman extends Game {
     }
 
     // Checks if lettersFound contains letter
-    public boolean isLetterFound(String lettersFound, char letter, NPC npc){
+    private boolean isLetterFound(String lettersFound, char letter, NPC npc){
         boolean letterFound;
         if ((lettersFound.indexOf(letter)) != -1) {
             npc.talk("You have already guessed this letter.");
@@ -177,7 +177,7 @@ public class Hangman extends Game {
     }
 
     //Chose a random word from WORDS array
-    public String randWORDS(){
+    private String randWORDS(){
         Random rd = new Random();
         int rd_num = rd.nextInt(this.getLengthWORDS());
         String word = WORDS[rd_num];
@@ -185,7 +185,7 @@ public class Hangman extends Game {
     }
 
     //Checks if player wins
-    public boolean checkWin(int trials_left, String wordToFind,int trials, NPC npc){
+    private boolean checkWin(int trials_left, String wordToFind,int trials, NPC npc){
        boolean win = false;
         if (trials_left<1){
             npc.talk("You reached the number of incorrect guesses. Sorry you lose! :/");

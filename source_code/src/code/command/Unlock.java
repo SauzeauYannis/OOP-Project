@@ -1,7 +1,7 @@
 package code.command;
 
 import code.character.Player;
-import code.exit.Exit;
+import code.place.exit.Exit;
 import code.item.Item;
 import code.item.Key;
 import code.place.Ending;

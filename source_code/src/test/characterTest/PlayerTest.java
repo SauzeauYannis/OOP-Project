@@ -2,8 +2,8 @@ package test.characterTest;
 
 import code.character.NPC;
 import code.character.Player;
-import code.enumeration.Level;
-import code.exit.Exit;
+import code.Level;
+import code.place.exit.Exit;
 import code.item.Food;
 import code.item.Item;
 import code.item.Key;

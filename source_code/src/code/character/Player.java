@@ -5,7 +5,7 @@ import code.item.Item;
 import code.place.Ending;
 import code.place.Game;
 import code.place.Place;
-import code.exit.Exit;
+import code.place.exit.Exit;
 import code.place.Shop;
 
 import java.util.ArrayList;

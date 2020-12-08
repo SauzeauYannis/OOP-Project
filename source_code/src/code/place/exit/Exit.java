@@ -1,4 +1,4 @@
-package code.exit;
+package code.place.exit;
 
 import code.place.Ending;
 import code.place.Game;

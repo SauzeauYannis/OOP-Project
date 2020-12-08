@@ -1,6 +1,6 @@
 package code.item;
 
-import code.other.Describable;
+import code.Describable;
 import code.character.Player;
 
 // This class is an abstract class and implements Describable interface

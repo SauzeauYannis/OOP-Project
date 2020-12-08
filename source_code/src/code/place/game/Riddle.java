@@ -3,7 +3,7 @@ package code.place.game;
 import code.Gameplay;
 import code.character.NPC;
 import code.character.Player;
-import code.enumeration.Level;
+import code.Level;
 import code.place.Game;
 
 import java.util.Random;
@@ -20,7 +20,6 @@ public class Riddle extends Game {
     final static int DEFAULT_ATTEMPTS = 3;
     final static String[][] RIDDLES ={
             {"What is the summation between 1 and 2 ?", "3"},
-            {"What answer Zebi if his professor ask who want to the b ?","can I do the b"},
             {"If I am mute, blind and deaf, how many senses do I have left ?", "3"},
             {"if 1 equals 5, 2 equals 25, 3 equals 605, 4 equals 10855, 5 equals what ?", "1"},
             {"You have this suite : 2 3 5 ? 11 ", "7"}

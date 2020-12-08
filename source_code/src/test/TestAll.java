@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 import test.characterTest.CharacterTest;
 import test.characterTest.PlayerTest;
 import test.commandTest.*;
-import test.exitTest.ExitTest;
+import test.placeTest.exitTest.ExitTest;
 import test.itemTest.FoodTest;
 import test.itemTest.ItemTest;
 import test.itemTest.KeyTest;

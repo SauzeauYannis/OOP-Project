@@ -1,9 +1,8 @@
 package test.commandTest;
 
 import code.character.Player;
-import code.command.Unlock;
 import code.command.Use;
-import code.enumeration.Level;
+import code.Level;
 import code.item.Food;
 import code.item.Key;
 import code.place.Place;
