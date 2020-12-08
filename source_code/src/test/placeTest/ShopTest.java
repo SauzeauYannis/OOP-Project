@@ -1,7 +1,7 @@
 package test.placeTest;
 
 import code.character.NPC;
-import code.enumeration.Level;
+import code.Level;
 import code.item.Food;
 import code.item.Item;
 import code.item.Key;

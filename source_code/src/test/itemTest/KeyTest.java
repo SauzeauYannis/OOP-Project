@@ -1,6 +1,6 @@
 package test.itemTest;
 import code.character.Player;
-import code.enumeration.Level;
+import code.Level;
 import code.exit.Exit;
 import code.item.Key;
 import code.place.Place;

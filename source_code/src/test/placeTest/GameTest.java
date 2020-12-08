@@ -2,7 +2,7 @@ package test.placeTest;
 
 import code.character.NPC;
 import code.character.Player;
-import code.enumeration.Level;
+import code.Level;
 import code.place.Game;
 import org.junit.Before;
 import org.junit.Test;

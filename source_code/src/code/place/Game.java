@@ -2,7 +2,7 @@ package code.place;
 
 import code.character.NPC;
 import code.character.Player;
-import code.enumeration.Level;
+import code.Level;
 
 // This class is a subclass of Place and an abstract class
 public abstract class Game extends Place {

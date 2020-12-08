@@ -1,7 +1,7 @@
 package code.item;
 
 import code.character.Player;
-import code.enumeration.Level;
+import code.Level;
 import code.exit.Exit;
 import code.place.Game;
 import code.place.Place;

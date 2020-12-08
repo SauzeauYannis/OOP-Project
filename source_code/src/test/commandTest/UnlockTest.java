@@ -2,7 +2,7 @@ package test.commandTest;
 
 import code.character.Player;
 import code.command.Unlock;
-import code.enumeration.Level;
+import code.Level;
 import code.item.Key;
 import code.place.Place;
 import org.junit.Test;

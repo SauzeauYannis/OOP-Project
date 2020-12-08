@@ -1,4 +1,4 @@
-package code.enumeration;
+package code;
 
 // This class is an enumeration
 public enum Level {
