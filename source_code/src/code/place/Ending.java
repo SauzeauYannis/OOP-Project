@@ -6,7 +6,7 @@ import code.character.NPC;
 import java.util.concurrent.TimeUnit;
 
 // This class is a subclass of Place
-public class Ending extends Place{
+public class Ending extends Place {
 
     /****************************
      * Attribute and constructor
