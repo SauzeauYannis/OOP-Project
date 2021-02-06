@@ -30,7 +30,7 @@ Ce projet a été développé en binôme et avec l'EDI [IntelliJ IDEA](https://w
 
 ### Vidéo démo
 
-[![Demo video](https://gifs.com/gif/gZA37l)](https://www.youtube.com/watch?v=509DwE4Tuf0)
+[![Demo video](https://j.gifs.com/gZA37l.gif)](https://www.youtube.com/watch?v=509DwE4Tuf0)
 
 <a name="fr_ut"/>
 
@@ -65,7 +65,7 @@ This project was developed in pairs and with [IntelliJ IDEA](https://www.jetbrai
 
 ### Demo video
 
-[![Demo video](https://gifs.com/gif/gZA37l)](https://www.youtube.com/watch?v=509DwE4Tuf0)
+[![Demo video](https://j.gifs.com/gZA37l.gif)](https://www.youtube.com/watch?v=509DwE4Tuf0)
 
 <a name="en_u"/>
 
