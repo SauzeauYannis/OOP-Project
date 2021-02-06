@@ -42,9 +42,9 @@ Si vous avez IntelliJ, ouvrez le dossier "source_code" en tant que projet et lan
 
 Sinon, lancez la commande :
 
-'''
+```shell
 -java -jar "gypsy's_carnival.jar"
-'''
+```
 
 Une fois le jeu lancer la commande "help" vous indique les autres commandes disponibles.
 
@@ -112,9 +112,9 @@ If you have IntelliJ, open the folder "source_code" as a project and run "[sourc
 
 Otherwise, run the command :
 
-'''
+```shell
 -java -jar "gypsy's_carnival.jar"
-'''
+```
 
 Once the game is launched, the "help" command will show you the other commands available.
 
