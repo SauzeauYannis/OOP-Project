@@ -24,7 +24,7 @@
 
 Ce projet a été effectué en troisième année du [CMI Informatique](http://formations.univ-poitiers.fr/fr/index/autre-diplome-niveau-master-AM/autre-diplome-niveau-master-AM/cmi-informatique-JD2XQGVY.html) à l'[UFR SFA Université de Poitiers](https://sfa.univ-poitiers.fr/) dans le cadre de l'enseignement [Programmation orientée-objet](http://formations.univ-poitiers.fr/fr/index/autre-diplome-niveau-master-AM/autre-diplome-niveau-master-AM/cmi-informatique-JD2XQGVY/specialite-s5-JD2XSMB7/programmation-orientee-objet-JB1YGRBD.html).
 
-Ce projet a été développé en binôme et avec l'EDI [IntelliJ IDEA](https://www.jetbrains.com/fr-fr/idea/).
+Ce projet a été développé en trinôme et avec l'EDI [IntelliJ IDEA](https://www.jetbrains.com/fr-fr/idea/).
 
 <a name="fr_vi"/>
 
@@ -94,7 +94,7 @@ Nous avons obtenu la note de 14/20.
 
 This project was carried out in the third year of the [CMI Informatique](http://formations.univ-poitiers.fr/fr/index/autre-diplome-niveau-master-AM/autre-diplome-niveau-master-AM/cmi-informatique-JD2XQGVY.html) at the [University of Poitiers](https://www.univ-poitiers.fr/en/) as part of the [Object-oriented programming](http://formations.univ-poitiers.fr/fr/index/autre-diplome-niveau-master-AM/autre-diplome-niveau-master-AM/cmi-informatique-JD2XQGVY/specialite-s5-JD2XSMB7/programmation-orientee-objet-JB1YGRBD.html) teaching programme.
 
-This project was developed in pairs and with [IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE.
+This project was developed in a group of three with [IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE.
 
 <a name="en_vi"/>
 
